@@ -1,0 +1,502 @@
+<html>
+<body>
+<script src="js/three.min.js"></script>
+<script src="js/OrbitControls.js"></script>
+<script src="js/THREEx.KeyboardState.js"></script>
+
+<script>
+init();
+animate();
+
+function init() {
+    // Create Pendulum 1 object
+    pendulum1 = {length:2.0, mass:2.0, angle:Math.PI/2, angle_dot:0.0};
+    pendulum1.control = 0;  // motor control for pendulum 1
+    pendulum1.desired = -Math.PI/2.5;   // desired angle for pendulum 1
+    // pendulum1.desired = 0;
+    pendulum1.desired_dot = 0;  // desired omega for pendulum 1
+
+    // Create Pendulum 2 object
+    pendulum2 = {length:2.0, mass:2.0, angle:Math.PI/2, angle_dot:0.0};
+    pendulum2.control = 0;  // motor control for pendulum 2
+    pendulum2.desired = -Math.PI/2.5;   // desired angle for pendulum 2
+    // pendulum2.desired = 0;
+    pendulum2.desired_dot = 0;  // desired omega for pendulum 2
+
+    // Create servo object with PID gain parameters
+    servo1 = {kp:100 , kd:300 , ki:10};
+    servo2 = {kp:80 , kd:100 , ki:5};
+
+    //  initialising PID terms
+    p_1 = 0; p_2 = 0; d_1 = 0; d_2 = 0; i_1 = 0; i_2 = 0;
+    error_1prev = 0; error_2prev = 0;
+
+    t = 0;
+    dt = 0.05;
+
+    // Global Declarations for ease of notation and calculations
+    gravity = 9.81;
+    L1 = pendulum1.length;
+    L2 = pendulum2.length;
+    M1 = pendulum1.mass;
+    M2 = pendulum2.mass;
+    
+    
+    /*
+    For 4th order Runge Kutta, our function will be dependent on 
+    4 parameters: theta1, omega1, theta2, omega2
+
+    => yin = [theta1,omega1,theta2,omega2] before RK4 completes a cycle
+    => yout = [theta1,omega1,theta2,omega2] after RK4 completes a cycle
+    */
+    yin = [pendulum1.angle,pendulum1.angle_dot,pendulum2.angle,pendulum2.angle_dot];
+    yout = [0,0,0,0];
+
+    steady_state_error_reset = false; // integral term resets after desired met
+    servo_error_threshold = 0.001; // threshold for achieving desired
+    servo_active_persist = false; // toggle to turn on servo controller
+    servo_active_state = {}; // string with current state of servo activation
+
+    document.addEventListener('keydown', function(e) {
+        if (e.keyCode == 88)
+           servo_active_persist = !servo_active_persist;
+    }, true);
+
+    createScene();
+}
+
+
+//////////////////////////////////////////////////
+/////     ANIMATION AND INTERACTION LOOP
+//////////////////////////////////////////////////
+
+function animate() {
+    requestAnimationFrame( animate );
+    if (keyboard.pressed("i"))
+        numerical_integrator = "runge kutta";
+    
+    if (keyboard.pressed("0"))
+        numerical_integrator = "none";
+
+    if (keyboard.pressed("1"))
+        pendulum1.desired += 0.05;
+
+    if (keyboard.pressed("2"))
+        pendulum1.desired += -0.05;
+
+    if (keyboard.pressed("3"))
+        pendulum2.desired += 0.05;
+
+    if (keyboard.pressed("4"))
+        pendulum2.desired += -0.05;
+
+    if ( keyboard.pressed("d"))
+        pendulum1.control += 50.0;
+        pendulum2.control += 50.0;
+
+    if ( keyboard.pressed("a"))
+        pendulum1.control += -50.0;
+        pendulum2.control += -50.0;
+
+    // toggle activation of servo controller from user interaction
+    if (keyboard.pressed("c")) {
+        servo_active_state = "active";
+        servo_active_persist = true;
+    }
+
+    // disable motor from user interaction 
+    if (keyboard.pressed("s")||!servo_active_persist) {
+        pendulum1.control = 0;
+        pendulum2.control = 0;
+        i_1 = 0;
+        i_2 = 0;
+        servo_active_state = "disabled";
+        servo_active_persist = false;
+    }
+
+    if (typeof numerical_integrator === "undefined")
+        numerical_integrator = "none";
+
+
+    if (numerical_integrator === "runge kutta") {
+        
+        pendulum1.angle_previous = pendulum1.angle;
+        pendulum2.angle_previous = pendulum2.angle;
+        
+        var omega1_prev = pendulum1.angle_dot,
+            omega2_prev = pendulum2.angle_dot;
+
+        yin[0] = pendulum1.angle_previous;
+        yin[1] = omega1_prev;
+        yin[2] = pendulum2.angle_previous;
+        yin[3] = omega2_prev;
+
+        runge_kutta(t,yin,yout,dt);
+
+        pendulum1.angle = wrapper(yout[0]);
+        pendulum1.angle_dot = yout[1];
+        pendulum2.angle = wrapper(yout[2]);
+        pendulum2.angle_dot = yout[3];
+
+        numerical_integrator = "runge kutta";
+    }
+
+    else {
+        pendulum1.angle_previous = pendulum1.angle;
+        pendulum1.angle = (pendulum1.angle+Math.PI/180)%(2*Math.PI);
+        pendulum1.angle_dot = (pendulum1.angle-pendulum1.angle_previous)/dt;
+        
+        pendulum2.angle_previous = pendulum2.angle;
+        pendulum2.angle = (pendulum2.angle+Math.PI/180)%(2*Math.PI);
+        pendulum2.angle_dot = (pendulum2.angle-pendulum2.angle_previous)/dt;
+
+        numerical_integrator = "none";
+    }
+
+    // set the angle of the pendulum
+    pendulum1.geom.rotation.y = pendulum1.angle;
+    pendulum2.geom.rotation.y = pendulum2.angle;
+
+    // advance time
+    t = t + dt;
+
+    textbar.innerHTML = 
+        "System <br> " +
+        " t = " + t.toFixed(2) + 
+        " dt = " + dt.toFixed(2) + 
+        "<br>" +
+        " integrator = " + numerical_integrator + 
+        "<br>" +
+        " x1 = " + pendulum1.angle.toFixed(2) + 
+        "<br>" +
+        " x1_dot = " + pendulum1.angle_dot.toFixed(2) + 
+        "<br>" +
+        " x2 = " + pendulum2.angle.toFixed(2) + 
+        "<br>" +
+        " x2_dot = " + pendulum2.angle_dot.toFixed(2) + 
+        "<br>" +
+        " x1_desired = " + pendulum1.desired.toFixed(2) + 
+        "<br>" +
+        " x2_desired = " + pendulum2.desired.toFixed(2) + 
+        "<br><br> Servo: " + servo_active_state + " <br> " +
+        " u1 = " + pendulum1.control.toFixed(2) +
+        "<br>" +
+        " u2 = " + pendulum2.control.toFixed(2) +
+        "<br>" +
+        "Servo 1: kp = " + servo1.kp.toFixed(2) + 
+        " kd = " + servo1.kd.toFixed(2) + 
+        " ki = " + servo1.ki.toFixed(2) +
+        "<br>" +
+        "Servo 2: kp = " + servo2.kp.toFixed(2) + 
+        " kd = " + servo2.kd.toFixed(2) + 
+        " ki = " + servo2.ki.toFixed(2) +
+        "<br><br>  Pendulum 1 <br> " +
+        " mass = " + pendulum1.mass.toFixed(2) +
+        "<br>" +
+        " length = " + pendulum1.length.toFixed(2) +
+        "<br><br>  Pendulum 2 <br> " +
+        " mass = " + pendulum2.mass.toFixed(2) +
+        "<br>" +
+        " length = " + pendulum2.length.toFixed(2) +
+        "<br>" +
+        " gravity = " + gravity.toFixed(2) +
+        "<br><br>  Keys <br> " +
+        " i/0 - activate/deactivate integrator " +
+        "<br>" +
+        " a/d - apply user force " +
+        "<br>" +
+        " 1/2 - adjust desired angle 1 " +
+        "<br>" +
+        " 3/4 - adjust desired angle 2 " +
+        "<br>" +
+        " c/x - toggle servo " +
+        "<br>" +
+        " s - disable servo "
+
+    ;
+
+    renderer.render( scene, camera );
+}
+
+//////////////////////////////////////////////////
+/////     MAIN FUNCTIONS FOR RK4 & PID
+//////////////////////////////////////////////////
+
+// Function to calculate all the derivatives without external forces applied to motors
+function derivatives2(xin,yin,dydx) {
+    dydx[0] = yin[1]; // omega1
+    dydx[2] = yin[3]; // omega2
+
+    var diff = yin[2] - yin[0];
+
+    // omega1_dot
+    dydx[1] = (M2*L1*yin[1]*yin[1]*Math.sin(diff)*Math.cos(diff) + M2*gravity*Math.sin(yin[2])*Math.cos(diff) + 
+            M2*L2*yin[3]*yin[3]*Math.sin(diff) - (M1+M2)*gravity*Math.sin(yin[0]))  /  ((M1 + M2)*L1 - M2*L1*Math.cos(diff)*Math.cos(diff)); 
+    
+    // omega2_dot
+    dydx[3] = (-M2*L2*yin[3]*yin[3]*Math.sin(diff)*Math.cos(diff) + (M1+M2)*gravity*Math.sin(yin[0])*Math.cos(diff) - 
+        (M1+M2)*L1*yin[1]*yin[1]*Math.sin(diff) - (M1+M2)*gravity*Math.sin(yin[2]))  /  ((L2/L1)*((M1 + M2)*L1 - M2*L1*Math.cos(diff)*Math.cos(diff)));
+
+    return dydx
+}
+
+
+// Function to calculate all the derivatives with external forces applied to motors
+function derivatives(xin,yin,dydx) {
+    if (servo_active_persist==true) {
+        u = PID();
+        pendulum1.control = u[0];
+        pendulum2.control = u[1];
+    }
+    else {
+        pendulum1.control = 0;
+        pendulum2.control = 0;
+    }
+
+
+    var x1 = yin[0], // angle 1
+        x2 = yin[2], // angle 2
+        x1_dot = yin[1],  // omega1
+        x2_dot = yin[3],  // omega2
+        delta = x2 - x1, //angle difference
+        mu = M1/M2, // weight ratio
+
+        C1 =  pendulum1.control/(M2*L1) + L2*x2_dot*x2_dot*Math.sin(delta) - (1+mu)*gravity*Math.sin(x1),
+        C2 =  pendulum2.control/(M2*L2) - L1*x1_dot*x1_dot*Math.sin(delta) - gravity*Math.sin(x2),
+
+        denom = (1 + mu - Math.cos(delta)*Math.cos(delta)),
+
+        x1_dot_dot = (C1 - C2*Math.cos(delta))/(L1*denom),
+        x2_dot_dot = (C2*(1+mu) - C1*Math.cos(delta))/(L2*denom);
+
+    dydx[0] = x1_dot;
+    dydx[1] = x1_dot_dot;
+    dydx[2] = x2_dot;
+    dydx[3] = x2_dot_dot;
+
+    return dydx
+}
+
+
+// Sources for algorithm :
+// 1. http://scienceworld.wolfram.com/physics/DoublePendulum.html
+// 2. https://math.stackexchange.com/questions/327262/how-to-solve-this-coupled-2nd-order-differential-equation-of-a-double-pendulum
+
+function runge_kutta(xin,yin,yout,h) {
+    var dydx = [0,0,0,0],
+        dydxt = [0,0,0,0],
+        yt = [0,0,0,0],
+        k1 = [0,0,0,0],
+        k2 = [0,0,0,0],
+        k3 = [0,0,0,0],
+        k4 = [0,0,0,0];
+
+    var hh = 0.5*dt;
+    var xh = xin + hh;
+
+    /*
+    dydx is the array of the form: [ omega1 , omega1_dot , omega2 , omega2_dot] which is derived from the second link in the algortihm source
+    */
+
+    // First step of integration
+    dydx = derivatives(xin,yin,dydx);
+    for(var i=0 ; i<4; i++) {
+        k1[i] = dt*dydx[i];
+        yt[i] = yin[i] + 0.5*k1[i];
+    }
+
+    // Second step of integration
+    dydxt = derivatives(xh,yt,dydxt);
+    for(var i=0 ; i<4 ; i++) {
+        k2[i] = dt*dydxt[i];
+        yt[i] = yin[i] + 0.5*k2[i];
+    }
+
+    // Third step of integration
+    dydxt = derivatives(xh,yt,dydxt);
+    for(var i=0 ; i<4 ; i++) {
+        k3[i] = dt*dydxt[i];
+        yt[i] = yin[i] + k3[i];
+    }
+
+    // Fourth step of integration
+    dydxt = derivatives(xin+dt,yt,dydxt);
+    for(var i=0 ; i<4 ; i++) {
+        k4[i] = dt*dydxt[i];
+        yout[i] = yin[i] + k1[i]/6 + k2[i]/3 + k3[i]/3 + k4[i]/6;
+    }
+}
+
+// function to wrap the angles between 0 - 2*PI
+function wrapper(angle) {
+    return angle%(2*Math.PI)
+}
+
+// PID function
+function PID() {
+    var error_1 = pendulum1.desired - pendulum1.angle;
+    var error_2 = pendulum2.desired - pendulum2.angle;
+
+    // Calculating all error gains for pendulum 1
+    p_1 = servo1.kp * error_1;
+    d_1 = servo1.kd * (error_1 - error_1prev)/dt;
+    i_1 = i_1 + servo1.ki * error_1 * dt;
+
+    // Calculating all error gains for pendulum 2
+    p_2 = servo2.kp * (error_2) ;
+    d_2 = servo2.kd * (error_2 - error_2prev)/dt;
+    i_2 = i_2 + servo2.ki * error_2 * dt;
+
+    // sending the feedbacks
+    var feedback_1 = p_1 + d_1 + i_1;
+    var feedback_2 = p_2 + d_2 + i_2;
+    error_1prev = error_1;
+    error_2prev = error_2;
+
+    return [feedback_1,feedback_2]
+}
+
+
+function createScene() {
+    scene = new THREE.Scene();
+
+    // instantiate threejs camera and set its position in the world
+    camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 10000 );
+    camera.position.y = 1;
+    camera.position.z = 4;
+
+    var light1 = new THREE.PointLight( 0xffffff, 0.3, 1000 ); 
+    light1.position.set( 10, 10, 10 ); 
+    scene.add( light1 );
+
+    var light2 = new THREE.PointLight( 0xffffff, 0.3, 1000 ); 
+    light2.position.set( 10, -10, 10 ); 
+    scene.add( light2 );
+
+    var light3 = new THREE.PointLight( 0xffffff, 0.3, 1000 ); 
+    light3.position.set( -10, -10, 10 ); 
+    scene.add( light3 );
+
+    var light4 = new THREE.PointLight( 0xffffff, 0.3, 1000 ); 
+    light4.position.set( -10, 10, 10 ); 
+    scene.add( light4 );
+
+    // instantiate threejs renderer and its dimensions
+    renderer = new THREE.WebGLRenderer();
+    renderer.setSize( window.innerWidth, window.innerHeight );
+
+    // attach threejs renderer to DOM
+    document.body.appendChild( renderer.domElement );
+
+    // instantiate threejs camera controls
+    camera_controls = new THREE.OrbitControls( camera );
+    camera_controls.addEventListener( 'change', renderer );
+
+    // instantiate threejs keyboard controls, for continuous interactive controls
+    keyboard = new THREEx.KeyboardState();
+
+    textbar = document.createElement('div');
+    textbar.style.position = 'absolute';
+    //textbar.style.zIndex = 1;    // if you still don't see the label, try uncommenting this
+    textbar.style.width = window.width-10;
+    textbar.style["font-family"] = "Monospace";
+    textbar.style.height = 20;
+    //textbar.style.backgroundColor = "black";
+    textbar.style.color = "#000000";
+    textbar.innerHTML = "M4PRoGReS - pendularm!";
+    textbar.style.top = 10 + 'px';
+    textbar.style.left = 10 + 'px';
+    document.body.appendChild(textbar);
+
+    temp_geom = new THREE.CylinderGeometry(0.2, 0.2, 6.5, 20, 20, false);
+    temp_material = new THREE.MeshLambertMaterial( { } );
+    temp_material.color.r = 1;
+    temp_material.color.g = 1;
+    temp_material.color.b = 1;
+    // temp_material.color.b = 1;
+    temp_material.transparent = true;
+    temp_material.opacity = 0.3;
+
+    leg1 = new THREE.Mesh(temp_geom, temp_material);
+    leg2 = new THREE.Mesh(temp_geom, temp_material);
+    leg3 = new THREE.Mesh(temp_geom, temp_material);
+    leg4 = new THREE.Mesh(temp_geom, temp_material);
+    leg1.position = {x:2,z:1,y:0};
+    leg2.position = {x:-2,z:1,y:0};
+    leg3.position = {x:-2,z:-1,y:0};
+    leg4.position = {x:2,z:-1,y:0};
+    scene.add(leg1);
+    scene.add(leg2);
+    scene.add(leg3);
+    scene.add(leg4);
+
+    temp_geom = new THREE.CylinderGeometry(0.2, 0.2, 4.0, 20, 20, false);
+    sidebar1 = new THREE.Mesh(temp_geom, temp_material);
+    sidebar1.rotateOnAxis(new THREE.Vector3(0,0,1),Math.PI/2);
+    sidebar1.position = {x:-2,z:0,y:3};
+    leg1.add(sidebar1);
+    sidebar2 = new THREE.Mesh(temp_geom, temp_material);
+    sidebar2.rotateOnAxis(new THREE.Vector3(0,0,1),Math.PI/2);
+    sidebar2.position = {x:2,z:0,y:3};
+    leg3.add(sidebar2);
+
+    temp_geom = new THREE.CylinderGeometry(0.2, 0.2, 2.0, 20, 20, false);
+    crossbar = new THREE.Mesh(temp_geom, temp_material);
+    crossbar.rotateOnAxis(new THREE.Vector3(1,0,0),Math.PI/2);
+    crossbar.position = {x:0,z:-1,y:0};
+    sidebar1.add(crossbar);
+
+    temp_geom = new THREE.CylinderGeometry(0.3, 0.3, 0.3, 20, 20, false);
+
+    temp_material = new THREE.MeshLambertMaterial( { } );
+    temp_material.color.r = 1;
+    temp_material.color.g = 0;
+    temp_material.color.b = 0;
+    temp_material.transparent = false;
+
+    // Pendulum 1
+    pendulum1.geom = new THREE.Mesh(temp_geom, temp_material);
+    pendulum1.geom.rotateOnAxis(new THREE.Vector3(1,0,0),Math.PI/2);
+    scene.add(pendulum1.geom);
+    pendulum1.geom.position = {x:0,y:3,z:0};
+
+    temp_geom = new THREE.CylinderGeometry(0.2, 0.2, pendulum1.length, 20, 20, false);
+    pendulum1_link = new THREE.Mesh(temp_geom, temp_material);
+    pendulum1_link.rotateOnAxis(new THREE.Vector3(1,0,0),-Math.PI/2);
+    pendulum1_link.position = {x:0,z:pendulum1.length/2,y:0};
+    pendulum1.geom.add(pendulum1_link);
+
+    temp_geom = new THREE.SphereGeometry(Math.sqrt(pendulum1.mass*0.1));
+    pendulum1_mass = new THREE.Mesh(temp_geom, temp_material);
+    pendulum1_mass.position = {x:0,y:-pendulum1.length/2,z:0};
+    pendulum1_link.add(pendulum1_mass);
+
+    // Pendulum 2
+    temp_material = new THREE.MeshLambertMaterial( { } );
+    temp_material.color.r = 0.5;
+    temp_material.color.g = 0.5;
+    temp_material.color.b = 0.5;
+    temp_material.transparent = false;
+
+    temp_geom = new THREE.CylinderGeometry(0.3, 0.3, 0.2, 20, 20, false);
+    pendulum2.geom = new THREE.Mesh(temp_geom, temp_material);
+    pendulum2.geom.rotateOnAxis(new THREE.Vector3(0,1,0),Math.PI/2);
+    pendulum1.geom.add(pendulum2.geom);
+    pendulum2.geom.position = {x:0,y:0,z:pendulum1.length};
+
+    temp_geom = new THREE.CylinderGeometry(0.2, 0.2, pendulum2.length, 20, 20, false);
+    pendulum2_link = new THREE.Mesh(temp_geom, temp_material);
+    pendulum2_link.rotateOnAxis(new THREE.Vector3(1,0,0),-Math.PI/2);
+    pendulum2_link.position = {x:0,z:pendulum2.length/2,y:0};
+    pendulum2.geom.add(pendulum2_link);
+
+    temp_geom = new THREE.SphereGeometry(Math.sqrt(pendulum2.mass*0.1));
+    pendulum2_mass = new THREE.Mesh(temp_geom, temp_material);
+    pendulum2_mass.position = {x:0,y:-pendulum2.length/2,z:0};
+    pendulum2_link.add(pendulum2_mass);
+
+}
+
+</script>
+</body>
+</html>
