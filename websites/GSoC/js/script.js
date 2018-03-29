@@ -216,10 +216,10 @@ $(function(){
 	});
 
 
-	assets['facing_to_up'] = 'img/player_facing_to_up.png';
+	assets['facing_to_up'] = 'img/player_facing_to_down.png';
 	assets['facing_to_down'] = 'img/player_facing_to_down.png';
-	assets['facing_to_left'] = 'img/player_facing_to_left.png';
-	assets['facing_to_right'] = 'img/player_facing_to_right.png';
+	assets['facing_to_left'] = 'img/player_facing_to_down.png';
+	assets['facing_to_right'] = 'img/player_facing_to_down.png';
 	assets['wall'] = 'img/wall.png';
 	assets['floor'] = 'img/floor.png';
 	assets['hole'] = 'img/hole.png';

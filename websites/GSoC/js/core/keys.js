@@ -66,32 +66,6 @@ var Keys = function(up, left, right, down, space, enter) {
 		};
 	};
 
-	// var onKeyUp = function(e) {
-	//
-	// 	var that = this,
-	// 		c = e.keyCode;
-	// 	switch (c) {
-	// 		case 37: // Left
-	// 			that.left = false;
-	// 			break;
-	// 		case 38: // Up
-	// 			that.up = false;
-	// 			break;
-	// 		case 39: // Right
-	// 			that.right = false;
-	// 			break;
-	// 		case 40: // Down
-	// 			that.down = false;
-	// 			break;
-	// 		case 32: // Space
-	// 			that.space = false;
-	// 			break;
-	// 		case 13: // enter
-	// 			that.enter = false;
-	// 			break;
-	// 	};
-	// };
-
 	return {
 		up: up,
 		left: left,
