@@ -107,6 +107,7 @@ class Robot {
 			object: 'https://cdn.rawgit.com/Verlangieri/robot-animation/master/app/obj/boule.DAE',
 			texture1: 'https://cdn.rawgit.com/Verlangieri/robot-animation/master/app/obj/face.jpg',
 			texture2: 'https://cdn.rawgit.com/Verlangieri/robot-animation/master/app/obj/texture.jpg'
+			texture2: 'https://cdn.rawgit.com/sahibdhanjal/sahibdhanjal.github.io/d2569b21/websites/Portfolio/images/robot/texture_inv.jpg'
 		}
 		const loader = new THREE.ColladaLoader();
 		loader.load(url.object, collada => {
