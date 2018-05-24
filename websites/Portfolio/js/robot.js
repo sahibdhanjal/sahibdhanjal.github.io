@@ -105,9 +105,12 @@ class Robot {
 
 	newRobot() {
 		const url = {
-			object: 'https://cdn.rawgit.com/Verlangieri/robot-animation/master/app/obj/boule.DAE',
-			texture1: 'https://cdn.rawgit.com/Verlangieri/robot-animation/master/app/obj/face.jpg',
-			texture2: 'https://cdn.rawgit.com/Verlangieri/robot-animation/master/app/obj/texture.jpg'
+			// object: 'https://cdn.rawgit.com/Verlangieri/robot-animation/master/app/obj/boule.DAE',
+			// texture1: 'https://cdn.rawgit.com/Verlangieri/robot-animation/master/app/obj/face.jpg',
+			// texture2: 'https://cdn.rawgit.com/Verlangieri/robot-animation/master/app/obj/texture.jpg'
+			object: '../images/robot/boule.DAE',
+			texture1: '../images/robot/face.jpg',
+			texture2: '../images/robot/texture_inv.jpg'
 		}
 		const loader = new THREE.ColladaLoader();
 		loader.load(url.object, collada => {
@@ -218,7 +221,7 @@ class Robot {
 
 	mouseAnimation() {
 		TweenMax.to(this.eye.rotation, this.animation.speed, { x: this.mouse.y / 5, y: this.mouse.x / 3, delay: this.animation.reactionTime });
-		TweenMax.to(this.mesh.rotation, this.animation.speed, { y: -0.3 + this.mouse.x / 2, x: -(this.mouse.y / 5), delay: this.animation.reactionTime });
+		TweenMax.to(this.mesh.rotation, this.animation.speed, { y: -0.4 + this.mouse.x / 2, x: -(this.mouse.y / 5), delay: this.animation.reactionTime });
 		TweenMax.to(this.eyelidTop.rotation, this.animation.speed, { y: this.mouse.x / 4, x: THREE.Math.degToRad(-75 + this.animation.eyelidsOpening) + (this.mouse.y - Math.abs(this.mouse.x)) / 10, delay: this.animation.reactionTime });
 		TweenMax.to(this.eyelidBottom.rotation, this.animation.speed, { y: this.mouse.x / 4, x: THREE.Math.degToRad(-100 - this.animation.eyelidsOpening) + (this.mouse.y + Math.abs(this.mouse.x)) / 10, delay: this.animation.reactionTime });
 	}
