@@ -5,7 +5,6 @@ class Robot {
 		// this.windowHeight = canvas.height;
 		this.windowWidth = window.innerWidth;
 		this.windowHeight = window.innerHeight;
-		this.zIndex = 100;
 
 		this.animation = {
 			flyingHeight: 0,
@@ -13,7 +12,7 @@ class Robot {
 			eyeAmplitude: 5,
 			eyelidAmplitude: 1,
 			modelsAmplitude: .3,
-			reactionTime: .600,
+			reactionTime: .800,
 			speed: .5,
 			eyelidsOpening: 0,
 			flying: true
