@@ -108,6 +108,7 @@ class Robot {
 			object: 'https://cdn.rawgit.com/Verlangieri/robot-animation/master/app/obj/boule.DAE',
 			texture1: 'https://cdn.rawgit.com/Verlangieri/robot-animation/master/app/obj/face.jpg',
 			// texture2: 'https://cdn.rawgit.com/Verlangieri/robot-animation/master/app/obj/texture.jpg'
+			texture2: ''
 		}
 		const loader = new THREE.ColladaLoader();
 		loader.load(url.object, collada => {
@@ -244,6 +245,7 @@ class Robot {
 	}
 
 	onMouseMove(event) {
+		console.log(event.clientX, event.clientY, window.innerWidth, window.innerHeight, this.mouse.x, this.mouse.y);
 		this.mouse.x = event.clientX / window.innerWidth * 2 - 1;
 		this.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 		this.mouseUpdate();
