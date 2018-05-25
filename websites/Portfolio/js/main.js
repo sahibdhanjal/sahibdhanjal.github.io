@@ -116,13 +116,14 @@
                 $size = $thumbLink.data('size').split('x'),
                 $width  = $size[0],
                 $height = $size[1];
-        
+            
+            console.log($thumbLink)
             var item = {
                 src  : $href,
                 w    : $width,
                 h    : $height
             }
-
+            
             if ($caption.length > 0) {
                 item.title = $.trim($titleText + $captionText);
             }
