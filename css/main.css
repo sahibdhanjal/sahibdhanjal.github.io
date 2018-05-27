@@ -882,6 +882,20 @@ button.btn--stroke:hover {
   color: #ffffff;
 }
 
+.btn--strokeinv,
+button.btn--stroke {
+  background: transparent !important;
+  border: 0.2rem solid #ffffff;
+  color: #ffffff;
+}
+
+.btn--strokeinv:hover,
+button.btn--strokeinv:hover, button.btn--strokeinv:focus {
+  background: #ffffff !important;
+  border: 0.2rem solid #ffffff;
+  color: #000000;
+}
+
 .btn--pill,
 button.btn--pill {
   padding-left: 3rem !important;

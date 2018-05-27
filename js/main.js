@@ -108,6 +108,7 @@
 
             var $folio = $(this),
                 $thumbLink =  $folio.find('.thumb-link'),
+                $projectLink =  $folio.find('.item-folio__project-link'),
                 $title = $folio.find('.item-folio__title'),
                 $caption = $folio.find('.item-folio__caption'),
                 $titleText = '<h4>' + $.trim($title.html()) + '</h4>',
@@ -117,7 +118,6 @@
                 $width  = $size[0],
                 $height = $size[1];
             
-            console.log($thumbLink)
             var item = {
                 src  : $href,
                 w    : $width,
