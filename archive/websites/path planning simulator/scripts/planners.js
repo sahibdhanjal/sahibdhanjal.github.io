@@ -47,7 +47,7 @@ function init(algo) {
 function initSearch() {
 	// World defined by self
     planning_scene = "multi_part";
-    
+
     // eps defines the density of the grid cells
     eps = 0.1;
     path = [];
@@ -64,8 +64,8 @@ function initSearch() {
     };
 
     // when the mouse button is pressed, update mouseDown
-    canvas.onmousedown = function() { 
-        mouseDown = 1; 
+    canvas.onmousedown = function() {
+        mouseDown = 1;
     };
 
     // when the mouse button is released, update mouseDown
@@ -102,12 +102,12 @@ function initSearch() {
                 search_alg = "A-star";
         }
     }
-    
+
     // Convert the Canvas Coordinates to Grid Coordinates
     start = getCoord(q_init);
     goal = getCoord(q_goal);
 
-    // set the world for the planner 
+    // set the world for the planner
     setPlanningScene();
 
     // initialize search tree from start configurations (RRT-based algorithms)
@@ -124,10 +124,10 @@ function initSearch() {
     q_new = [];
     target = [];
     tolerance = 2*stepSize;
-    
+
     saved_iter = 0;
-    
-	// Initialize everything to zero    
+
+	// Initialize everything to zero
     initSearchGraph();
     search_iterate = true;
     search_iter_count = 0;
@@ -138,7 +138,7 @@ function initSearch() {
     path_found = false;
     cur_time = Date.now();
     min_msec_between_iterations = 20;
-    
+
     // Add TextBar Stats Element
     textbar = document.getElementById("textbar");
 }
@@ -155,34 +155,34 @@ function animate() {
     // make sure the rrt iterations are not running faster than animation update
     if (search_iterate && (Date.now()-cur_time > min_msec_between_iterations)) {
         cur_time = Date.now();
-        search_iter_count++; 
+        search_iter_count++;
 
         switch (search_alg) {
             case "depth-first":
                 search_result = DFS();
                 break;
-            case "breadth-first": 
+            case "breadth-first":
                 search_result = BFS();
                 break;
             case "dijkstra":
                 search_result = Dijkstra();
                 break;
-            case "greedy-best-first": 
+            case "greedy-best-first":
                 search_result = Greedy();
                 break;
-            case "A-star": 
+            case "A-star":
                 search_result = iterateGraphSearch();
                 break;
-            case "RRT": 
+            case "RRT":
                 search_result = iterateRRT();
                 break;
-            case "RRT-connect": 
+            case "RRT-connect":
                 search_result = iterateRRTConnect();
                 break;
-            case "RRT-star": 
+            case "RRT-star":
                 search_result = iterateRRTStar();
                 break;
-            default: 
+            default:
                 console.warn('search_canvas: search algorithm not found, using rrt as default');
                 search_result = iterateRRT();
                 break;
@@ -196,7 +196,7 @@ function animate() {
         queue_size = visit_queue.size();
 
     if(search_alg=="A-star" || search_alg=="depth-first" || search_alg=="breadth-first" || search_alg=="greedy-best-first" || search_alg=="dijkstra") {
-        textbar.innerHTML = 
+        textbar.innerHTML =
         "<h3>Algorithm Statistics:</h3>"
         + search_alg
         + " progress: " + search_result
@@ -213,14 +213,14 @@ function animate() {
         + "   |   "
         + "<strong>Queued:</strong> " + queue_size
         + "<br>" ;
-        
+
         //textbar.innerHTML += "<br> mouse ("+ mouse_x+","+mouse_y+")";
     }
 
     else if(search_alg=="RRT" || search_alg=="RRT-connect"){
-        textbar.innerHTML = 
+        textbar.innerHTML =
         "<h3>Algorithm Statistics:</h3>"
-        + search_alg 
+        + search_alg
         + " progress: " + search_result
         + " <br> "
         + "<strong>Start</strong>: " + q_init
@@ -236,7 +236,7 @@ function animate() {
     else{
         textbar.innerHTML =
         "<h3>Algorithm Statistics:</h3>"
-        + search_alg 
+        + search_alg
         + " progress: " + search_result
         + " <br> "
         + "<strong>Start</strong>: " + q_init
@@ -257,7 +257,7 @@ function animate() {
     //   more details online:  http://learningwebgl.com/blog/?p=3189
     if(search_result=="succeeded" || search_iter_count>search_max_iterations)
         search_iterate =false;
-    
+
     requestAnimationFrame(animate);
 }
 
@@ -311,7 +311,7 @@ function DFS() {
     G[xc][yc].queued = false;
     ctx.fillStyle = "#ffe8a5";
     ctx.fillRect(xformWorldViewX(G[xc][yc].x)-3,xformWorldViewY(G[xc][yc].y)-3,6,6);
-    
+
     if((curr[0] == goal[0] && curr[1]==goal[1]) || G[goal[0]][goal[1]].visited==true) {
         console.log("Goal found!");
         search_iterate=false;
@@ -361,7 +361,7 @@ function Dijkstra() {
         var next = nbrs[i];
         var xi=next[0]; var yi=next[1];
         var new_cost = G[xc][yc].distance + gcost(curr,next);
-        
+
 
         if(G[xi][yi].visited==false || new_cost < G[xi][yi].distance) {
             G[xi][yi].distance = new_cost;
@@ -498,7 +498,7 @@ function iterateRRTConnect() {
             search_iterate=false;
             return "succeeded";
         }
-    
+
     if(tree1.name == "T_a"){
         tree1 = T_b;
         tree2 = T_a;
@@ -547,7 +547,7 @@ function iterateRRTStar() {
         }
     }
     var goal_idx = getIndex(q_goal,T_a);
-    
+
     if (saved_iter>0) {
         if(search_iter_count - saved_iter>2000){
             search_iterate = false;
@@ -574,18 +574,18 @@ function extendRRT(rand, target, tree) {
 
     if (distance(vertex, target) <= 1.2*stepSize)
         vertex = target;
-    
+
     if (testCollision(vertex)==false && inTree(vertex,tree)==false){
         insertTreeVertex(tree,vertex,parent, cost);
         insertTreeEdge(tree,tree.newest,nnbr_idx);
-        
+
         q_new = vertex;
 
         if (isEqual(vertex, target)==true){
             search_iterate = false;
             return "reached";
         }
-        
+
         return "advanced";
     }
 
@@ -612,7 +612,7 @@ function newConfig(q_idx, rand, tree) {
     var dx = rand[0] - tree.vertices[q_idx].vertex[0],
         dy = rand[1] - tree.vertices[q_idx].vertex[1],
         n = Math.sqrt(dx*dx + dy*dy),
-        
+
         xd = tree.vertices[q_idx].vertex[0] + stepSize*dx/n,
         yd = tree.vertices[q_idx].vertex[1] + stepSize*dy/n;
 
@@ -702,7 +702,7 @@ function dfsPath(node, target, tree) {
 // Prints the elements of an array
 function print(arr) {
     var st = "Path := \n";
-    
+
     for(var i=0;i<arr.length;i++)
         st += "["+arr[i] + "]\n"
     console.log(st);
@@ -761,7 +761,7 @@ function drawRobotWorld() {
     ctx.fillRect(xformWorldViewX(q_goal[0])-5,xformWorldViewY(q_goal[1])-5,12,12);
 
     // draw robot's world
-    for (j=0;j<range.length;j++) { 
+    for (j=0;j<range.length;j++) {
         ctx.fillStyle = "#e4e4e4";
         ctx.fillRect(xformWorldViewX(range[j][0][0]),xformWorldViewY(range[j][1][0]),xformWorldViewX(range[j][0][1])-xformWorldViewX(range[j][0][0]),xformWorldViewY(range[j][1][1])-xformWorldViewY(range[j][1][0]));
     }
@@ -769,8 +769,8 @@ function drawRobotWorld() {
 
 function initSearchGraph() {
 
-    // initialize search graph as 2D array over configuration space 
-    //   of 2D locations with specified spatial resolution 
+    // initialize search graph as 2D array over configuration space
+    //   of 2D locations with specified spatial resolution
     G = [];
     for (iind=0,xpos=-2;xpos<7;iind++,xpos+=eps) {
         G[iind] = [];
@@ -831,10 +831,10 @@ function setPlanningScene() {
         range[4] = [ [0.2,0.4], [-1.9,-1.5]];
         range[5] = [ [0.2,0.4], [-1.2, 4.1]];
         range[6] = [ [0.2,0.4],[4.4,5.9]];
-        
+
         range[7] = [ [1.8,2],[-1.9,0.8]];
         range[8] = [ [1.8,2],[1.1,5.4]];
-        
+
         range[9] = [ [3.6,6.5],[0.6,0.8]];
         range[10] = [ [3.6,6.5],[4.9,5.1]];
         range[11] = [ [3.6,3.8],[1.1,4.6]];
@@ -847,9 +847,9 @@ function setPlanningScene() {
 
 function testCollision(q) {
     var j;
-    for (j=0;j<range.length;j++) { 
-        var in_collision = true; 
-        for (i=0;i<q.length;i++) { 
+    for (j=0;j<range.length;j++) {
+        var in_collision = true;
+        for (i=0;i<q.length;i++) {
             if ((q[i]<range[j][i][0])||(q[i]>range[j][i][1]))
                 in_collision = false;
         }
@@ -900,7 +900,7 @@ function draw_2D_edge_configurations(q1,q2) {
     ctx.beginPath();
     ctx.moveTo(xformWorldViewX(q1[0]),xformWorldViewY(q1[1]));
     ctx.lineTo(xformWorldViewX(q2[0]),xformWorldViewY(q2[1]));
-    ctx.strokeStyle = "#2a2e2f"; 
+    ctx.strokeStyle = "#2a2e2f";
     ctx.stroke();
 }
 
@@ -910,7 +910,7 @@ function remove_2D_edge_configurations(q1,q2) {
     ctx.beginPath();
     ctx.moveTo(xformWorldViewX(q1[0]),xformWorldViewY(q1[1]));
     ctx.lineTo(xformWorldViewX(q2[0]),xformWorldViewY(q2[1]));
-    ctx.strokeStyle = "#DC143C"; 
+    ctx.strokeStyle = "#DC143C";
     // ctx.lineWidth = 2;
     ctx.stroke();
 }
@@ -929,7 +929,7 @@ function draw_2D_path_configurations(q1,q2) {
 function insertTreeEdge(tree,q1_idx,q2_idx) {
     tree.vertices[q1_idx].edges.push(tree.vertices[q2_idx]);
     tree.vertices[q2_idx].edges.push(tree.vertices[q1_idx]);
-    draw_2D_edge_configurations(tree.vertices[q1_idx].vertex,tree.vertices[q2_idx].vertex); 
+    draw_2D_edge_configurations(tree.vertices[q1_idx].vertex,tree.vertices[q2_idx].vertex);
 }
 
 function removeTreeEdge(tree, q1_idx, q2_idx) {
@@ -968,7 +968,7 @@ PriorityQueue.prototype.put = function(element, priority) {
 
 PriorityQueue.prototype.get = function() {return this.list.shift()[0]}
 
-PriorityQueue.prototype.size = function() {return this.list.length}  
+PriorityQueue.prototype.size = function() {return this.list.length}
 
 PriorityQueue.prototype.qprint = function() {
     var st="Queue:";
@@ -1013,7 +1013,7 @@ function get4nbhd(node) {
             nbhd.push([new_x,new_y]);
         }
     }
-    
+
     // To filter out errors rising from undefined
     if(nbhd.length>0)
         return nbhd;
@@ -1085,11 +1085,11 @@ function strip(number) {
 }
 // Function to draw path on graph
 function draw_path() {
-    
+
     var curr = goal;
-    
+
     path.push(curr);
-    
+
     while(curr!= start) {
         curr = G[curr[0]][curr[1]].parent;
         path.push(curr);
