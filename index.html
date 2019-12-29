@@ -1,719 +1,323 @@
-<!DOCTYPE html>
-<html class="no-js" lang="en">
-<head>
-    <!-- Full story -->
-    <script> window['_fs_debug'] = false; window['_fs_host'] = 'fullstory.com'; window['_fs_org'] = 'NSFNC'; window['_fs_namespace'] = 'FS'; (function(m,n,e,t,l,o,g,y){ if (e in m) {if(m.console && m.console.log) { m.console.log('FullStory namespace conflict. Please set window["_fs_namespace"].');} return;} g=m[e]=function(a,b,s){g.q?g.q.push([a,b,s]):g._api(a,b,s);};g.q=[]; o=n.createElement(t);o.async=1;o.crossOrigin='anonymous';o.src='https://'+_fs_host+'/s/fs.js'; y=n.getElementsByTagName(t)[0];y.parentNode.insertBefore(o,y); g.identify=function(i,v,s){g(l,{uid:i},s);if(v)g(l,v,s)};g.setUserVars=function(v,s){g(l,v,s)};g.event=function(i,v,s){g('event',{n:i,p:v},s)}; g.shutdown=function(){g("rec",!1)};g.restart=function(){g("rec",!0)}; g.log = function(a,b) { g("log", [a,b]) }; g.consent=function(a){g("consent",!arguments.length||a)}; g.identifyAccount=function(i,v){o='account';v=v||{};v.acctId=i;g(o,v)}; g.clearUserCookie=function(){}; })(window,document,window['_fs_namespace'],'script','user');
-    </script>
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113408615-1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'UA-113408615-1');
-    </script>
-
-    <!--- basic page needs
-    ================================================== -->
-    <meta charset="utf-8">
-    <title>Sahib Dhanjal | Roboticist</title>
-    <meta name="author" content="Sahib Singh Dhanjal">
-    <!-- <meta http-equiv="refresh" content="120"> -->
-    <meta name= "description" content= " Sahib Singh Dhanjal Portfolio website">
-    <meta name="keywords" content="portfolio, star wars, star, wars, robot, robotics, roboticist, University, of, michigan, university of michigan, ann arbor, flint, dearborn, bits, pilani, birla institute of technology and science, birla, institute, technology, science, pilani, hyderabad, goa, personal, projects, robot Kinematic, kinematics, path planner, path, planning, turtlebot, masters, football, soccer, Programmer, coder, coding, programming, machine learning, deep learning, tensor flow, computer vision, C/C++, JavaScript, java, python,Formula, student, fsae, italy, robotx, maritime, autonmous, slam, localization, mapping, vehicle, dynamics, inspired, Karters, fs">
-
-    <!-- mobile specific metas
-    ================================================== -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSS
-    ================================================== -->
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/vendor.css">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-    <link rel="stylesheet" href="css/robot.css">
-
-    <!-- script
-    ================================================== -->
-    <script src="js/modernizr.js"></script>
-    <script src="js/pace.min.js"></script>
-
-    <!-- favicons
-    ================================================== -->
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-
-
-</head>
-
-<body id="top">
-
-    <!-- header
-    ================================================== -->
-    <header class="s-header">
-
-        <nav class="header-nav">
-
-            <a href="#0" class="header-nav__close" title="close"><span>Close</span></a>
-
-            <div class="header-nav__content">
-                <h3>Sahib Dhanjal</h3>
-
-                <ul class="header-nav__list">
-                    <li class="current"><a class="smoothscroll"  href="#home" title="home">Home</a></li>
-                    <li><a class="smoothscroll"  href="#about" title="about">About</a></li>
-                    <li><a class="smoothscroll"  href="#stats" title="skills">Skills</a></li>
-                    <li><a class="smoothscroll"  href="#works" title="projects">Projects</a></li>
-                    <li><a href="archive.html" target="_blank" title="archive">Archive</a></li>
-                    <li><a href="resume/Sahib Dhanjal.pdf" target="_blank" title="resume">Resume</a></li>
-                    <li><a class="smoothscroll"  href="#contact" title="contact">Contact</a></li>
-                </ul>
-
-                <p>a robotics enthusiast passionate for industrial and autonomous technologies. <a href="mailto:dhanjalsahib@gmail.com">Email me</a> with any suggestions, collaborations, cool project ideas or just to talk! <br>
-                    The older version of this website can be found <a href="archive/index.html" target="_blank">here</a></p>
-
-
-                <ul class="header-nav__social">
-                    <!-- <li>
-                        <a href="https://www.facebook.com/Sahib.Dhanjal.007" target="_blank"><i class="fab fa-facebook"></i></a>
-                    </li> -->
-                    <li>
-                        <a href="https://twitter.com/sahib_dhanjal" target="_blank"><i class="fab fa-twitter"></i></a>
-                    </li>
-                    <li>
-                        <a href="https://www.linkedin.com/in/sahibdhanjal/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    </li>
-                    <li>
-                        <a href="https://www.behance.net/sahibdhanjal" target="_blank"><i class="fab fa-behance"></i></a>
-                    </li>
-                    <li>
-                        <a href="https://github.com/sahibdhanjal/" target="_blank"><i class="fab fa-github"></i></a>
-                    </li>
-                </ul>
-
-            </div>
-
-        </nav>
-
-        <a class="header-menu-toggle" href="#0">
-            <span class="header-menu-icon"></span>
-        </a>
-
-    </header>
-
-
-    <!-- home
-    ================================================== -->
-    <section id="home" class="s-home target-section" data-parallax="scroll" data-image-src="images/wall2-bg.jpg" data-natural-width=3000 data-natural-height=2000 data-position-y=top>
-
-        <div class="shadow-overlay"></div>
-
-        <div class="home-content">
-
-            <div class="row home-content__main">
-                <h1>
-                Hello! I am <br>
-                Sahib Dhanjal.
-                </h1>
-                <p>
-                Roboticist | Programmer | Designer
-                </p>
-            </div>
-
-        </div>
-
-        <canvas id="mycanvas"></canvas>
-
-        <ul class="home-social">
-            <li class="home-social-title">Follow Me</li>
-            <li><a href="https://github.com/sahibdhanjal/" target="_blank">
-                <i class="fab fa-github"></i>
-                <span class="home-social-text">Github</span>
-            </a></li>
-            <li><a href="https://www.linkedin.com/in/sahibdhanjal/" target="_blank">
-                <i class="fab fa-linkedin"></i>
-                <span class="home-social-text">LinkedIn</span>
-            </a></li>
-            <li><a href="https://twitter.com/sahib_dhanjal" target="_blank">
-                <i class="fab fa-twitter"></i>
-                <span class="home-social-text">Twitter</span>
-            </a></li>
-        </ul> <!-- end home-social -->
-
-        <a href="#about" class="home-scroll smoothscroll">
-            <span class="home-scroll__text">Scroll Down</span>
-            <span class="home-scroll__icon"></span>
-        </a> <!-- end home-scroll -->
-
-    </section> <!-- end s-home -->
-
-
-    <!-- about
-    ================================================== -->
-    <section id='about' class="s-about">
-
-        <div class="row section-header" data-aos="fade-up">
-            <div class="col-full">
-                <h3 class="subhead">Who I Am</h3>
-                <h1 class="display-1">robotics enthusiast with passion for autonomous technologies</h1>
-            </div>
-        </div> <!-- end section-header -->
-
-        <div class="row" data-aos="fade-up">
-            <div class="col-full">
-                <p class="lead">
-                I recently graduated with a masters in Robotics from the University of Michigan, Ann Arbor and currently work as a Localization and Mapping Engineer at Magna Autonomous Systems. Prior to that, I graduated with a bachelors degree in Mechanical Engineering from Birla Institute of Technology and Science, Pilani in 2016, after which I enjoyed a brief stint at ExxonMobil Corporation as a sales representative.</p>
-                <p class="lead">
-                In the past few years I have worked on many independent projects alongside my formal education, with projects ranging from full blown formula SAE cars to autonomous swarms of ground and aerial robots. My goal is to develop innovative solutions in the industrial and domestic automation industries through my combined software and hardware experience.
-                </p>
-            </div>
-        </div> <!-- end about-desc -->
-
-    </section> <!-- end s-about -->
-
-
-    <!-- stats
-    ================================================== -->
-    <section id="stats" class="s-stats">
-
-        <div class="row stats block-1-4 block-m-1-2 block-mob-full" data-aos="fade-up">
-
-            <div class="col-block stats__col ">
-                <h5>Programming</h5>
-                    <ul class="skill-bars">
-                        <li>
-                        <div class="progress percent80"></div>
-                        <strong>C/C++</strong>
-                        </li>
-                        <li>
-                        <div class="progress percent90"></div>
-                        <strong>Python</strong>
-                        </li>
-                        <li>
-                        <div class="progress percent70"></div>
-                        <strong>Java</strong>
-                        </li>
-                    </ul>
-            </div>
-            <div class="col-block stats__col ">
-                <h5>Web</h5>
-                    <ul class="skill-bars">
-                        <li>
-                        <div class="progress percent70"></div>
-                        <strong>HTML5 / CSS3</strong>
-                        </li>
-                        <li>
-                        <div class="progress percent80"></div>
-                        <strong>JavaScript / JQuery</strong>
-                        </li>
-                        <li>
-                        <div class="progress percent70"></div>
-                        <strong>Django</strong>
-                        </li>
-                    </ul>
-            </div>
-            <div class="col-block stats__col ">
-                <h5>Frameworks</h5>
-                    <ul class="skill-bars">
-                        <li>
-                        <div class="progress percent90"></div>
-                        <strong>Robot Operating System</strong>
-                        </li>
-                        <li>
-                        <div class="progress percent80"></div>
-                        <strong>TensorFlow/Keras</strong>
-                        </li>
-                        <li>
-                        <div class="progress percent60"></div>
-                        <strong>Android Studio</strong>
-                        </li>
-                    </ul>
-            </div>
-
-            <div class="col-block stats__col ">
-                <h5>Design</h5>
-                    <ul class="skill-bars">
-                        <li>
-                        <div class="progress percent80"></div>
-                        <strong>Illustration</strong>
-                        </li>
-                        <li>
-                        <div class="progress percent90"></div>
-                        <strong>2D/3D Animation</strong>
-                        </li>
-                        <li>
-                        <div class="progress percent90"></div>
-                        <strong>Web Design</strong>
-                        </li>
-                    </ul>
-            </div>
-
-        </div> <!-- end stats -->
-
-    </section> <!-- end s-stats -->
-
-
-    <!-- projects
-    ================================================== -->
-    <section id='works' class="s-works">
-
-        <div class="row section-header" data-aos="fade-up">
-            <div class="col-full">
-                <h3 class="subhead">Featured Works</h3>
-                <h1 class="display-1">Some of the projects I've worked on.</h1>
-            </div>
-        </div> <!-- end section-header -->
-
-        <div class="row masonry-wrap">
-            <div class="masonry">
-
-                <!-- NASA ASTRONET -->
-                <div class="masonry__brick" data-aos="fade-up">
-                    <div class="item-folio">
-
-                        <div class="item-folio__thumb">
-                            <a href="images/portfolio/gallery/g-nasa.jpg" class="thumb-link" title="NASA Astronet" data-size="950x635">
-                                <img src="images/portfolio/nasa.jpg"
-                                     srcset="images/portfolio/nasa.jpg 1x, images/portfolio/nasa@2x.jpg 2x" alt="">
-                            </a>
-                        </div>
-
-                        <div class="item-folio__text">
-                            <h3 class="item-folio__title">
-                                NASA Astronet
-                            </h3>
-                            <p class="item-folio__cat">
-                                A Human-Centric Network of Co-Robots
-                            </p>
-                        </div>
-
-                        <a href="#" class="item-folio__project-link" title="View Brief" target="_blank">
-                            View Brief
-                        </a>
-
-                        <div class="item-folio__caption">
-                            <p  style="margin-bottom: 1rem">The Astrobee is an autonomous free-flying robot developed by NASA to assist astronauts on the International Space Station. Under the guest scientist program, I develop multi-agent coverage and control algorithms focussed on assisting humans in space. The work is performed under the guidance of Dr. Dimitra Panagou under the NASA ECF grant.</p>
-                            <a class="btn btn--strokeinv full-width" href="https://github.com/sahibdhanjal/NASA-Astrobee" target="_blank" style="width: 20%">Project Link</a>
-                            <a class="btn btn--strokeinv full-width" href="https://vimeo.com/282063033" target="_blank" style="width: 20%">Demo</a>
-
-                        </div>
-
-                    </div> <!-- end item-folio -->
-                </div> <!-- end masonry__brick -->
-
-
-
-                <!-- RobotX -->
-                <div class="masonry__brick" data-aos="fade-up">
-                    <div class="item-folio">
-
-                        <div class="item-folio__thumb">
-                            <a href="images/portfolio/gallery/g-wamv.jpg" class="thumb-link" title="RobotX WAM-V" data-size="950x635">
-                                <img src="images/portfolio/wamv.jpg"
-                                     srcset="images/portfolio/wamv.jpg 1x, images/portfolio/wamv@2x.jpg 2x" alt="">
-                            </a>
-                        </div>
-
-                        <div class="item-folio__text">
-                            <h3 class="item-folio__title">
-                                AUVSI RobotX
-                            </h3>
-                            <p class="item-folio__cat">
-                                Autonomous Surface Vessel Competition
-                            </p>
-                        </div>
-
-                        <a href="#" class="item-folio__project-link" title="View Brief" target="_blank">
-                            View Brief
-                        </a>
-
-                        <div class="item-folio__caption">
-                            <p style="margin-bottom: 1rem">The RobotX competition by the AUVSI Foundation is the most complex robotics competition till date. Our team at Michigan is participating this December with the ultimate objective of developing a fully autonomous surface vessel aimed to further the advances in oceanic exploration.</p>
-                            <a class="btn btn--strokeinv full-width" href="https://github.com/MichiganRobotX/" target="_blank" style="width: 20%">Project Link</a>
-                        </div>
-
-                    </div> <!-- end item-folio -->
-                </div> <!-- end masonry__brick -->
-
-
-
-                <!-- Path Planning | Exploration -->
-                <div class="masonry__brick" data-aos="fade-up">
-                    <div class="item-folio">
-
-
-                        <div class="item-folio__thumb">
-                            <a href="images/portfolio/gallery/g-turt.jpg" class="thumb-link" title="TurtleBot 2" data-size="950x635">
-                                <img src="images/portfolio/turt.jpg"
-                                     srcset="images/portfolio/turt.jpg 1x, images/portfolio/turt@2x.jpg 2x" alt="">
-                            </a>
-                        </div>
-
-                        <div class="item-folio__text">
-                            <h3 class="item-folio__title">
-                                Path Planning | Exploration
-                            </h3>
-                            <p class="item-folio__cat">
-                                Multi-Agent exploration in Turtlebots
-                            </p>
-                        </div>
-
-                        <a href="#" class="item-folio__project-link" title="View Brief" target="_blank">
-                            View Brief
-                        </a>
-
-                        <div class="item-folio__caption">
-                            <p style="margin-bottom: 1rem">As a part of my undergraduate thesis, I develop a simulator for autonomous multi-agent exploration and path planning in unknown environments. The code is initially developed for a Python Simulator, which is then used on a swarm of TurtleBots.</p>
-                            <a class="btn btn--strokeinv full-width" href="https://github.com/sahibdhanjal/Path-Planning-Simulator" target="_blank" style="width: 20%">Project Link</a>
-                            <a class="btn btn--strokeinv full-width" href="archive/websites/path planning simulator/index.html" target="_blank" style="width: 20%">Demo</a>
-                        </div>
-
-                    </div> <!-- end item-folio -->
-                </div> <!-- end masonry__brick -->
-
-
-                  <!-- PoseNet++ -->
-                <div class="masonry__brick" data-aos="fade-up">
-                    <div class="item-folio">
-
-                        <div class="item-folio__thumb">
-                            <a href="images/portfolio/gallery/g-posenet.jpg" class="thumb-link" title="Cambridge Dataset" data-size="950x635">
-                                <img src="images/portfolio/posenet.jpg"
-                                     srcset="images/portfolio/posenet.jpg 1x, images/portfolio/posenet@2x.jpg 2x" alt="">
-                            </a>
-                        </div>
-
-                        <div class="item-folio__text">
-                            <h3 class="item-folio__title">
-                                PoseNet++
-                            </h3>
-                            <p class="item-folio__cat">
-                                Deep Learning in SLAM
-                            </p>
-                        </div>
-
-                        <a href="#" class="item-folio__project-link" title="View Brief" target="_blank">
-                            View Brief
-                        </a>
-
-                        <span class="item-folio__caption">
-                            <p style="margin-bottom: 1rem">PoseNet++ is a deep learning framework for passive SLAM capable of re-localizing a robot within 2m of it's ground truth in medium scale environments. It provides a viable solution for the kidnapped robot problem and an accurate solution to the SLAM problem in general.</p>
-                            <a class="btn btn--strokeinv full-width" href="https://posenet-mobile-robot.github.io/" target="_blank" style="width: 20%">Project Link</a>
-                        </span>
-
-                    </div> <!-- end item-folio -->
-                </div> <!-- end masonry__brick -->
-
-                  <!-- Radio-Localization - previously Kinematics Simulator -->
-                <div class="masonry__brick" data-aos="fade-up">
-                    <div class="item-folio">
-
-                        <div class="item-folio__thumb">
-                            <a href="images/portfolio/gallery/g-wifi.jpg" class="thumb-link" title="Kinematics Simulator" data-size="950x635">
-                                <img src="images/portfolio/wifi.jpg"
-                                     srcset="images/portfolio/wifi.jpg 1x, images/portfolio/wifi@2x.jpg 2x" alt="">
-                            </a>
-                        </div>
-
-                        <div class="item-folio__text">
-                            <h3 class="item-folio__title">
-                                Visual-Radio-Inertial Localization
-                            </h3>
-                            <p class="item-folio__cat">
-                                an Indoor Positioning System based on WiFi
-                            </p>
-                        </div>
-
-                        <a href="#" class="item-folio__project-link" title="View Brief" target="_blank">
-                            View Brief
-                        </a>
-
-                        <span class="item-folio__caption">
-                            <p style="margin-bottom: 1rem">In this project, a localization system was developed based on 3 sensing modalities for truly mobile devices (ie.smartphones). Implementations for the Fetch Robot have been written.</p>
-                            <a class="btn btn--strokeinv full-width" href="https://github.com/sahibdhanjal/DeepLocNet" target="_blank" style="width: 20%">Project Link</a>
-                        </span>
-
-                    </div> <!-- end item-folio -->
-                </div> <!-- end masonry__brick -->
-
-                <!-- FSAE -->
-                <div class="masonry__brick" data-aos="fade-up">
-                    <div class="item-folio">
-
-                        <div class="item-folio__thumb">
-                            <a href="images/portfolio/gallery/g-fs.jpg" class="thumb-link" title="Formula SAE" data-size="950x635">
-                                <img src="images/portfolio/fs.jpg"
-                                     srcset="images/portfolio/fs.jpg 1x, images/portfolio/fs@2x.jpg 2x" alt="">
-                            </a>
-                        </div>
-
-                        <div class="item-folio__text">
-                            <h3 class="item-folio__title">
-                                Formula SAE Italy
-                            </h3>
-                            <p class="item-folio__cat">
-                                Formula Prototype Competition
-                            </p>
-                        </div>
-
-                        <a href="#" class="item-folio__project-link" title="View Brief" target="_blank">
-                            View Brief
-                        </a>
-
-                        <span class="item-folio__caption">
-                            <p style="margin-bottom: 1rem">SAE holds it's annual international competiton at different locations to pit the best teams from around the world against each other. Our team from BITS Pilani participated in FSAE Italy '14, and was ranked 14th out of 46 teams in vehicle design.</p>
-                            <a class="btn btn--strokeinv full-width" href="http://inspiredkarters-fs.com/" target="_blank" style="width: 20%">Project Link</a>
-                        </span>
-
-                    </div> <!-- end item-folio -->
-                </div> <!-- end masonry__brick -->
-
-
-
-                <!-- Simultaneous Localization & Mapping-->
-                <div class="masonry__brick" data-aos="fade-up">
-                    <div class="item-folio">
-
-                        <div class="item-folio__thumb">
-                            <a href="images/portfolio/gallery/g-slam.jpg" class="thumb-link" title="SLAM Map" data-size="950x635">
-                                <img src="images/portfolio/slam.jpg"
-                                     srcset="images/portfolio/slam.jpg 1x, images/portfolio/slam@2x.jpg 2x" alt="">
-                            </a>
-                        </div>
-
-                        <div class="item-folio__text">
-                            <h3 class="item-folio__title">
-                                Simultaneous Localization & Mapping
-                            </h3>
-                            <p class="item-folio__cat">
-                                Particle Filter based SLAM on a differential drive robot
-                            </p>
-                        </div>
-
-                        <a href="#" class="item-folio__project-link" title="View Brief" target="_blank">
-                            View Brief
-                        </a>
-
-                        <div class="item-folio__caption">
-                            <p style="margin-bottom: 1rem">In this project, we develop a simple particle filter based SLAM algorithm on a hobby differential drive robot using a single channel Scanse Lidar.</p>
-                            <a class="btn btn--strokeinv full-width" href="https://github.com/sahibdhanjal/SLAM/blob/master/BotLab%20Report.pdf" target="_blank" style="width: 20%">Project Link</a>
-                        </div>
-
-                    </div> <!-- end item-folio -->
-                </div> <!-- end masonry__brick -->
-
-
-
-                <!-- Pedestrian Tracking -->
-                <div class="masonry__brick" data-aos="fade-up">
-                    <div class="item-folio">
-
-                        <div class="item-folio__thumb">
-                            <a href="images/portfolio/gallery/g-ped.jpg" class="thumb-link" title="Pedestrian Tracking" data-size="950x635">
-                                <img src="images/portfolio/ped.jpg"
-                                     srcset="images/portfolio/ped.jpg 1x, images/portfolio/ped@2x.jpg 2x" alt="">
-                            </a>
-                        </div>
-
-                        <div class="item-folio__text">
-                            <h3 class="item-folio__title">
-                                Pedestrian Tracking
-                            </h3>
-                            <p class="item-folio__cat">
-                                Mask R-CNN based Pedestrian Tracking
-                            </p>
-                        </div>
-
-                        <a href="#" class="item-folio__project-link" title="View Brief" target="_blank">
-                            View Brief
-                        </a>
-
-                        <div class="item-folio__caption">
-                            <p style="margin-bottom: 1rem">A robust pedestrian tracking algorithm is implemented in this project based on Mask R-CNN, Optical Flow and Particle Filtering. The system is capable of single hypothesis tracking in difficult lighting conditions. </p>
-                            <a class="btn btn--strokeinv full-width" href="https://github.com/sahibdhanjal/Mask-RCNN-Pedestrian-Detection" target="_blank" style="width: 20%">Project Link</a>
-                        </div>
-
-                    </div> <!-- end item-folio -->
-                </div> <!-- end masonry__brick -->
-
-
-
-                <!-- Swarm Mapping - previously Pendulum Simulations -->
-                <div class="masonry__brick" data-aos="fade-up">
-                    <div class="item-folio">
-
-                        <div class="item-folio__thumb">
-                            <a href="images/portfolio/gallery/g-swarm.jpg" class="thumb-link" title="Swarm Robotics" data-size="950x635">
-                                <img src="images/portfolio/swarm.jpg"
-                                     srcset="images/portfolio/swarm.jpg 1x, images/portfolio/swarm@2x.jpg 2x" alt="">
-                            </a>
-                        </div>
-
-                        <div class="item-folio__text">
-                            <h3 class="item-folio__title">
-                                Swarm Mapping and Control
-                            </h3>
-                            <p class="item-folio__cat">
-                                Aerial and Ground Robot Swarm
-                            </p>
-                        </div>
-
-                        <a href="#" class="item-folio__project-link" title="View Brief" target="_blank">
-                            View Brief
-                        </a>
-
-                        <span class="item-folio__caption">
-                            <p style="margin-bottom: 1rem">This project was done as a part of the <a href="https://tardec.army.mil/"> TARDEC</a> - ARC Project. The project focusses on multi-robot mapping and control for reconnaissance missions in situations where there might be multiple misbehaving agents.</p>
-                            <!-- <a class="btn btn--strokeinv full-width" href="https://github.com/sahibdhanjal/crazyswarm" target="_blank" style="width: 20%">Project Link</a> -->
-                        </span>
-
-                    </div> <!-- end item-folio -->
-                </div> <!-- end masonry__brick -->
-
-            </div> <!-- end masonry -->
-        </div> <!-- end masonry-wrap -->
-
-        <div class="row" data-aos="fade-up">
-            <div class="col-full"  style="margin-top:50px">
-                <h3 class="subhead">All Projects</h3>
-                <p class="lead"> brief summaries of all projects that I've worked on, with demos for some, can be found <a href="archive.html">here</a>.</p>
-            </div>
-        </div> <!-- end section-header -->
-
-    </section> <!-- end s-works -->
-
-
-
-    <!-- contact
-    ================================================== -->
-    <section id="contact" class="s-contact">
-
-        <div class="row section-header">
-            <div class="col-full">
-                <h1 class="display-1 display-1--light">Get in touch</h1>
-            </div>
-        </div> <!-- end section-header -->
-
-        <div class="row">
-            <div class="col-full contact-main">
-                <p>
-                    <a href="mailto:dhanjalsahib@gmail.com" class="contact-email">dhanjalsahib@gmail.com</a>
-                    <span class="contact-number">Phone : +1 (734) 239 2285</span>
-                </p>
-            </div> <!-- end contact-main -->
-        </div> <!-- end row -->
-
-
-         <div class="row">
-            <!--
-            <div class="col-five tab-full contact-secondary">
-                <h3 class="subhead subhead--light">Come Visit Me</h3>
-                <p class="contact-address">
-                    2479 Stone Road,<br>
-                    Ann Arbor, MI<br>
-                    48105 US
-                </p>
-            </div>--> <!-- end contact-secondary -->
-
-            <div class="col-five tab-full contact-secondary">
-                <h3 class="subhead subhead--light">Follow Me</h3>
-                <ul class="contact-social">
-                    <!-- <li>
-                        <a href="https://www.facebook.com/Sahib.Dhanjal.007" target="_blank"><i class="fab fa-facebook"></i></a>
-                    </li> -->
-                    <li>
-                        <a href="https://twitter.com/sahib_dhanjal" target="_blank"><i class="fab fa-twitter"></i></a>
-                    </li>
-                    <li>
-                        <a href="https://www.linkedin.com/in/sahibdhanjal/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    </li>
-                    <li>
-                        <a href="https://www.behance.net/sahibdhanjal" target="_blank"><i class="fab fa-behance"></i></a>
-                    </li>
-                    <li>
-                        <a href="https://github.com/sahibdhanjal/" target="_blank"><i class="fab fa-github"></i></a>
-                    </li>
-                </ul> <!-- end contact-social -->
-
-            </div> <!-- end contact-secondary -->
-
-        </div> <!-- end row -->
-
-        <div class="row">
-            <div class="col-full cl-copyright">
-                <span><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a> and modified by <a href="https://www.linkedin.com/in/sahibdhanjal/" target="_blank">Sahib Dhanjal</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></span>
-            </div>
-        </div>
-
-        <div class="cl-go-top">
-            <a class="smoothscroll" title="Back to Top" href="#top"><i class="icon-arrow-up" aria-hidden="true"></i></a>
-        </div>
-
-    </section> <!-- end s-contact -->
-
-
-    <!-- photoswipe background
-    ================================================== -->
-    <div aria-hidden="true" class="pswp" role="dialog" tabindex="-1">
-
-        <div class="pswp__bg"></div>
-        <div class="pswp__scroll-wrap">
-
-            <div class="pswp__container">
-                <div class="pswp__item"></div>
-                <div class="pswp__item"></div>
-                <div class="pswp__item"></div>
-            </div>
-
-            <div class="pswp__ui pswp__ui--hidden">
-                <div class="pswp__top-bar">
-                    <div class="pswp__counter"></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button><button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button> <button class="pswp__button pswp__button--zoom" title=
-                    "Zoom in/out"></button>
-                    <div class="pswp__preloader">
-                        <div class="pswp__preloader__icn">
-                            <div class="pswp__preloader__cut">
-                                <div class="pswp__preloader__donut"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                    <div class="pswp__share-tooltip"></div>
-                </div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button> <button class="pswp__button pswp__button--arrow--right" title=
-                "Next (arrow right)"></button>
-                <div class="pswp__caption">
-                    <div class="pswp__caption__center"></div>
-                </div>
-            </div>
-
-        </div>
-
-    </div> <!-- end photoSwipe background -->
-
-
-    <!-- preloader
-    ================================================== -->
-    <div id="preloader">
-        <div id="loader">
-        </div>
-    </div>
-
-
-    <!-- Java Script
-    ================================================== -->
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/plugins.js"></script>
-    <script src="js/main.js"></script>
-    <script src='https://cdn.rawgit.com/Verlangieri/robot-animation/master/app/vendor/three.min.js'></script>
-    <script src='https://cdn.rawgit.com/Verlangieri/robot-animation/master/app/vendor/gsap.min.js'></script>
-    <script src='https://cdn.rawgit.com/Verlangieri/robot-animation/master/app/vendor/dat.gui.min.js'></script>
-    <script src='https://cdn.rawgit.com/Verlangieri/robot-animation/master/app/vendor/colladaLoader2.min.js'></script>
-    <script  src="js/robot.js"></script>
-</body>
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-113408615-1"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+
+		  gtag('config', 'UA-113408615-1');
+		</script>
+
+		<title>Sahib Dhanjal | Roboticist</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		<meta name="author" content="Sahib Singh Dhanjal">
+		<meta http-equiv="refresh" content="120">
+		<meta name= "description" content= " Sahib Singh Dhanjal Portfolio website">
+		<meta name="keywords" content="portfolio, star wars, star, wars, robot, robotics, roboticist, University, of, michigan, university of michigan, ann arbor, flint, dearborn, bits, pilani, birla institute of technology and science, birla, institute, technology, science, pilani, hyderabad, goa, personal, projects, robot Kinematic, kinematics, path planner, path, planning, turtlebot, masters, football, soccer, Programmer, coder, coding, programming, machine learning, deep learning, tensor flow, computer vision, C/C++, JavaScript, java, python,Formula, student, fsae, italy, robotx, maritime, autonmous, slam, localization, mapping, vehicle, dynamics, inspired, Karters, fs">
+	</head>
+
+	<body class="homepage">
+
+		<button onclick="topFunction()" id="myBtn" title="Go to top"><img src="images/Connect/upward-arrow.png" width="20px"></button>
+
+		<div id="page-wrapper">
+			<!-- Header -->
+			<div id="header-wrapper">
+				<div id="header">
+				<!-- NavBar -->
+					<nav id="nav">
+						<ul>
+							<li class="current"><a href="#banner">Home</a></li>
+							<li><a href="#intro">About</a></li>
+                            <li><a href="#projects">Projects</a></li>
+                            <li><a href="#design">Design</a></li>
+							<li><a href="https://medium.com/@sahibdhanjal" target="_blank">Blog</a></li>
+							<li><a href="resume/Sahib Dhanjal.pdf" target="_blank">Resume</a></li>
+                            <li><a href="#footer-wrapper">Contact</a></li>
+						</ul>
+					</nav>
+
+				<!-- Banner -->
+					<section id="banner">
+						<header>
+							<h2>Hi! I'm Sahib Dhanjal.</h2>
+							<p>Roboticist | Programmer | Designer</p>
+						</header>
+					</section>
+
+				<!-- Intro -->
+					<section id="intro" class="container">
+						<div id="about">
+							<h2 style="padding: 10px; margin: 20px"> About me</h2>
+							<p style="width: 80%; margin: auto; text-align: center;">
+								Hi! I'm <strong>Sahib Dhanjal</strong> and am currently in my first year studying towards a Masters in Robotics and Automation at the <strong>University of Michigan, Ann Arbor</strong>. My primary interest lies in mobile robotics, specifically mapping, localization and autonomous exploration! I also like working on pet projects, exploring and experimenting new tools to build efficient software. Besides engaging myself in side projects, hanging out with friends and studying, I'm a huge fan of watching and playing football (<em>soccer</em>). I have been following Real Madrid ever since I was 17 years of age and have hardly missed watching any of their games since. If you want to know more about me, what I'm upto or just feeling social - feel free to get in touch, I'd love to hear from you!
+							</p>
+						</div>
+					</section>
+				</div>
+			</div>
+
+
+			<!-- Projects -->
+			<div id="main-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="12u">
+							<section id="projects">
+								<header class="major">
+									<h2>Projects</h2>
+								</header>
+								<div class="row">
+									<div class="4u 12u(mobile)">
+										<section class="box">
+											<a target="_blank" class="image featured"><img src="images/Projects/robotx.jpg" alt="" /></a>
+											<header>
+												<h3>Autonomous Maritime Robot</h3>
+											</header>
+											<p>The RobotX competition by the AUVSI Foundation is the most complex robotics competition to date. Our team at Michigan will be participating ...</p>
+											<footer>
+												<a href="https://www.robotx.org/" target="_blank" class="button alt">Read more</a>
+											</footer>
+										</section>
+									</div>
+									<div class="4u 12u(mobile)">
+										<section class="box">
+											<a target="_blank" class="image featured"><img src="images/Projects/IKR.jpg" alt="" /></a>
+											<header>
+												<h3>Formula SAE Italy</h3>
+											</header>
+											<p>SAE holds it's annual international competiton at different to pit the best teams from around the world against each other. Our team from BITS Pilani...</p>
+											<footer>
+												<a href="http://inspiredkarters-fs.com/" target="_blank" class="button alt">Read more</a>
+											</footer>
+										</section>
+									</div>
+									<div class="4u 12u(mobile)">
+										<section class="box">
+											<a target="_blank" class="image featured"><img src="images/Projects/turtlebot.jpg" alt="" /></a>
+											<header>
+												<h3>Path Planning | Exploration</h3>
+											</header>
+											<p>Autonomously exploring new environments is one of the most important and challenging tasks in Mobile Robotics. As a part of my undergraduate thesis...</p>
+											<footer>
+												<a href="https://github.com/sahibdhanjal/Path-Planning-Simulator"  target="_blank" class="button alt">Read more</a>
+												<a href="websites/path planning simulator/index.html" target="_blank" class="button alt">Demo</a>
+											</footer>
+										</section>
+									</div>
+								</div>
+								<div class="row">
+									<div class="4u 12u(mobile)">
+										<section class="box">
+											<a class="image featured"><img src="images/Projects/me567.jpg" alt="" /></a>
+											<header>
+												<h3>Kinematic Simulator</h3>
+											</header>
+											<p>As a part of one of <a href="http://autorob.github.io/">the courses</a> offered here at Michigan, we were required to work on building a JavaScript based Kinematic Simulator for high-dimensional robots...</p>
+											<footer>
+												<a href="https://github.com/sahibdhanjal/Robot-Kinematic-Simulator" target="_blank" class="button alt" title="Kinematic Simulator">Read more</a>
+												<a href="websites/kinematic simulator/home.html" target="_blank" class="button alt" title="Kinematic Simulator">Demo</a>
+											</footer>
+										</section>
+									</div>
+
+									<div class="4u 12u(mobile)">
+										<section class="box">
+											<a class="image featured"><img src="images/Projects/slam.jpg" alt="" /></a>
+											<header>
+												<h3>Differential Drive - SLAM</h3>
+											</header>
+											<p>Simultaneous Localization and Mapping (SLAM) is one of the few tasks that cannot be automated using deep learning on a robot. In this project ...</p>
+											<footer>
+												<a href="https://github.com/sahibdhanjal/SLAM/blob/master/BotLab%20Report.pdf" target="_blank" class="button alt">Read more</a>
+											</footer>
+										</section>
+									</div>
+
+									<div class="4u 12u(mobile)">
+										<section class="box">
+											<a class="image featured"><img src="images/Projects/robotic-arm.jpg" alt="" /></a>
+											<header>
+												<h3>Autonomous Robotic Arm</h3>
+											</header>
+											<p>An attempt at automating redundant tasks using OpenCV and a Microsoft Kinect for vision and a 4-DOF Dynamixel arm to perform simple tasks such as ...</p>
+											<footer>
+												<a href="projects.html" class="button alt">Read more</a>
+											</footer>
+										</section>
+									</div>
+
+								</div>
+							</section>
+
+							<section id="design">
+								<header class="major">
+									<h2>Design Projects</h2>
+								</header>
+								<div class="row">
+
+									<div class="4u 12u(mobile)">
+										<section class="box">
+											<a href="https://www.behance.net/gallery/26737893/Curtainraisers" target="_blank" class="image featured"><img src="images/Design/curtainraiser.png" alt="" /></a>
+											<header>
+												<h3>Curtainraisers</h3>
+											</header>
+										</section>
+									</div>
+
+									<div class="4u 12u(mobile)">
+										<section class="box">
+											<a href="https://www.behance.net/gallery/26712365/Exhibitions" target="_blank" class="image featured"><img src="images/Design/exhibitions.png" alt="" /></a>
+											<header>
+												<h3>Exhibitions</h3>
+											</header>
+										</section>
+									</div>
+
+									<div class="4u 12u(mobile)">
+										<section class="box">
+											<a href="https://www.behance.net/gallery/26712905/Standee" target="_blank" class="image featured"><img src="images/Design/standee.png" alt="" /></a>
+											<header>
+												<h3>Banners</h3>
+											</header>
+										</section>
+									</div>
+
+								</div>
+
+
+								<div class="row">
+
+									<div class="4u 12u(mobile)">
+										<section class="box">
+											<a href="https://www.behance.net/gallery/26709393/APOGEE-BITS-Pilani" target="_blank" class="image featured"><img src="images/Design/apogee.png" alt="" /></a>
+											<header>
+												<h3>APOGEE - BITS Pilani</h3>
+											</header>
+										</section>
+									</div>
+
+									<div class="4u 12u(mobile)">
+										<section class="box">
+											<a href="https://www.behance.net/gallery/26709523/OASIS-BITS-Pilanihttps://www.behance.net/gallery/26709523/OASIS-BITS-Pilani" target="_blank" class="image featured"><img src="images/Design/oasis.png" alt="" /></a>
+											<header>
+												<h3>OASIS - BITS Pilani</h3>
+											</header>
+										</section>
+									</div>
+
+									<div class="4u 12u(mobile)">
+										<section class="box">
+											<a href="https://www.behance.net/gallery/26712149/Inspired-Karters-Sponsorship-Brochure" target="_blank" class="image featured"><img src="images/Design/ikr.png" alt="" /></a>
+											<header>
+												<h3>Inspired Karters</h3>
+											</header>
+										</section>
+									</div>
+
+								</div>
+							</section>
+						</div>
+					</div>
+
+					<!-- Blog -->
+					<!-- <div class="row">
+						<div class="12u">
+							<section id="blog">
+								<header class="major">
+									<h2>The Blog</h2>
+								</header>
+								<div class="row">
+									<div class="6u 12u(mobile)">
+										<section class="box">
+											<a href="#" class="image featured"><img src="images/pic08.png" alt="" /></a>
+											<header>
+												<h3>Magna tempus consequat lorem</h3>
+												<p>Posted 45 minutes ago</p>
+											</header>
+											<p>Lorem ipsum dolor sit amet sit veroeros sed et blandit consequat sed veroeros lorem et blandit  adipiscing feugiat phasellus tempus hendrerit, tortor vitae mattis tempor, sapien sem feugiat sapien, id suscipit magna felis nec elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos lorem ipsum dolor sit amet.</p>
+											<footer>
+												<ul class="actions">
+													<li><a href="#" class="button icon fa-file-text">Continue Reading</a></li>
+													<li><a href="#" class="button alt icon fa-comment">33 comments</a></li>
+												</ul>
+											</footer>
+										</section>
+									</div>
+									<div class="6u 12u(mobile)">
+										<section class="box">
+											<a href="#" class="image featured"><img src="images/pic09.jpg" alt="" /></a>
+											<header>
+												<h3>Aptent veroeros et aliquam</h3>
+												<p>Posted 45 minutes ago</p>
+											</header>
+											<p>Lorem ipsum dolor sit amet sit veroeros sed et blandit consequat sed veroeros lorem et blandit  adipiscing feugiat phasellus tempus hendrerit, tortor vitae mattis tempor, sapien sem feugiat sapien, id suscipit magna felis nec elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos lorem ipsum dolor sit amet.</p>
+											<footer>
+												<ul class="actions">
+													<li><a href="#" class="button icon fa-file-text">Continue Reading</a></li>
+													<li><a href="#" class="button alt icon fa-comment">33 comments</a></li>
+												</ul>
+											</footer>
+										</section>
+									</div>
+								</div>
+							</section>
+						</div>
+					</div> -->
+				</div>
+			</div>
+
+			<!-- Footer -->
+			<div id="footer-wrapper">
+				<section id="footer" class="container">
+
+					<div class="row">
+						<div class="12u">
+							<!-- Copyright -->
+							<div id="copyright">
+								<ul class="links">
+
+                                    <li><a href="https://www.linkedin.com/in/sahibdhanjal/" target="_blank"><img src="images/Connect/linkedin_ico.png" style="width: 25px" title="LinkedIn"></a></li>
+
+                                    <li><a href="https://github.com/sahibdhanjal/" target="_blank"><img src="images/Connect/git_ico.png" style="width: 25px" title="GitHub"></a></li>
+
+									<li><a href="https://www.facebook.com/Sahib.Dhanjal.037" target="_blank"><img src="images/Connect/fb_ico.png" style="width: 25px" title="Facebook"></a></li>
+
+                                    <li><a href="https://twitter.com/sahib_dhanjal" target="_blank"><img src="images/Connect/twitter_ico.png" style="width: 25px" title="Twitter"></a></li>
+
+                                    <li><a href="https://www.behance.net/sahibdhanjal" target="_blank"><img src="images/Connect/be_ico.png" style="width: 25px" title="Behance"></a></li>
+
+                                    <li><a href="mailto:sdhanjal@umich.edu" target="_blank"><img src="images/Connect/inbox_ico.png" style="width: 25px" title="Mail"></a></li>
+								</ul>
+
+								<p style="padding: 30px 0 0 0"> &copy 2018  All rights reserved. Theme by <a href="https://themes.gohugo.io/">Hugo</a> modified by Sahib Dhanjal</p>
+							</div>
+
+
+
+						</div>
+					</div>
+
+				</section>
+			</div>
+		</div>
+
+		<!-- Scripts -->
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.dropotron.min.js"></script>
+		<script src="assets/js/skel.min.js"></script>
+		<script src="assets/js/skel-viewport.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+		<script src="assets/js/main.js"></script>
+	</body>
 
 </html>
