@@ -1253,14 +1253,14 @@ input::-moz-focus-inner {
 }
 
 
-#nav-toggle:active span {
+#nav-toggle.active span {
     background-color: transparent;
 }
-#nav-toggle:active span::before {
+#nav-toggle.active span::before {
     top: 0;
     transform: rotate(45deg);
 }
-#nav-toggle:active span::after {
+#nav-toggle.active span::after {
     top: 0;
     transform: rotate(-45deg);
 }
