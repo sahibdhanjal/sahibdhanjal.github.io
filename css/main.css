@@ -2710,8 +2710,7 @@ html.no-csstransitions .home-content__main {
  * ------------------------------------------------------------------- */
 
 .s-works {
-    background: #ffffff;
-    padding: 18rem 0 24rem;
+    background: black;
     position: relative;
 }
 
@@ -2721,8 +2720,6 @@ html.no-csstransitions .home-content__main {
  * ------------------------------------------------------------------- */
 
 .masonry-wrap {
-    margin-top: 6rem;
-    max-width: none;
     width: 100%;
 }
 
@@ -2917,7 +2914,7 @@ html.no-csstransitions .home-content__main {
     }
     .masonry .grid-sizer,
     .masonry__brick {
-        width: 33%;
+        width: 33.333%;
     }
 }
 
@@ -2927,7 +2924,7 @@ html.no-csstransitions .home-content__main {
     }
     .masonry .grid-sizer,
     .masonry__brick {
-        width: 33%;
+        width: 33.333%;
     }
 }
 
@@ -2937,33 +2934,29 @@ html.no-csstransitions .home-content__main {
     }
     .masonry .grid-sizer,
     .masonry__brick {
-        width: 33%;
+        width: 33.333%;
     }
 }
 
 @media only screen and (max-width: 1200px) {
     .s-works {
-        padding: 15rem 0 22.2rem;
     }
 }
 
 @media only screen and (max-width: 1100px) {
     .masonry-wrap {
         width: 100%;
-        max-width: 1100px;
     }
     .masonry .grid-sizer,
     .masonry__brick {
-        width: 33%;
+        width: 33.333%;
     }
 }
 
 @media only screen and (max-width: 800px) {
     .s-works {
-        padding: 12rem 0 21rem;
     }
     .masonry-wrap {
-        margin-top: 3rem;
     }
 }
 
@@ -2976,7 +2969,6 @@ html.no-csstransitions .home-content__main {
 
 @media only screen and (max-width: 400px) {
     .s-works {
-        padding: 9.6rem 0 21rem;
     }
     .masonry-wrap {
         width: auto;

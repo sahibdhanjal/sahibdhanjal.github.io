@@ -434,8 +434,7 @@ textarea {
  *
  * ------------------------------------------------------------------- */
 .row {
-    width: 89%;
-    max-width: 1200px;
+    width: 100%;
     margin: 0 auto;
 }
 
@@ -617,8 +616,6 @@ textarea {
 @media only screen and (max-width: 600px) {
     .row {
         width: auto;
-        padding-left: 10px;
-        padding-right: 10px;
     }
     .row .row {
         margin-left: -10px;
