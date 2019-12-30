@@ -133,7 +133,7 @@ class Robot {
 			// Eyelid
 			this.eyelidTop = this.models.getObjectByName("Eyelid-top", true);
 			this.eyelidBottom = this.models.getObjectByName("Eyelid-bottom", true);
-			this.eyelidTop.rotation.x = THREE.Math.degToRad(-88); // -65 = Open; -88 = closed; 
+			this.eyelidTop.rotation.x = THREE.Math.degToRad(-88); // -65 = Open; -88 = closed;
 			this.eyelidBottom.rotation.x = THREE.Math.degToRad(-85); // -115= Open; -85 = closed;
 
 			// Lens
@@ -253,7 +253,7 @@ class Robot {
 		// var canvas = document.getElementById("mycanvas");
 		// this.windowWidth = canvas.width;
 		// this.windowHeight = canvas.height;
-		
+
 		this.windowWidth = window.innerWidth;
 		this.windowHeight = window.innerHeight - 150;
 		this.renderer.setSize(this.windowWidth, this.windowHeight);
