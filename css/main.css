@@ -1524,6 +1524,7 @@ input::-moz-focus-inner {
 .header-nav {
     z-index: 900;
     font-family: "metropolis-regular", sans-serif;
+    float: right;
     font-size: 1.3rem;
     line-height: 1.846;
     padding: 3.6rem 3rem 3.6rem 3.6rem;
