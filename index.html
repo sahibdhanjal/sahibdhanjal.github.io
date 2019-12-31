@@ -82,20 +82,29 @@
     <!-- home
     ================================================== -->
     <section id="home" class="s-home target-section" data-parallax="scroll" data-position-y=top>
-
-        <!-- <div class="shadow-overlay"></div> -->
-
-        <div class="home-content">
-
-            <div class="row home-content__main">
-                <!-- <h1>
+        <!-- <div class="home-content">
+            <div class="home-content__main">
+                <h1>
                     Sahib Dhanjal
-                </h1> -->
+                </h1>
                 <p>
                     Localization and Mapping Engineer at Magna/Lyft Level 5. Masters in Robotics, UMich' 19. Independent roboticist, developer, and designer.
                 </p>
             </div>
-
+        </div> -->
+        <div class="fancy-text" style="height: 30em; position: relative;">
+            <svg class="fancy-text__main">
+                <symbol id="s-text">
+                    <text text-anchor="middle" x="50%" y="80%">Hello World</text>
+                </symbol>
+                <g class = "g-ants">
+                    <use xlink:href="#s-text" class="text-copy"></use>
+                    <use xlink:href="#s-text" class="text-copy"></use>
+                    <use xlink:href="#s-text" class="text-copy"></use>
+                    <use xlink:href="#s-text" class="text-copy"></use>
+                    <use xlink:href="#s-text" class="text-copy"></use>
+                </g>
+            </svg>
         </div>
     </section>
     <!-- end s-home -->
@@ -774,6 +783,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> | All
     <script src="js/jquery-3.2.1.min.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
+
 </body>
 
 </html>
