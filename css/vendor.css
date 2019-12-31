@@ -1170,9 +1170,6 @@ body[data-aos-easing="ease-in-out-quart"] [data-aos] {
   transform: perspective(2500px) rotateX(0);
 }
 
-/*# sourceMappingURL=aos.css.map*/
-
-
 
 /* ===================================================================
  * # slick slider
@@ -2064,5 +2061,3 @@ a.pswp__share--download:hover {
 .pswp--minimal--dark .pswp__top-bar {
   background: none;
 }
-
-/*# sourceMappingURL=vendor.css.map */
