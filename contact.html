@@ -77,26 +77,22 @@
     <section id="contact-me">
         <div class="contact-me__container">
             <p>Looking to work together? Have any questions or comments on something I've worked on before? Looking to hire a developer at your company?</p>
-            <form action="/action_page.php">
+            <form action="https://formspree.io/xrgeojqn" method="POST">
                 <div class="clear-float">
                     <div class="col-offset">
-                        <input type="text" name="firstname" placeholder="Name" style="color: white; font-family:metropolis-regular, sans-serif; font-size: 1.7rem; font-style: normal; font-weight: normal; line-height: 1.765;">
+                        <input type="text" name="_replyto" placeholder="Email" style="color: white; font-family:metropolis-regular, sans-serif; font-size: 1.7rem; font-style: normal; font-weight: normal; line-height: 1.765;">
                     </div>
                 </div>
                 <div class="clear-float">
                     <div class="col-offset">
-                        <input type="text" name="lastname" placeholder="Email" style="color: white; font-family:metropolis-regular, sans-serif; font-size: 1.7rem; font-style: normal; font-weight: normal; line-height: 1.765;">
-                    </div>
-                </div>
-                <div class="clear-float">
-                    <div class="col-offset">
-                        <textarea name="subject" placeholder="Message" style="color: white; font-family:metropolis-regular, sans-serif; font-size: 1.7rem; font-style: normal; font-weight: normal; line-height: 1.765; height: 150px"></textarea>
+                        <textarea name="message" placeholder="Message" style="color: white; font-family:metropolis-regular, sans-serif; font-size: 1.7rem; font-style: normal; font-weight: normal; line-height: 1.765; height: 150px"></textarea>
                     </div>
                 </div>
                 <div class="clear-float">
                     <input type="submit" value="Submit">
                 </div>
             </form>
+            <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {}"></iframe>
         </div>
     </section>
 
@@ -130,7 +126,6 @@
     <!-- Java Script
     ================================================== -->
     <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
 
 </body>
