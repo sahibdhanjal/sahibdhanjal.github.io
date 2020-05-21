@@ -1813,7 +1813,7 @@ a.pswp__share--download:hover {
 }
 
 .pswp__caption__center {
-  text-align: justify;
+  text-align: center;
   max-width: 1200px;
   margin: 0 auto;
   font-size: 15px;
