@@ -50,7 +50,6 @@
  *    ## go to top
  *
  * =================================================================== */
-@import url(https://fonts.googleapis.com/css?family=Montserrat);
 
 /* ===================================================================
  * # base style overrides
@@ -2476,7 +2475,7 @@ input::-moz-focus-inner {
 
 .fancy-text__main {
     display: block;
-    font: 9em 'Montserrat';
+    font: 7vw 'metropolis-regular';
     width: 70%;
     height: 30%;
     z-index: 9;
@@ -2493,7 +2492,7 @@ input::-moz-focus-inner {
 
 .text-copy:nth-child(1){
     stroke: #4D163D;
-    animation-delay: -1;
+    animation-delay: -1s;
 }
 
 .text-copy:nth-child(2){
@@ -2526,39 +2525,21 @@ input::-moz-focus-inner {
  * Fancy Text
  * ------------------------------------------------------------------- */
 
-@media only screen and (max-width: 1400px) {
+@media only screen and (max-width: 2000px) {
     .fancy-text__main {
-        font: 9em 'Montserrat';
+        font-size: 8vw;
     }
 }
 
-@media only screen and (max-width: 1300px) {
+@media only screen and (max-width: 1500px) {
     .fancy-text__main {
-        font: 8.5em 'Montserrat';
-    }
-}
-
-@media only screen and (max-width: 1200px) {
-    .fancy-text__main {
-        font: 8em 'Montserrat';
-    }
-}
-
-@media only screen and (max-width: 1100px) {
-    .fancy-text__main {
-        font: 7em 'Montserrat';
-    }
-}
-
-@media only screen and (max-width: 1000px) {
-    .fancy-text__main {
-        font: 6em 'Montserrat';
+        font-size: 10vw;
     }
 }
 
 @media only screen and (max-width: 900px) {
     .fancy-text__main {
-        font: 5.5em 'Montserrat';
+        font-size: 5.5em;
     }
     .text-copy {
         stroke-width: 3px;
@@ -2567,16 +2548,13 @@ input::-moz-focus-inner {
 
 @media only screen and (max-width: 800px) {
     .fancy-text__main {
-        font: 5em 'Montserrat';
-    }
-    .text-copy {
-        stroke-width: 3px;
+        font-size: 5em;
     }
 }
 
 @media only screen and (max-width: 700px) {
     .fancy-text__main {
-        font: 4em 'Montserrat';
+        font-size: 4em;
     }
     .text-copy {
         stroke-width: 2px;
@@ -2585,30 +2563,25 @@ input::-moz-focus-inner {
 
 @media only screen and (max-width: 600px) {
     .fancy-text__main {
-        font: 3.5em 'Montserrat';
-    }
-    .text-copy {
-        stroke-width: 2px;
+        font-size: 3.5em;
     }
 }
 
 @media only screen and (max-width: 500px) {
     .fancy-text__main {
-        font: 3em 'Montserrat';
+        font-size: 3em;
     }
     .text-copy {
         stroke-width: 1px;
     }
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 500px) {
     .fancy-text__main {
-        font: 2.8em 'Montserrat';
-    }
-    .text-copy {
-        stroke-width: 1px;
+        font-size: 2.8em;
     }
 }
+
 
 #contact-me {
     margin-top: 200px;
