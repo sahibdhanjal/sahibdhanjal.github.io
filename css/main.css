@@ -2258,7 +2258,7 @@ input::-moz-focus-inner {
  * works
  * ------------------------------------------------------------------- */
 
-@media only screen and (max-width: 1500px) {
+@media only screen and (max-width: 2000px) {
     .masonry-wrap {
         width: 100%;
     }
