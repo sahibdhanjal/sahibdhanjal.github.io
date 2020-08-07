@@ -1,0 +1,74 @@
+{% extends 'home/base.html' %}
+
+{% block header_content %}
+    <!-- ==================== BANNER ====================== -->
+    <section data-position-y=top>
+        <div style="height: 7em; position: relative;">
+        </div>
+    </section>
+{% endblock %}
+
+
+{% block content %}
+    <!-- ==================== BLOGS ====================== -->
+    <section class="light-gray" style="width: 100%">
+
+        <!-- div containing the blog material -->
+        <div class="row tab-full mid details">
+            <h1 class="display-1 display-1--dark">{{ blog.title }}</h1>
+            <h3 class="subhead subhead--dark">{{ blog.subtitle }}</h3>
+            <img src="{{ blog.image.url }}" alt="{{ blog.slug }}">
+			<p class="drop-cap" style="text-align: justify; line-height: 1.42">{{ blog.description|safe }}</p>
+            
+            <h4 style="font-family: domine-bold;">// Categories</h4>
+            <p>
+                {% for category in blog.get_all_categories %} 
+                    <code>{{ category }}</code>
+                {% endfor %}
+            </p>
+
+            <!-- div containing the comments for the blog -->
+            <div>
+                <form action="/blog/{{ blog.slug }}/" method="post">
+                    {% csrf_token %}
+                    <label for="sampleInput">Your Name</label>
+                    {{ form.name }}
+                    <label for="sampleInput">Comment</label>
+                    {{ form.comment }}
+                    <button type="submit" class="btn btn--stroke">Submit</button>
+                </form>
+                
+                {% for comment in comments %}
+
+                    <blockquote cite="http://where-i-got-my-info-from.com">
+                        <p>{{ comment.comment }}</p>
+                        <cite>
+                            <a>{{ comment.name }} | {{ comment.date }}</a>
+                        </cite>
+                    </blockquote>
+                    <hr>
+                {% endfor %}
+
+            </div>
+        </div>
+
+    </section>
+
+{% endblock %}
+
+
+{% block footer_content %}
+    <!-- ==================== SOCIAL FOOTER ====================== -->
+    <section id="contact" class="s-contact">
+        <div class="col-full cl-copyright" style="margin-bottom: 1rem; margin-top: 1rem;">
+            <script>document.write(new Date().getFullYear());</script> | <a href="/">Sahib Dhanjal</a>
+            <ul class="contact-social">
+                {% for social in social_links %}
+                    {% if social.show %}
+                        <li><a href="{{ social.link }}" target="_blank"><i class="{{ social.img_class }}"></i></a></li>        
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'home/base.html' %}
+
+{% block header_content %}
+    <!-- ==================== BANNER ====================== -->
+    <section data-position-y=top>
+        <div style="height: 7em; position: relative;">
+        </div>
+    </section>
+{% endblock %}
+
+
+{% block content %}
+    <!-- ==================== PROJECTS ====================== -->
+    <section class="light-gray" style="width: 100%">
+
+        <div class="row tab-full mid details">
+            <h1 class="display-1 display-1--dark">{{ project.title }}</h1>
+            <h3 class="subhead subhead--dark">{{ project.subtitle }}</h3>
+            <img src="{{ project.image.url }}" alt="{{ project.slug }}">
+            <p class="drop-cap">{{ project.description|safe }}</p>
+            <h4 style="font-family: domine-bold;">// TechStack  </h4>
+            <p>
+                {% for tech in project.get_all_tech %} 
+                    <code>{{ tech }}</code>
+                {% endfor %}
+            </p>
+            <hr>
+            <!-- {% url 'projects:detail' project.slug %} -->
+            <div style="height: 50px">
+                <a href="#" style="float: left;"><i class="fa fa-chevron-left"></i> {{ previous.title }} </a>
+
+                <a href="#" style="float: right;"> {{ next.title }} <i class="fa fa-chevron-right"></i></a>
+            </div>
+        </div>
+
+    </section>
+{% endblock %}
+
+
+{% block footer_content %}
+    <!-- ==================== SOCIAL FOOTER ====================== -->
+    <section id="contact" class="s-contact">
+        <div class="col-full cl-copyright" style="margin-bottom: 1rem; margin-top: 1rem;">
+            <script>document.write(new Date().getFullYear());</script> | <a href="/">Sahib Dhanjal</a>
+            <ul class="contact-social">
+                {% for social in social_links %}
+                    {% if social.show %}
+                        <li><a href="{{ social.link }}" target="_blank"><i class="{{ social.img_class }}"></i></a></li>        
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+{% endblock %}

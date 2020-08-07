@@ -1,0 +1,125 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113408615-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-113408615-1');
+    </script>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+	<title>Sahib Dhanjal</title>
+    <meta name="author" content="Sahib Singh Dhanjal">
+    <meta name="description" content=" Sahib Singh Dhanjal Portfolio website">
+    <meta name="keywords" content="portfolio, star wars, star, wars, robot, robotics, roboticist, University, of, michigan, university of michigan, ann arbor, flint, dearborn, bits, pilani, birla institute of technology and science, birla, institute, technology, science, pilani, hyderabad, goa, personal, projects, robot Kinematic, kinematics, path planner, path, planning, turtlebot, masters, football, soccer, Programmer, coder, coding, programming, machine learning, deep learning, tensor flow, computer vision, C/C++, JavaScript, java, python,Formula, student, fsae, italy, robotx, maritime, autonmous, slam, localization, mapping, vehicle, dynamics, inspired, Karters, fs">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/vendor.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/fonts.css' %}">
+
+    <!-- script
+    ================================================== -->
+    <script src="{% static 'js/modernizr.js' %}"></script>
+    <script src="{% static 'js/pace.min.js' %}"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+
+</head>
+<body id="top">
+    <!-- =================== HEADER ======================= -->
+    <header class="s-header">
+        <div class="header-logo">
+            <a class="site-logo" href="/">
+                <h1 style="font-family: sans-serif; font-size: 3rem; color: white; font-family: domine-bold, sans-serif;">
+                    Sahib Dhanjal
+                </h1>
+            </a>
+        </div>
+        <div class="nav-mobile">
+            <a id="nav-toggle" href="#!"><span></span></a>
+        </div>
+        <nav class="header-nav">
+            <ul class="header-nav__list">
+                <li><a href="/">Work</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="https://docs.google.com/document/d/1t2QLEwItGmX8AOK7teRTdotwSPwrbQxdyiDk8b1ZrA4/" target="blank">Resume</a></li>
+            </ul>
+        </nav>
+    </header>
+
+	{% block header_content %}
+	{% endblock header_content %}
+
+    {% block content %}
+    {% endblock content %}
+
+    {% block footer_content %}
+    {% endblock footer_content %}
+
+    <!-- photoswipe background
+    ================================================== -->
+    <div aria-hidden="true" class="pswp" role="dialog" tabindex="-1">
+
+        <div class="pswp__bg"></div>
+        <div class="pswp__scroll-wrap">
+
+            <div class="pswp__container">
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+            </div>
+
+            <div class="pswp__ui pswp__ui--hidden">
+                <div class="pswp__top-bar">
+                    <div class="pswp__counter"></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button><button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button> <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                    <div class="pswp__preloader">
+                        <div class="pswp__preloader__icn">
+                            <div class="pswp__preloader__cut">
+                                <div class="pswp__preloader__donut"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                    <div class="pswp__share-tooltip"></div>
+                </div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button> <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+                <div class="pswp__caption">
+                    <div class="pswp__caption__center"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- end photoSwipe background -->
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'js/plugins.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+
+</body>
+</html>

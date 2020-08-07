@@ -1,0 +1,6 @@
+django==2.0
+django-auth==0.1.9
+django-s3-storage==0.13.0
+zappa==0.51.0
+stripe==2.48.0
+Pillow==7.1.2

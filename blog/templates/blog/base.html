@@ -1,0 +1,76 @@
+{% extends 'home/base.html' %}
+
+{% block header_content %}
+    <!-- ==================== BANNER ====================== -->
+    <section data-position-y=top>
+        <div style="height: 7em; position: relative;">
+        </div>
+    </section>
+{% endblock %}
+
+
+{% block content %}
+    <!-- ==================== BLOG ====================== -->
+    <section id='services' class="s-services light-gray">
+
+        <div class="row section-header details mid" data-aos="fade-up">
+            <div class="col-full">
+                <h1 class="display-1">Blog</h1>
+                <h3 class="subhead">Thoughts on SLAM, deep learning, robotics, entrepreneurship, self-development, and more.</h3>
+            </div>
+        </div>
+
+        <div class="row services-list block-1-4 block-m-1-2 block-tab-full details mid">
+            {% for blog in blog_posts %}
+            <div class="col-block service-item " data-aos="fade-up">
+                <div class="service-icon service-icon--brand-identity">
+                    <a href="{% url 'blog:article' blog.slug %}"><img src="{{ blog.image.url }}" alt="{{ blog.slug }}"></a>
+                </div>
+                <div class="service-text">
+                    <h3 class="h4">{{ blog.title }}</h3>
+                    <p>{{ blog.date }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        {% if blog_posts.has_other_pages %}
+            <nav data-pagination>
+                <ul>
+                    {% if blog_posts.has_previous %}
+                        <li><a href="?page={{ blog_posts.previous_page_number }}"><i class="fa fa-chevron-left"></i></a></li>
+                    {% endif %}
+
+                    {% for i in blog_posts.paginator.page_range %}
+                        {% if blog_posts.number == i %}
+                            <li><a href="?page={{ i }}" class="active">{{ i }}</a></li>
+                        {% else %}
+                            <li><a href="?page={{ i }}">{{ i }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                    
+                    {% if blog_posts.has_next %}
+                        <li><a href="?page={{ blog_posts.next_page_number }}"><i class="fa fa-chevron-right"></i></a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        {% endif %}
+    </section>
+{% endblock %}
+
+
+{% block footer_content %}
+    <!-- ==================== SOCIAL FOOTER ====================== -->
+    <section id="contact" class="s-contact">
+        <div class="col-full cl-copyright" style="margin-bottom: 1rem; margin-top: 1rem;">
+            <script>document.write(new Date().getFullYear());</script> | <a href="/">Sahib Dhanjal</a>
+            <ul class="contact-social">
+                {% for social in social_links %}
+                    {% if social.show %}
+                        <li><a href="{{ social.link }}" target="_blank"><i class="{{ social.img_class }}"></i></a></li>        
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+{% endblock %}
