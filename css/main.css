@@ -2683,6 +2683,9 @@ input::-moz-focus-inner {
 .folio-text {
     margin-bottom: 3rem;
     text-align: justify;
+    display: inline-block;
+    vertical-align: middle;
+    width: 70%;
 }
 
 
