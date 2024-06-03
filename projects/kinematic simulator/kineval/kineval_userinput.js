@@ -109,7 +109,6 @@ kineval.handleUserInput = function user_input() {
         kineval.params.update_pd_clock = false;
         kineval.params.update_pd_dance = false;
     }
- 
     // execute PID controller to clock
     if ( keyboard.pressed("c") ) {
         kineval.params.update_pd = true;
@@ -256,7 +255,8 @@ kineval.displayHelp = function display_help () {
             + "<br>mouse: rotate camera about robot base "
             + "<br>z/x : camera zoom with respect to base "
             + "<br>t : toggle starting point mode "
-            + "<br>w/s a/d q/e : move base along forward/turning/strafe direction"
+            + "<br>w/a/s/d : move base along forward/turn"
+            + "<br>q/e : strafe left/right"
             + "<br>j/k/l : focus active joint to child/parent/sibling "
             + "<br>u/i : control active joint"
             + "<br>c : execute clock tick controller "
