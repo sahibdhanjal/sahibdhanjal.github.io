@@ -3,9 +3,9 @@
 
     KinEval | Kinematic Evaluator | HTML example
 
-    Implementation of robot kinematics, control, decision making, and dynamics
+    Implementation of robot kinematics, control, decision making, and dynamics 
         in HTML5/JavaScript and threejs
-
+     
     @author ohseejay / https://github.com/ohseejay / https://bitbucket.org/ohseejay
 
     Chad Jenkins
@@ -14,26 +14,11 @@
 
     License: Creative Commons 3.0 BY-SA
 
-    Modified by Sahib Singh Dhanjal in fulfilment of the course ME 567 at the
-    University of Michigan, Ann Arbor
-
 |\/| |\/| |\/| |\/| |\/| |\/| |\/| |\/| |\/| |\/| |\/| |\/| |\/| |\/| |\/| -->
 
 <html>
 
-<head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0TL8C2VQKE"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-0TL8C2VQKE');
-    </script>
-    <!-- End Google Tag -->
-
-    <meta charset="utf-8"/>
-</head>
+<head> <meta charset="utf-8"/> </head>
 
 <body style="overflow: hidden">
 
@@ -41,7 +26,7 @@
      /////     JAVASCRIPT INCLUDES
      ////////////////////////////////////////////////// -->
 
-<!-- threejs r73 (https://github.com/mrdoob/three.js/) for 3D rendering
+<!-- threejs r73 (https://github.com/mrdoob/three.js/) for 3D rendering 
 <script src="js/three.js"></script>
 -->
 <script src="js/three_73.min.js"></script>
@@ -64,31 +49,31 @@
 
 <!-- kineval includes -->
 <script src="kineval/kineval.js"></script>
-<script src="kineval/kineval_startingpoint.js"></script>
+<script src="kineval/kineval_startingpoint.js"></script> 
 <script src="kineval/kineval_robot_init.js"></script>
-<script src="kineval/kineval_threejs.js"></script>
-<script src="kineval/kineval_userinput.js"></script>
+<script src="kineval/kineval_threejs.js"></script> 
+<script src="kineval/kineval_userinput.js"></script> 
 <!-- kineval FK/drawing -->
 <!--
-<script src="kineval/temp.js"></script>
+<script src="kineval/temp.js"></script> 
 -->
-<script src="kineval/kineval_forward_kinematics.js"></script>
-<script src="kineval/kineval_matrix.js"></script>
-<script src="kineval/kineval_quaternion.js"></script>
+<script src="kineval/kineval_forward_kinematics.js"></script> 
+<script src="kineval/kineval_matrix.js"></script> 
+<script src="kineval/kineval_quaternion.js"></script> 
 <!-- kineval FK/joint control -->
-<script src="kineval/kineval_controls.js"></script>
-<script src="kineval/kineval_servo_control.js"></script>
+<script src="kineval/kineval_controls.js"></script> 
+<script src="kineval/kineval_servo_control.js"></script> 
 <!-- kineval IK -->
-<script src="kineval/kineval_inverse_kinematics.js"></script>
+<script src="kineval/kineval_inverse_kinematics.js"></script> 
 <!-- kineval motion planning -->
-<script src="kineval/kineval_rrt_connect.js"></script>
-<script src="kineval/kineval_collision.js"></script>
+<script src="kineval/kineval_rrt_connect.js"></script> 
+<script src="kineval/kineval_collision.js"></script> 
 <!-- kineval experimental rosbridge/ROS support -->
 
 <!-- rosbridge support -->
 <script type="text/javascript" src="js/eventemitter2.min.js"></script>
 <script type="text/javascript" src="js/roslib.min.js"></script>
-<script src="kineval/kineval_rosbridge.js"></script>
+<script src="kineval/kineval_rosbridge.js"></script> 
 
 <script>
 
@@ -101,7 +86,7 @@ var url_params = {
     // load robot data object from given source file name
     robot:"robots/robot_mr2.js",
     // load world data object from given source file name
-    world:"worlds/world_barrier.js",
+    world:"worlds/world_s.js",
     // specify floor/map image from given image file name
     map_filename: "maps/Cam_Prep-VFX-checkerboard-lens_distortion-1in.jpg"
 };
@@ -109,7 +94,21 @@ var url_params = {
 // preload default robot and world
 // KE 2: suboptimal
 kineval.loadJSFile("robots/robot_mr2.js","robot");
-kineval.loadJSFile("worlds/world_barrier.js","world");
+kineval.loadJSFile("worlds/world_s.js","world");
+
+// extract KinEval user parameters and set defaults
+// parse KinEval parameters from document URL
+var url_parsed = window.location.href.split("?");
+// file:///Users/logan/git_tmp/kineval/home.html?robot=robots/robot_mr2.js?world=worlds/world_s.js
+var i;
+for (i=1;i<url_parsed.length;i++) {
+    var param_parsed = url_parsed[i].split("=");
+    url_params[param_parsed[0]] = param_parsed[1];
+    if ((param_parsed[0] === "world")||(param_parsed[0] === "robot"))
+        kineval.loadJSFile(param_parsed[1],param_parsed[0]);
+    if (param_parsed[0] === "map")
+        kineval.params.map_filename = param_parsed[1];
+}
 
 //////////////////////////////////////////////////
 /////     MAIN FUNCTION CALLS
@@ -130,26 +129,23 @@ function my_init() {
 
 // STENCIL: my_animate is where your robot's controls and movement are updated over time
 function my_animate() {
-
     // set to starting point mode is true as default (initialized in kineval.js)
-    //   set to false once starting forward kinematics project
-    //kineval.params.just_starting = false;
-
+    // set to false once starting forward kinematics project
     if (kineval.params.just_starting == false) {
         startingPlaceholderAnimate();
         kineval.robotDraw();
         return;
     }
 
-    // ROBOT DYNAMICS
+    // ROBOT DYNAMICS 
 
-    // update robot configuration from applied robot controls
+    // update robot configuration from applied robot controls 
     //   (assuming pure kinematics for now)
     kineval.applyControls();
 
     // HANDLE USER CONTROLS
 
-    // handle user input
+    // handle user input 
     kineval.handleUserInput();
 
     // perform forward kinematics placing robot links in space wrt configuration
