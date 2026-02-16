@@ -42,76 +42,116 @@
   var doc = document.documentElement;
   doc.setAttribute('data-useragent', navigator.userAgent);
 
-  /* photoswipe
+  /* Project Card Overlay + Pagination
    * ----------------------------------------------------- */
-  var clPhotoswipe = function () {
-    var items = [],
-      $pswp = $('.pswp')[0],
-      $folioItems = $('.item-folio');
+  var clProjectOverlay = function () {
+    var ITEMS_PER_PAGE = 6;
+    var currentPage = 1;
+    var $cards = $('.project-card');
+    var $overlay = $('#project-overlay');
 
-    // get items
-    $folioItems.each(function (i) {
+    function showPage(page) {
+      currentPage = page;
+      var start = (page - 1) * ITEMS_PER_PAGE;
+      var end = start + ITEMS_PER_PAGE;
 
-      var $folio = $(this),
-        $thumbLink = $folio.find('.thumb-link'),
-        $projectLink = $folio.find('.item-folio__project-link'),
-        $title = $folio.find('.item-folio__title'),
-        $caption = $folio.find('.item-folio__caption'),
-        $titleText = '<h4>' + $.trim($title.html()) + '</h4>',
-        $captionText = $.trim($caption.html()),
-        $href = $thumbLink.attr('href'),
-        $size = $thumbLink.data('size').split('x'),
-        $width = $size[0],
-        $height = $size[1];
+      $cards.each(function (i) {
+        $(this).toggle(i >= start && i < end);
+      });
 
-      var item = {
-        src: $href,
-        w: $width,
-        h: $height
-      }
+      renderPagination();
+      if (typeof AOS !== 'undefined') AOS.refresh();
+    }
 
-      if ($caption.length > 0) {
-        item.title = $.trim($titleText + $captionText);
-      }
+    function renderPagination() {
+      var totalPages = Math.ceil($cards.length / ITEMS_PER_PAGE);
+      var $pag = $('#projects-pagination');
+      $pag.empty();
+      if (totalPages <= 1) return;
 
-      items.push(item);
-    });
+      var html = '<div class="projects-pagination">';
+      html += '<a href="javascript:void(0)" class="projects-pagination__btn' + (currentPage <= 1 ? ' disabled' : '') + '" id="proj-prev">&larr; Prev</a>';
+      html += '<span class="projects-pagination__info">' + currentPage + ' / ' + totalPages + '</span>';
+      html += '<a href="javascript:void(0)" class="projects-pagination__btn' + (currentPage >= totalPages ? ' disabled' : '') + '" id="proj-next">Next &rarr;</a>';
+      html += '</div>';
+      $pag.html(html);
 
-    // bind click event
-    $folioItems.each(function (i) {
-
-      $(this).on('click', function (e) {
-        e.preventDefault();
-        var options = {
-          index: i,
-          showHideOpacity: true
+      $('#proj-prev').on('click', function () {
+        if (currentPage > 1) {
+          showPage(currentPage - 1);
+          $('html, body').animate({ scrollTop: $('#projects').offset().top - 96 }, 400);
         }
-
-        // initialize PhotoSwipe
-        var lightBox = new PhotoSwipe($pswp, PhotoSwipeUI_Default, items, options);
-        lightBox.init();
       });
-
-    });
-  };
-
-
-  /* Masonry
-   * ---------------------------------------------------- */
-  var clMasonryFolio = function () {
-
-    var containerBricks = $('.masonry');
-
-    containerBricks.imagesLoaded(function () {
-      containerBricks.masonry({
-        itemSelector: '.masonry__brick',
-        resize: true
+      $('#proj-next').on('click', function () {
+        var totalPages = Math.ceil($cards.length / ITEMS_PER_PAGE);
+        if (currentPage < totalPages) {
+          showPage(currentPage + 1);
+          $('html, body').animate({ scrollTop: $('#projects').offset().top - 96 }, 400);
+        }
       });
+    }
+
+    // init pagination
+    showPage(1);
+
+    // open overlay on card click
+    $(document).on('click', '.project-card', function () {
+      var $card = $(this);
+      var imgSrc = $card.find('.project-card__img img').attr('src');
+      var title = $card.find('.project-card__title').text();
+      var descHtml = $card.find('.project-card__detail').html();
+
+      var $desc = $('<div>').html(descHtml);
+      // extract link buttons into their own area
+      var $links = $desc.find('.project-card__links a');
+      var linksArr = [];
+      $links.each(function () {
+        var $link = $(this);
+        var text = $link.text().trim();
+        var href = $link.attr('href');
+        linksArr.push('<a href="' + href + '" target="_blank">' + text + ' <span class="project-overlay__link-arrow">→</span></a>');
+      });
+      var linksHtml = linksArr.join(' | ');
+      $desc.find('.project-card__links').remove();
+
+      $overlay.find('.project-overlay__img').attr('src', imgSrc);
+      $overlay.find('.project-overlay__title').text(title);
+      $overlay.find('.project-overlay__desc').html($desc.html());
+      $overlay.find('.project-overlay__date').text("Feb'26");
+
+      var $linkRow = $('#proj-link-row');
+      if (linksArr.length > 0) {
+        $overlay.find('.project-overlay__links').html(linksHtml);
+        $linkRow.show();
+      } else {
+        $linkRow.hide();
+      }
+
+      $overlay.addClass('is-visible');
+      $('body').css('overflow', 'hidden');
     });
 
-    // layout Masonry after each image loads
-    containerBricks.imagesLoaded().progress(function () {
-      containerBricks.masonry('layout');
+    // close overlay
+    $overlay.find('.project-overlay__close').on('click', function (e) {
+      e.stopPropagation();
+      $overlay.removeClass('is-visible');
+      $('body').css('overflow', '');
+    });
+
+    // close on backdrop click
+    $overlay.on('click', function (e) {
+      if (!$(e.target).closest('.project-overlay__content').length) {
+        $overlay.removeClass('is-visible');
+        $('body').css('overflow', '');
+      }
+    });
+
+    // close on ESC
+    $(document).on('keydown', function (e) {
+      if (e.key === 'Escape' && $overlay.hasClass('is-visible')) {
+        $overlay.removeClass('is-visible');
+        $('body').css('overflow', '');
+      }
     });
   };
 
@@ -149,8 +189,7 @@
   /* Initialize
    * ------------------------------------------------------ */
   (function clInit() {
-    clPhotoswipe();
-    clMasonryFolio();
+    clProjectOverlay();
     clAOS();
     clSmoothScroll();
   })();
