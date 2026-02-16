@@ -1120,9 +1120,9 @@ input::-moz-focus-inner {
   z-index: 500;
   width: 100%;
   height: 96px;
-  background-color: transparent;
-  position: absolute;
-  top: 24px;
+  background-color: rgba(0, 0, 0, 0.65);
+  position: fixed;
+  top: 0;
 }
 
 
@@ -2171,7 +2171,7 @@ span:after {
 
 .masonry .grid-sizer,
 .masonry__brick {
-  width: 12.5%;
+  width: 16.666%;
 }
 
 .masonry__brick {
@@ -2252,14 +2252,14 @@ span:after {
 
 .item-folio__title {
   color: #000000;
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   margin: 0;
 }
 
 .item-folio__cat {
   color: black;
   font-family: "metropolis-regular", sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   margin-bottom: 0;
 }
 
@@ -2273,7 +2273,7 @@ span:after {
   z-index: 500;
   display: block;
   font-family: "metropolis-semibold", sans-serif;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   color: #ffffff;
   background-color: #000000;
   padding: 0.6rem 1.2rem;
@@ -2356,7 +2356,7 @@ span:after {
 
   .masonry .grid-sizer,
   .masonry__brick {
-    width: 20%;
+    width: 16.666%;
   }
 }
 
@@ -2400,6 +2400,157 @@ span:after {
 
 
 /* ===================================================================
+ * # work
+ *
+ * ------------------------------------------------------------------- */
+
+.s-work {
+  background: #151515;
+  padding: 6rem 0 4rem;
+}
+
+.work-container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.work-section-title {
+  font-family: "metropolis-semibold", sans-serif;
+  font-size: 2.8rem;
+  color: #fff;
+  margin: 0 0 0.4rem 0;
+  letter-spacing: 0.5px;
+}
+
+.work-section-sub {
+  font-family: "metropolis-regular", sans-serif;
+  font-size: 1.4rem;
+  color: rgba(255, 255, 255, 0.35);
+  margin-bottom: 3rem;
+}
+
+/* individual work post */
+.work-post {
+  display: flex;
+  gap: 1.6rem;
+  padding: 1.6rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.work-post:first-of-type {
+  padding-top: 0;
+}
+
+.work-post__thumb {
+  flex-shrink: 0;
+  width: 120px;
+  height: 80px;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.work-post__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.2s;
+}
+
+.work-post__thumb img:hover {
+  opacity: 0.8;
+}
+
+.work-post__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.work-post__title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.work-post__title {
+  font-family: "metropolis-semibold", sans-serif;
+  font-size: 1.8rem;
+  margin: 0;
+  line-height: 1.4;
+  flex: 1;
+  min-width: 0;
+}
+
+.work-post__title a {
+  color: rgba(255, 255, 255, 0.9);
+  transition: color 0.2s;
+}
+
+.work-post__title a:hover {
+  color: #840037;
+}
+
+.work-post__date {
+  font-family: "metropolis-regular", sans-serif;
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.3);
+  white-space: nowrap;
+  border: none;
+  flex-shrink: 0;
+}
+
+.work-post__snippet {
+  font-family: "metropolis-regular", sans-serif;
+  font-size: 1.4rem;
+  color: rgba(255, 255, 255, 0.45);
+  line-height: 1.6;
+  margin: 0.5rem 0 0 0;
+}
+
+.work-post__tags {
+  display: block;
+  margin-top: 0.4rem;
+}
+
+.work-tag {
+  display: inline-block;
+  font-family: "metropolis-regular", sans-serif;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.45);
+  background: rgba(255, 255, 255, 0.06);
+  padding: 0.1rem 0.6rem;
+  border-radius: 3px;
+  margin-left: 0.2rem;
+  border: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .s-work {
+    padding: 4rem 0 3rem;
+  }
+
+  .work-container {
+    padding: 0 1.5rem;
+  }
+
+  .work-post__thumb {
+    width: 80px;
+    height: 54px;
+  }
+
+  .work-post__title-row {
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .work-post__title {
+    font-size: 1.6rem;
+  }
+}
+
+
+/* ===================================================================
  * # blog
  *
  * ------------------------------------------------------------------- */
@@ -2431,7 +2582,6 @@ span:after {
 }
 
 .blog-section-sub a {
-  color: #840037;
   border-bottom: 1px dotted rgba(255, 255, 255, 0.25);
 }
 
@@ -2600,7 +2750,7 @@ span:after {
 
 .s-contact {
   padding-bottom: 3rem;
-  background-color: #111111;
+  background-color: #000000;
   color: rgba(255, 255, 255, 0.3);
   position: relative;
 }
@@ -2661,6 +2811,7 @@ span:after {
 
 .cl-copyright {
   bottom: 30px;
+  background-color: #000000;
 }
 
 
