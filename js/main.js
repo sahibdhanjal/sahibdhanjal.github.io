@@ -14,13 +14,20 @@
     $('html').click(function () {
       $('.nav-dropdown').hide();
     });
-    // Toggle open and close nav styles on click
-    $('#nav-toggle').click(function () {
-      $('nav ul').slideToggle();
+    // Hamburger toggle — open/close mobile nav
+    $(document).on('click', '#nav-toggle', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var $list = $('.header-nav__list');
+      $list.toggleClass('is-open');
+      $(this).toggleClass('active');
     });
-    // Hamburger to X toggle
-    $('#nav-toggle').on('click', function () {
-      this.classList.toggle('active');
+    // Close mobile nav when a link is clicked
+    $('.header-nav__list a').on('click', function () {
+      if ($(window).width() <= 800) {
+        $('.header-nav__list').removeClass('is-open');
+        $('#nav-toggle').removeClass('active');
+      }
     });
   });
 })(jQuery);
@@ -185,7 +192,7 @@
   /* Smooth Scroll for nav links
    * ------------------------------------------------------ */
   var clSmoothScroll = function () {
-    $('a[href^="#"]').on('click', function (e) {
+    $('a[href^="#"]:not(#nav-toggle)').on('click', function (e) {
       var target = $(this.getAttribute('href'));
       if (target.length) {
         e.preventDefault();
