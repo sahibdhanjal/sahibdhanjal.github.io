@@ -2378,13 +2378,13 @@ a:hover .icon-external {
 }
 
 .experience-desc a {
-  color: inherit;
+  color: rgba(255, 255, 255, 0.8);
   border-bottom: 1px dashed rgba(255, 255, 255, 0.25);
   transition: color 0.2s ease;
 }
 
 .experience-desc a:hover {
-  color: #840037;
+  color: #fff;
 }
 
 /* responsive experience */
@@ -2816,12 +2816,12 @@ a:hover .icon-external {
 }
 
 .blog-section-sub a {
-  border-bottom: 1px dotted rgba(255, 255, 255, 0.25);
-  color: #cc9900;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .blog-section-sub a:hover {
-  color: #840037;
+  color: #fff;
 }
 
 /* individual post */
