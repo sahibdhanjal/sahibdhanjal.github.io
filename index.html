@@ -202,32 +202,67 @@
       </div>
 
       <!-- AUVSI RobotX -->
-      <div class="project-card" data-aos="fade-up" data-date="Dec '18">
+      <div class="project-card" data-aos="fade-up" data-date="Jan '18 - Oct '18">
         <div class="project-card__img"><img src="images/portfolio/wamv.jpg" alt="AUVSI RobotX"></div>
         <div class="project-card__info">
           <h3 class="project-card__title">AUVSI RobotX</h3>
-          <p class="project-card__cat">Autonomous Surface Vessel Competition</p>
+          <p class="project-card__cat">The AUVSI RobotX Challenge is an international ...</p>
         </div>
         <div class="project-card__detail" style="display:none">
-          <p>AUVSI's <a href="http://robotx.org/">Robot-X</a> competition automates surface vessels. Contributions in
-            SLAM, Trajectory Planning, 3D Object Detection, and Network Setup. Built on ROS Kinetic.</p>
+          <p>
+            The <a href="http://robotx.org/">AUVSI RobotX</a> Challenge is an international robotics competition
+            focused on designing fully autonomous maritime systems capable of navigating complex marine environments
+            without human intervention. For this project, I developed a robust software and perception stack to support
+            high-fidelity autonomy on an unmanned surface vehicle (USV). I architected and implemented a scalable
+            sensor-fusion framework that tightly integrates a spatial dual GPS/IMU module with high-resolution imaging
+            from the FLIR Ladybug 3 and dense point-cloud data from a Velodyne HDL-32E, enabling accurate state
+            estimation and situational awareness in real time.
+          </p>
+          <img class="project-card__gallery-img" src="images/portfolio/gallery/g-wamv.jpg" alt="AUVSI RobotX">
+          <p>
+            To meet competition requirements, I implemented classical robotic control algorithms alongside a
+            YOLO-based marker detection system for visual identification of competition objects and task elements,
+            improving the vehicle’s ability to localize and interact with its environment. I also developed advanced
+            calibration pipelines for LiDAR–LiDAR and camera–LiDAR extrinsic alignment using PnP and 3D correspondences,
+            based on established multi-sensor calibration techniques, which significantly enhanced the coherence of
+            multi-modal data streams for perception and planning. Finally, I deployed a SLAM framework in ROS leveraging
+            gmapping, costmap_2d, and AMCL libraries, enabling reliable mapping, localization, and autonomous waypoint
+            navigation within the competition arena and demonstrating an end-to-end autonomy solution capable of
+            perception, mapping, and decision-making under real-world constraints.
+          </p>
           <div class="project-card__links">
-            <a href="https://github.com/MichiganRobotX/" target="_blank">Code</a>
+            <a href="https://github.com/MichiganRobotX/" target="_blank">Github</a>
           </div>
         </div>
       </div>
 
       <!-- Path Planning -->
-      <div class="project-card" data-aos="fade-up" data-date="Apr '19">
+      <div class="project-card" data-aos="fade-up" data-date="Dec '15 - May '16">
         <div class="project-card__img"><img src="images/portfolio/turt.jpg" alt="Path Planning"></div>
         <div class="project-card__info">
           <h3 class="project-card__title">Path Planning | Exploration</h3>
-          <p class="project-card__cat">Multi-Agent exploration in Turtlebots</p>
+          <p class="project-card__cat">This project focused on the development and ...</p>
         </div>
         <div class="project-card__detail" style="display:none">
-          <p>Comparative analysis of path planning and multi-agent exploration algorithms. Simulations on 50+ grid maps
-            (50×50). Experiments with <a href="https://www.turtlebot.com/turtlebot2/">Turtlebots</a> across 10
-            environments.</p>
+          <p>
+            This project focused on the development and large-scale evaluation of autonomous path planning and
+            multi-robot exploration algorithms using <a href="https://www.turtlebot.com/turtlebot2/">Turtlebot</a>
+            platforms within the <a href="www.ros.org/">ROS</a> ecosystem. I designed and implemented a complete
+            navigation stack, including global and local planning components, enabling reliable autonomous exploration
+            and waypoint navigation across structured and unknown environments.</p>
+          <img class="project-card__gallery-img" src="images/portfolio/gallery/g-turt.jpg" alt="Path Planning">
+          <p>To support algorithmic evaluation at scale, I developed a Python-based multi-robot simulator for autonomous
+            exploration and path planning, enabling rapid prototyping and benchmarking of multi-agent coordination
+            strategies. The project, sponsored by the Defence Research and Development Organisation(DRDO), involved
+            high-fidelity simulation of multi-robot exploration in Gazebo, bridging theoretical planning methods with
+            realistic robotic constraints.</p>
+
+          <p>I conducted a comparative analysis of classical and multi-agent exploration algorithms across more than 50
+            grid maps (50×50 resolution) and validated performance experimentally using TurtleBots across 10 physical
+            and simulated environments. The work provided quantitative insights into exploration efficiency,
+            scalability, coordination overhead, and convergence behavior, contributing to a reproducible evaluation
+            framework for decentralized and cooperative robotic navigation strategies.
+          </p>
           <div class="project-card__links">
             <a href="https://github.com/sahibdhanjal/Path-Planning-Simulator" target="_blank">Code</a>
             <a href="projects/path planning simulator/index.html" target="_blank">Demo</a>
