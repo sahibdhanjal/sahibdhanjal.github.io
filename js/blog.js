@@ -113,30 +113,26 @@
     if (totalPages <= 1) return;
 
     var html = '<div class="blog-pagination">';
-
-    if (currentPage > 1) {
-      html += '<a href="javascript:void(0)" class="blog-pagination__btn" id="blog-prev">&larr; Newer</a>';
-    }
-
+    html += '<a href="javascript:void(0)" class="blog-pagination__btn' + (currentPage === 1 ? ' disabled' : '') + '" id="blog-prev">&larr; Prev</a>';
     html += '<span class="blog-pagination__info">' + currentPage + ' / ' + totalPages + '</span>';
-
-    if (currentPage < totalPages) {
-      html += '<a href="javascript:void(0)" class="blog-pagination__btn" id="blog-next">Older &rarr;</a>';
-    }
-
+    html += '<a href="javascript:void(0)" class="blog-pagination__btn' + (currentPage === totalPages ? ' disabled' : '') + '" id="blog-next">Next &rarr;</a>';
     html += '</div>';
     $pagination.html(html);
 
     $("#blog-prev").on("click", function () {
-      currentPage--;
-      renderBlog();
-      $("html, body").animate({ scrollTop: $("#blog").offset().top - 60 }, 400);
+      if (currentPage > 1) {
+        currentPage--;
+        renderBlog();
+        $("html, body").animate({ scrollTop: $("#blog").offset().top - 96 }, 400);
+      }
     });
 
     $("#blog-next").on("click", function () {
-      currentPage++;
-      renderBlog();
-      $("html, body").animate({ scrollTop: $("#blog").offset().top - 60 }, 400);
+      if (currentPage < totalPages) {
+        currentPage++;
+        renderBlog();
+        $("html, body").animate({ scrollTop: $("#blog").offset().top - 96 }, 400);
+      }
     });
   }
 
