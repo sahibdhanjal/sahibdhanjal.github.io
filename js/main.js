@@ -102,11 +102,14 @@
     // open overlay on card click
     $(document).on('click', '.project-card', function () {
       var $card = $(this);
-      var imgSrc = $card.find('.project-card__img img').attr('src');
       var title = $card.find('.project-card__title').text();
       var descHtml = $card.find('.project-card__detail').html();
 
       var $desc = $('<div>').html(descHtml);
+
+      // hide the fixed overlay image — images now render inline in the description
+      $overlay.find('.project-overlay__img-wrap').hide();
+
       // extract link buttons into their own area
       var $links = $desc.find('.project-card__links a');
       var linksArr = [];
@@ -119,10 +122,9 @@
       var linksHtml = linksArr.join(' | ');
       $desc.find('.project-card__links').remove();
 
-      $overlay.find('.project-overlay__img').attr('src', imgSrc);
       $overlay.find('.project-overlay__title').text(title);
       $overlay.find('.project-overlay__desc').html($desc.html());
-      $overlay.find('.project-overlay__date').text("Feb'26");
+      $overlay.find('.project-overlay__date').text($card.data('date') || '');
 
       var $linkRow = $('#proj-link-row');
       if (linksArr.length > 0) {

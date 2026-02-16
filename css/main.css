@@ -2637,6 +2637,14 @@ a:hover .icon-external {
   color: rgba(255, 255, 255, 0.85);
 }
 
+.project-overlay__desc img {
+  width: 100%;
+  max-width: 1000px;
+  border-radius: 10px;
+  display: block;
+  margin: 2rem 0;
+}
+
 .project-overlay__desc a {
   color: #cc9900;
   text-decoration: none;
