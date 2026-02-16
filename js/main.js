@@ -79,14 +79,12 @@
       $('#proj-prev').on('click', function () {
         if (currentPage > 1) {
           showPage(currentPage - 1);
-          $('html, body').animate({ scrollTop: $('#projects').offset().top - 96 }, 400);
         }
       });
       $('#proj-next').on('click', function () {
         var totalPages = Math.ceil($cards.length / ITEMS_PER_PAGE);
         if (currentPage < totalPages) {
           showPage(currentPage + 1);
-          $('html, body').animate({ scrollTop: $('#projects').offset().top - 96 }, 400);
         }
       });
     }
@@ -109,7 +107,7 @@
         var $link = $(this);
         var text = $link.text().trim();
         var href = $link.attr('href');
-        linksArr.push('<a href="' + href + '" target="_blank">' + text + ' <span class="project-overlay__link-arrow">→</span></a>');
+        linksArr.push('<a href="' + href + '" target="_blank">' + text + ' <img src="https://cdn.prod.website-files.com/63dcb6e1a80e9454b630f4c4/63e0b50ea0956f4526968ef1_23-icon-external.svg" loading="lazy" alt="" class="icon-external"></a>');
       });
       var linksHtml = linksArr.join(' | ');
       $desc.find('.project-card__links').remove();
@@ -170,6 +168,20 @@
   };
 
 
+  /* Header Scroll Toggle
+   * ------------------------------------------------------ */
+  var clHeaderScroll = function () {
+    var $header = $('.s-header');
+    $WIN.on('scroll', function () {
+      if ($WIN.scrollTop() > 50) {
+        $header.addClass('scrolled');
+      } else {
+        $header.removeClass('scrolled');
+      }
+    });
+  };
+
+
   /* Smooth Scroll for nav links
    * ------------------------------------------------------ */
   var clSmoothScroll = function () {
@@ -178,7 +190,7 @@
       if (target.length) {
         e.preventDefault();
         $('html, body').stop().animate({
-          scrollTop: target.offset().top - 96
+          scrollTop: target.offset().top
         }, cfg.scrollDuration, 'swing');
       }
     });
@@ -192,6 +204,7 @@
     clProjectOverlay();
     clAOS();
     clSmoothScroll();
+    clHeaderScroll();
   })();
 
 })(jQuery);

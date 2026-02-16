@@ -123,7 +123,6 @@
       if (currentPage > 1) {
         currentPage--;
         renderBlog();
-        $("html, body").animate({ scrollTop: $("#blog").offset().top - 96 }, 400);
       }
     });
 
@@ -131,7 +130,6 @@
       if (currentPage < totalPages) {
         currentPage++;
         renderBlog();
-        $("html, body").animate({ scrollTop: $("#blog").offset().top - 96 }, 400);
       }
     });
   }
