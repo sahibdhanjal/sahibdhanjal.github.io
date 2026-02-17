@@ -5718,7 +5718,9 @@ a:hover .icon-external {
   width: 100%;
   height: 100%;
   border: 0;
-}/* Resume Overlay Styles */
+}
+
+/* Resume Overlay Styles */
 #resume-overlay {
   display: none;
   /* Hidden by default */
@@ -5818,7 +5820,9 @@ a:hover .icon-external {
     height: 35px;
     font-size: 20px;
   }
-}/* About Me Section Styles */
+}
+
+/* About Me Section Styles */
 #about {
   background-color: #000;
   /* Deep black background as requested */
