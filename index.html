@@ -205,7 +205,7 @@
         <div class="project-card__img"><img src="images/portfolio/swarm.jpg" alt="Swarm Mapping"></div>
         <div class="project-card__info">
           <h3 class="project-card__title">Swarm Mapping and Control</h3>
-          <p class="project-card__cat">Aerial and Ground Robot Swarm</p>
+          <p class="project-card__cat">Autonomous Aerial and Ground Robot Swarm</p>
         </div>
         <div class="project-card__detail" style="display:none">
           <p>This was one of the more interesting robotics projects I worked on, in collaboration with <a
@@ -251,7 +251,7 @@
         <div class="project-card__img"><img src="images/portfolio/wifi.jpg" alt="Radio Localization"></div>
         <div class="project-card__info">
           <h3 class="project-card__title">Visual-Radio-Inertial Localization</h3>
-          <p class="project-card__cat">Indoor Positioning System based on WiFi</p>
+          <p class="project-card__cat">WiFi based Indoor Positioning System</p>
         </div>
         <div class="project-card__detail" style="display:none">
           <p>
@@ -280,7 +280,7 @@
           <img class="project-card__gallery-img"
             src="https://github.com/sahibdhanjal/DeepLocNet/raw/matlab/assets/FSwC.gif" alt="Radio Localization">
           <div class="project-card__links">
-            <a href="https://github.com/sahibdhanjal/DeepLocNet" target="_blank">Code</a>
+            <a href="https://github.com/sahibdhanjal/DeepLocNet" target="_blank">Github</a>
             <a href="https://arxiv.org/abs/2002.00484" target="_blank">Paper</a>
           </div>
         </div>
@@ -290,7 +290,7 @@
       <div class="project-card" data-aos="fade-up" data-date="Jul '18 - Sep '18">
         <div class="project-card__img"><img src="images/portfolio/arcontrol.jpg" alt="AR Control"></div>
         <div class="project-card__info">
-          <h3 class="project-card__title">Unsupervised Learning — AR</h3>
+          <h3 class="project-card__title">AR Based Task Tracking Drone</h3>
           <p class="project-card__cat">Unsupervised Learning based on GMM</p>
         </div>
         <div class="project-card__detail" style="display:none">
@@ -319,7 +319,7 @@
             refer to the paper we published with are findings in it.
           </p>
           <div class="project-card__links">
-            <a href="https://github.com/sahibdhanjal/AR-unsupervised-learning" target="_blank">Code</a>
+            <a href="https://github.com/sahibdhanjal/AR-unsupervised-learning" target="_blank">Github</a>
             <a href="https://ieeexplore.ieee.org/document/8793587" target="_blank">Paper</a>
           </div>
         </div>
@@ -330,7 +330,7 @@
         <div class="project-card__img"><img src="images/portfolio/balance.jpg" alt="Balance Bot"></div>
         <div class="project-card__info">
           <h3 class="project-card__title">Autonomous Balance Bot</h3>
-          <p class="project-card__cat">Self Balancing two-wheeled bot</p>
+          <p class="project-card__cat">Self Balancing Two-Wheeled Bot</p>
         </div>
 
         <div class="project-card__detail" style="display:none">
@@ -361,7 +361,7 @@
         <div class="project-card__img"><img src="images/portfolio/posenet.jpg" alt="PoseNet++"></div>
         <div class="project-card__info">
           <h3 class="project-card__title">PoseNet++</h3>
-          <p class="project-card__cat">Deep Learning in SLAM</p>
+          <p class="project-card__cat">Deep Learning for SLAM</p>
         </div>
         <div class="project-card__detail" style="display:none">
           <p>In this project, I developed an online deep-learning framework for automatic data labeling of mobile camera
@@ -422,12 +422,31 @@
           <p class="project-card__cat">Mask R-CNN based Pedestrian Tracking</p>
         </div>
         <div class="project-card__detail" style="display:none">
-          <p><a href="https://github.com/matterport/Mask_RCNN">Mask R-CNN</a> for pedestrian detection. Dense optical
-            flow via <a href="http://www.diva-portal.org/smash/get/diva2:273847/FULLTEXT01.pdf">Farneback's
-              algorithm</a>, tracked with a particle filter.</p>
+          <p>
+            Pedestrian tracking is a long standing problem and multiple ways of tracking them accurately have already
+            been developed. The problem comes in when pedestrians are occluded or when there are multiple pedestrians
+            in the scene. In this project, I developed a pedestrian detection and tracking system that combines
+            deep learning–based instance segmentation with probabilistic multi-target tracking using a particle filter.
+            A pre-trained <a href="https://github.com/matterport/Mask_RCNN">Mask R-CNN</a> was modified to only capture
+            and segment pedestrians at the pixel level allowing for precise localization even in partially occluded or
+            crowded scenes.
+          </p>
           <img class="project-card__gallery-img" src="images/portfolio/gallery/g-ped.jpg" alt="Pedestrian Tracking">
+
+          <p>
+            We integrated a <a
+              href="https://web.stanford.edu/~blange/data/Probability%20Hypothesis%20Density%20Filter%20Implementation%20and%20Application.pdf">Probability
+              Hypothesis Density (PHD) filter</a> with dense optical flow, and image segmentation cues to enable
+            reliable multi-target tracking without requiring explicit data association for every object, while optical
+            flow captured short-term motion dynamics between consecutive frames. By fusing motion information with
+            segmentation outputs, the system was able to estimate and update the trajectories of multiple pedestrians
+            simultaneously, even when they crossed paths or experienced temporary occlusion. The pipeline was evaluated
+            on the <a href="https://www.cityscapes-dataset.com/">Cityscapes</a> and <a
+              href="https://www.kaggle.com/datasets/solesensei/solesensei_bdd100k">Berkeley BDD100K</a> datasets, where
+            it demonstrated strong performance in low to medium-cluttered urban scenes.
+          </p>
           <div class="project-card__links">
-            <a href="https://github.com/sahibdhanjal/Mask-RCNN-Pedestrian-Detection" target="_blank">Code</a>
+            <a href="https://github.com/sahibdhanjal/Mask-RCNN-Pedestrian-Detection" target="_blank">Github</a>
           </div>
         </div>
       </div>
@@ -471,70 +490,27 @@
       <div class="project-card" data-aos="fade-up" data-date="Oct '17 - Dec '17">
         <div class="project-card__img"><img src="images/portfolio/slam.jpg" alt="SLAM"></div>
         <div class="project-card__info">
-          <h3 class="project-card__title">Simultaneous Localization &amp; Mapping</h3>
+          <h3 class="project-card__title">Simultaneous Localization & Mapping</h3>
           <p class="project-card__cat">Particle Filter based SLAM</p>
         </div>
         <div class="project-card__detail" style="display:none">
-          <p>Particle filter SLAM on a differential drive robot with Scanse Lidar. Occupancy grid mapping and <a
-              href="http://robotfrontier.com/">Yamauchi's exploration</a> on <a
-              href="https://www.raspberrypi.org/">Raspberry Pi 3</a> and <a
-              href="https://beagleboard.org/black">BeagleBone Black</a>.</p>
+          <p>
+            This was another one of those amazing projects which the curriculum at Michigan had to offer. We were
+            given a simple differential drive mobile robot with all the drivers already implemented. The only thing
+            we had to implement was particle filter based SLAM on it using a <a
+              href="https://www.servomagazine.com/magazine/article/the-multi-rotor-hobbyist-scanse-sweep-3d-scanner-review">Scanse
+              Sweep Lidar</a>. To enable this, I implemented the occupancy grid map as well as the particle filter
+            localization algorithm on a <a href="https://www.raspberrypi.org/">Raspberry Pi 3</a>.
+          </p>
           <img class="project-card__gallery-img" src="images/portfolio/gallery/g-slam.jpg" alt="SLAM">
-          <div class="project-card__links">
-            <a href="https://github.com/sahibdhanjal/SLAM/blob/master/BotLab%20Report.pdf" target="_blank">Code</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Kinematics Simulator -->
-      <div class="project-card" data-aos="fade-up" data-date="Sep '17 - Dec '17">
-        <div class="project-card__img"><img src="images/portfolio/kinsim.jpg" alt="Kinematics Simulator"></div>
-        <div class="project-card__info">
-          <h3 class="project-card__title">Robot Kinematics Simulator</h3>
-          <p class="project-card__cat">Javascript based Kinematic Simulator</p>
-        </div>
-        <div class="project-card__detail" style="display:none">
-          <img class="project-card__gallery-img" src="images/portfolio/gallery/g-kinsim.jpg" alt="Kinematics Simulator">
-          <p>Web-based simulator interfacing with ROS. Parses URDFs for forward/inverse kinematics, object following,
-            and RRT-Connect trajectory planning. Built for <a href="https://autorob.github.io/">Autonomous Robotics</a>.
+          <p>
+            We also implemented <a href="http://robotfrontier.com/">Yamauchi's exploration</a> method on the secondary
+            computer, a <a href="https://beagleboard.org/black">BeagleBone Black</a>. This enabled the robot to freely
+            explore and map out an entire room without any manual intervention.
           </p>
           <div class="project-card__links">
-            <a href="https://github.com/sahibdhanjal/Robot-Kinematic-Simulator" target="_blank">Code</a>
-            <a href="projects/kinematic simulator/home.html" target="_blank">Demo</a>
+            <a href="https://github.com/sahibdhanjal/SLAM/blob/master/BotLab%20Report.pdf" target="_blank">Github</a>
           </div>
-        </div>
-      </div>
-
-      <!-- Pendulum Simulations -->
-      <div class="project-card" data-aos="fade-up" data-date="Sep '17 - Dec '17">
-        <div class="project-card__img"><img src="images/portfolio/pend.jpg" alt="Pendulum Simulations"></div>
-        <div class="project-card__info">
-          <h3 class="project-card__title">Game Physics — Pendulums</h3>
-          <p class="project-card__cat">Single, Double and Cart Pole Pendulums</p>
-        </div>
-        <div class="project-card__detail" style="display:none">
-          <p>PID control with Euler, Verlet, Velocity Verlet, and Runge-Kutta (RK4) integrators.</p>
-          <img class="project-card__gallery-img" src="images/portfolio/gallery/g-pend.jpg" alt="Pendulum Simulations">
-          <div class="project-card__links">
-            <a href="projects/pendulum/pendularm1.html" target="_blank">Demo-1</a>
-            <a href="projects/pendulum/pendularm2.html" target="_blank">Demo-2</a>
-            <a href="projects/pendulum/cartpole.html" target="_blank">Demo-3</a>
-          </div>
-        </div>
-      </div>
-
-
-      <!-- Vision Robotic Arm -->
-      <div class="project-card" data-aos="fade-up" data-date="Sep '17 - Dec '17">
-        <div class="project-card__img"><img src="images/portfolio/aarm.jpg" alt="Autonomous Arm"></div>
-        <div class="project-card__info">
-          <h3 class="project-card__title">Vision Based Autonomous Arm</h3>
-          <p class="project-card__cat">Autonomous Robotic Arm via visual cues</p>
-        </div>
-        <div class="project-card__detail" style="display:none">
-          <p>RRR:R dynamixel arm with <a href="https://www.xbox.com/en-US/xbox-one/accessories/kinect">Microsoft
-              Kinect</a>. Detects colored cubes via depth maps and spline-based trajectory planning.</p>
-          <img class="project-card__gallery-img" src="images/portfolio/gallery/g-aarm.jpg" alt="Autonomous Arm">
         </div>
       </div>
 
@@ -552,12 +528,17 @@
             platforms within the <a href="www.ros.org/">ROS</a> ecosystem. I designed and implemented a complete
             navigation stack, including global and local planning components, enabling reliable autonomous exploration
             and waypoint navigation across structured and unknown environments.</p>
-          <img class="project-card__gallery-img" src="images/portfolio/gallery/g-turt.jpg" alt="Path Planning">
-          <p>To support algorithmic evaluation at scale, I developed a Python-based multi-robot simulator for autonomous
-            exploration and path planning, enabling rapid prototyping and benchmarking of multi-agent coordination
-            strategies. The project, sponsored by the Defence Research and Development Organisation(DRDO), involved
-            high-fidelity simulation of multi-robot exploration in Gazebo, bridging theoretical planning methods with
-            realistic robotic constraints.</p>
+
+          <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/NOwfoaqi4M8?si=1aX3V4VqMFkeblO-" width="640" height="360"
+              frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+          </div>
+
+          <p>To support algorithmic evaluation at scale, I also developed a Python-based multi-robot simulator for
+            autonomous exploration and path planning, enabling rapid prototyping and benchmarking of multi-agent
+            coordination strategies. The project, sponsored by the Defence Research and Development Organisation(DRDO),
+            involved high-fidelity simulation of multi-robot exploration in Gazebo, bridging theoretical planning
+            methods with realistic robotic constraints.</p>
 
           <p>I conducted a comparative analysis of classical and multi-agent exploration algorithms across more than 50
             grid maps (50×50 resolution) and validated performance experimentally using TurtleBots across 10 physical
@@ -572,17 +553,83 @@
         </div>
       </div>
 
-      <!-- White Board Cleaner -->
-      <div class="project-card" data-aos="fade-up" data-date="May '15 - Jun '15">
-        <div class="project-card__img"><img src="images/portfolio/warm.jpg" alt="Whiteboard Cleaner"></div>
+      <!-- Kinematics Simulator -->
+      <div class="project-card" data-aos="fade-up" data-date="Sep '17 - Dec '17">
+        <div class="project-card__img"><img src="images/portfolio/kinsim.jpg" alt="Kinematics Simulator"></div>
         <div class="project-card__info">
-          <h3 class="project-card__title">Portable White Board Cleaner</h3>
-          <p class="project-card__cat">Arduino-powered RR:PR manipulator</p>
+          <h3 class="project-card__title">Robot Kinematics Simulator</h3>
+          <p class="project-card__cat">Javascript based Kinematic Simulator</p>
         </div>
         <div class="project-card__detail" style="display:none">
-          <p>Portable whiteboard cleaner (RR:PR manipulator) for boards up to 4'×6'. Arduino UNO + 4 servos. Presented
-            at <a href="https://upcon15.iiita.ac.in/">IEEE UPCON'15</a>.</p>
-          <img class="project-card__gallery-img" src="images/portfolio/gallery/g-warm.jpg" alt="Whiteboard Cleaner">
+          <img class="project-card__gallery-img" src="images/portfolio/gallery/g-kinsim.jpg" alt="Kinematics Simulator">
+          <p>
+            This project was part of one of the courses I'd taken - <a href="https://autorob.github.io/">Autonomous
+              Robotics</a>. As a part of this project, I developed a web-based simulator which was capable of
+            interfacing with ROS and actually control a Fetch Robot. The project involved me implementing parsers for
+            URDFs to create robots models in 3D, forward/inverse kinematics, object following, as well as trajectory
+            planning algorithms based on Rapidly-Exploring Random Trees (RRT). You should definitely checkout the Demo
+            to play around with the 3D model and see it in action!
+          </p>
+          <div class="project-card__links">
+            <a href="https://github.com/sahibdhanjal/Robot-Kinematic-Simulator" target="_blank">Github</a>
+            <a href="projects/kinematic simulator/home.html" target="_blank">Demo</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Formula SAE -->
+      <div class="project-card" data-aos="fade-up" data-date="Oct '12 - Dec '14">
+        <div class="project-card__img"><img src="images/portfolio/fs.jpg" alt="Formula SAE"></div>
+        <div class="project-card__info">
+          <h3 class="project-card__title">Formula SAE 🇮🇹</h3>
+          <p class="project-card__cat">Vehicle Dynamics for Sports Cars</p>
+        </div>
+        <div class="project-card__detail" style="display:none">
+          <p>
+            One of my favorite projects at BITS, Pilani - I was a part of the Formula SAE team where I led the
+            design and development of the physics of a double wishbone push-rod suspension, made multiple weight
+            optimizations to the bell-crank as well as optimized the suspension dynamics to enable maximal cornering
+            control at high speeds and capable of bearing upto 2g in lateral force. I was fortunate enough to
+            represent our team at <a href="https://www.sae.org/attend/student-events/">FSAE Italy '14</a>, where we
+            ranked 4th / 46 international teams in design. Unfortunately, our vehicle was broken during transportation
+            so we couldn't participate in any of the dynamic events. Since I was also a part of the marketing and
+            sponsorship team, I also created multiple marketing materials and brought in multiple investors for our
+            initiative. You'd get an idea of how passionate we were about this project, just look at the video!
+          </p>
+          <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/A1FeSceSzeU?si=2MmwVWs7AoE6mhMq" width="640" height="360"
+              frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <div class="project-card__links">
+            <a href="https://www.facebook.com/inspiredkarters/" target="_blank">Link</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pendulum Simulations -->
+      <div class="project-card" data-aos="fade-up" data-date="Sep '17 - Dec '17">
+        <div class="project-card__img"><img src="images/portfolio/pend.jpg" alt="Pendulum Simulations"></div>
+        <div class="project-card__info">
+          <h3 class="project-card__title">Game Physics Simulations</h3>
+          <p class="project-card__cat">Single, Double and Cart Pole Pendulums</p>
+        </div>
+        <div class="project-card__detail" style="display:none">
+          <p>
+            This project was a primer to the kinematics simulator, a part of the course - <a
+              href="https://autorob.github.io/">Autonomous
+              Robotics</a>. In this project, I developed multiple web-based simulators for single, double and cart-poles
+            to test out control algorithms. Some of the control algorithms I implemented were PID control based on:
+            Euler, Verlet, Velocity Verlet and Runge-Kutta 4th order integration methods. This project was basically my
+            primary exposure to control theory and numerical methods, setting me up to work on significantly complex
+            projects across autonomous robotics and manipulators. Definitely check out the linked demos to see the
+            control algorithms in action! These one-pager websites primarily work using JavaScript and HTML5 Canvas.
+          </p>
+          <img class="project-card__gallery-img" src="images/portfolio/gallery/g-pend.jpg" alt="Pendulum Simulations">
+          <div class="project-card__links">
+            <a href="projects/pendulum/pendularm1.html" target="_blank">Single Pendulum</a>
+            <a href="projects/pendulum/pendularm2.html" target="_blank">Double Pendulum</a>
+            <a href="projects/pendulum/cartpole.html" target="_blank">Cart Pole</a>
+          </div>
         </div>
       </div>
 
@@ -591,7 +638,7 @@
         <div class="project-card__img"><img src="images/portfolio/sense.jpg" alt="Sense"></div>
         <div class="project-card__info">
           <h3 class="project-card__title">Sense</h3>
-          <p class="project-card__cat">Android app serving sensor data via web</p>
+          <p class="project-card__cat">App Streaming Sensor Data via WebSockets</p>
         </div>
         <div class="project-card__detail" style="display:none">
           <p>
@@ -609,34 +656,71 @@
         </div>
       </div>
 
+      <!-- Vision Robotic Arm -->
+      <div class="project-card" data-aos="fade-up" data-date="Sep '17 - Dec '17">
+        <div class="project-card__img"><img src="images/portfolio/aarm.jpg" alt="Autonomous Arm"></div>
+        <div class="project-card__info">
+          <h3 class="project-card__title">Vision Based Autonomous Arm</h3>
+          <p class="project-card__cat">Microsoft Kinect + Robot Arm</p>
+        </div>
+        <div class="project-card__detail" style="display:none">
+          <p>
+            Another project as part of my robotics curriculum, in this project we were tasked with designing and
+            programming a robotic arm capable of detecting colored cubes, picking them up and stacking them in a
+            specific order. As part of a three-person team, I designed the mechanical structure for the RRR:R dynamixel
+            arm in SolidWorks, 3D printed it, and assembled it with the motors and electronics. The arm was controlled
+            using a Raspberry Pi and a Python script was implemented which interfaced with the Dynamixel Motors and
+            <a href="https://www.xbox.com/en-US/xbox-one/accessories/kinect">Microsoft
+              Kinect</a> to detect colored cubes via depth maps and plan trajectories using splines. I implemented the
+            forward/inverse kinematics for this arm, whereas my team mates worked on block detection and trajectory
+            planning.
+          </p>
+          <img class="project-card__gallery-img" src="images/portfolio/gallery/g-aarm.jpg" alt="Autonomous Arm">
+        </div>
+      </div>
+
+
+
       <!-- Gesture Arm -->
       <div class="project-card" data-aos="fade-up" data-date="Oct '14 - Dec '14">
         <div class="project-card__img"><img src="images/portfolio/garm.jpg" alt="Gesture Arm"></div>
         <div class="project-card__info">
           <h3 class="project-card__title">Gesture Controlled Robotic Arm</h3>
-          <p class="project-card__cat">Arduino and XBee based</p>
+          <p class="project-card__cat">Arduino and XBee Based Robot Arm</p>
         </div>
         <div class="project-card__detail" style="display:none">
-          <p>Under <a href="https://scholar.google.co.in/citations?user=rwWOPY8AAAAJ&hl=en">Dr. R.K.Mittal</a>. Arduino
-            UNOs, MPU 6050 IMUs, XBee wireless. Processing app for slider control. 2m workspace, 500g payload.</p>
+          <p>
+            Another one of my undergrad projects, where I worked on designing and developing a gesture controlled
+            robotic arm under the guidance of <a
+              href="https://scholar.google.co.in/citations?user=rwWOPY8AAAAJ&hl=en">Dr.
+              R.K.Mittal</a>. I used two MPU 6050s, fixed on a glove to estimate the motion of the user's hand. This
+            was coupled with XBees and an Arduino UNO for wireless commnuication with the main laptop, which basically
+            enabled the robotic arm to mimic the users hand gestures. The robotic arm was large enough to completely
+            span a 2ft hemispherical workspace, with a 500g payload.
+          </p>
           <img class="project-card__gallery-img" src="images/portfolio/gallery/g-garm.jpg" alt="Gesture Arm">
         </div>
       </div>
 
-      <!-- Formula SAE -->
-      <div class="project-card" data-aos="fade-up" data-date="Oct '12 - Dec '14">
-        <div class="project-card__img"><img src="images/portfolio/fs.jpg" alt="Formula SAE"></div>
+
+      <!-- White Board Cleaner -->
+      <div class="project-card" data-aos="fade-up" data-date="May '15 - Jun '15">
+        <div class="project-card__img"><img src="images/portfolio/warm.jpg" alt="Whiteboard Cleaner"></div>
         <div class="project-card__info">
-          <h3 class="project-card__title">Formula SAE Italy</h3>
-          <p class="project-card__cat">Formula Prototype Competition</p>
+          <h3 class="project-card__title">Portable WhiteBoard Cleaner</h3>
+          <p class="project-card__cat">Arduino-Powered Manipulator</p>
         </div>
         <div class="project-card__detail" style="display:none">
-          <p>BITS Pilani at <a href="https://www.sae.org/attend/student-events/">FSAE Italy '14</a>, ranked 14th/46 in
-            design. Double wishbone push-rod suspension, bell-crank optimization, and suspension dynamics calculations.
-          </p>
-          <img class="project-card__gallery-img" src="images/portfolio/gallery/g-fs.jpg" alt="Formula SAE">
+          <p>
+            This was my very first introduction to robotics so it really is close to my heart. In this summer
+            internship, I worked with <a href="https://scholar.google.com/citations?user=gW4Q_7UAAAAJ&hl=en">Dr. D.K.
+              Pratihar</a> from IIT Kharagpur, designing and developing a portable whiteboard cleaner (RR:PR
+            manipulator) for white/black boards up to 4'×6'. I worked on chip design, fabrication as well as programming
+            the servo motors to automatically clean the entire board. I also presented a whitepaper of this work
+            at <a href="https://upcon15.iiita.ac.in/">IEEE UPCON'15</a>.</p>
+          <img class="project-card__gallery-img" src="images/portfolio/gallery/g-warm.jpg" alt="Whiteboard Cleaner">
           <div class="project-card__links">
-            <a href="https://www.facebook.com/inspiredkarters/" target="_blank">Link</a>
+            <a href="https://ieeexplore.ieee.org/abstract/document/7456702" target="_blank">Paper</a>
           </div>
         </div>
       </div>
