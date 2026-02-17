@@ -48,7 +48,9 @@
 }
 
 .btn-pill {
-  display: inline-block;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   padding: 1.2rem 2.5rem;
   border-radius: 50px;
   /* Pill shape */
@@ -57,6 +59,8 @@
   font-size: 1.6rem;
   transition: all 0.3s ease;
   font-family: "Inter", sans-serif;
+  line-height: 1.2;
+  /* Explicit line height */
 }
 
 .btn-primary {
@@ -67,18 +71,19 @@
 
 .btn-primary:hover {
   background-color: transparent;
-  color: #fff;
+  color: #fff !important;
 }
 
 .btn-secondary {
   background-color: transparent;
   color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
 .btn-secondary:hover {
   background-color: rgba(255, 255, 255, 0.1);
   border-color: #fff;
+  color: #fff !important;
 }
 
 .about-right {
