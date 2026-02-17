@@ -5718,4 +5718,240 @@ a:hover .icon-external {
   width: 100%;
   height: 100%;
   border: 0;
+}/* Resume Overlay Styles */
+#resume-overlay {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Glassmorphism effect: Dark semi-transparent background with blur */
+  background-color: rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  z-index: 9999;
+  /* Ensure it's on top of everything */
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+#resume-overlay.active {
+  display: flex;
+  /* Show when active */
+  opacity: 1;
+}
+
+/* Close button style */
+.close-btn {
+  position: absolute;
+  top: 25px;
+  right: 35px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 24px;
+  font-weight: 300;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  z-index: 10001;
+  /* Above the iframe */
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.close-btn:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  transform: rotate(90deg);
+}
+
+/* Container for the resume iframe */
+.resume-container {
+  width: 80%;
+  height: 90%;
+  /* Transparent or minimal container to let the PDF stand out */
+  background: transparent;
+  position: relative;
+  border-radius: 12px;
+  /* Soft shadow for depth */
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+.resume-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 12px;
+  background-color: white;
+  /* Ensure PDF has a white background if transparent */
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 800px) {
+  .resume-container {
+    width: 90%;
+    height: 80%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .resume-container {
+    width: 95%;
+    height: 85%;
+  }
+
+  .close-btn {
+    top: 15px;
+    right: 15px;
+    width: 35px;
+    height: 35px;
+    font-size: 20px;
+  }
+}/* About Me Section Styles */
+#about {
+  background-color: #000;
+  /* Deep black background as requested */
+  color: #fff;
+  padding: 8rem 0;
+  position: relative;
+}
+
+.about-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  /* Limit width for large screens */
+  margin: 0 auto;
+  padding: 0 2rem;
+  gap: 4rem;
+}
+
+.about-left {
+  flex: 1;
+  max-width: 600px;
+}
+
+.about-title {
+  font-size: 4rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: #fff;
+  font-family: "Inter", sans-serif;
+  /* Clean sans-serif font */
+}
+
+.about-desc {
+  font-size: 1.8rem;
+  /* Readable font size */
+  line-height: 1.6;
+  color: #ccc;
+  /* Slightly dimmed text for contrast */
+  margin-bottom: 3rem;
+  font-family: "Inter", sans-serif;
+}
+
+.about-buttons {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.btn-pill {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.2rem 2.5rem;
+  border-radius: 50px;
+  /* Pill shape */
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.6rem;
+  transition: all 0.3s ease;
+  font-family: "Inter", sans-serif;
+  line-height: 1.2;
+  /* Explicit line height */
+}
+
+.btn-primary {
+  background-color: #fff;
+  color: #000;
+  border: 2px solid #fff;
+}
+
+.btn-primary:hover {
+  background-color: transparent;
+  color: #fff !important;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: #fff;
+  color: #fff !important;
+}
+
+.about-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-img-container {
+  width: 350px;
+  height: 350px;
+  /* Square/Rectangle container */
+  border-radius: 20px;
+  /* Soft rounded corners */
+  overflow: hidden;
+  /* Optional: glassmorphism effect around image */
+}
+
+.profile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 900px) {
+  .about-content {
+    flex-direction: column-reverse;
+    /* Image on top on mobile, or bottom? Let's verify preference. Usually text first on mobile is good, or image first. Reference image shows side-by-side. Let's stack vertically. */
+    text-align: left;
+    /* Keep left alignment */
+    gap: 3rem;
+  }
+
+  .about-title {
+    font-size: 3rem;
+  }
+
+  .about-desc {
+    font-size: 1.6rem;
+  }
+
+  .profile-img-container {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    aspect-ratio: 1/1;
+  }
 }
