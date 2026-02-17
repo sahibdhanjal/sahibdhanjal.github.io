@@ -151,28 +151,52 @@
 
     <div class="projects-grid">
 
-      <!-- Sense -->
-      <div class="project-card" data-aos="fade-up" data-date="May '19 - Jul '19">
-        <div class="project-card__img"><img src="images/portfolio/sense.jpg" alt="Sense"></div>
+      <!-- NASA Astronet -->
+      <div class="project-card" data-aos="fade-up" data-date="Apr '18 - May '19">
+        <div class="project-card__img"><img src="images/portfolio/nasa.jpg" alt="NASA Astronet"></div>
         <div class="project-card__info">
-          <h3 class="project-card__title">Sense</h3>
-          <p class="project-card__cat">Android app serving sensor data via web</p>
+          <h3 class="project-card__title">NASA Astronet</h3>
+          <p class="project-card__cat">A Human-Centric Network of Co-Robots</p>
         </div>
         <div class="project-card__detail" style="display:none">
           <p>
-            This was one of my side projects where I wanted to use my old Android phone as a mobile sensor platform,
-            streaming its built-in sensors—GPS, IMU, camera, and more—over a websocket to a web server. It was basically
-            an attempt to repurpose old hardware and start experimenting with robotics, SLAM algorithms, or real-time
-            sensor data without needing expensive equipment which I was generally used to.
+            As a part of the <a href="https://dasc-lab.github.io/">DASC Lab</a>, over the course of 1.5 years, I
+            implemented and scaled multiple optimization-based control and coverage algorithms developed by <a
+              href="https://scholar.google.com/citations?user=e4efxWQAAAAJ&hl=en">Will</a> and
+            <a href="https://scholar.google.com/citations?user=ny1yTusAAAAJ&hl=en">Dr. Dimitra Panagou</a>,
+            translating theoretical guarantees into a deployable and simulation-validated system. <a
+              href="https://www.nasa.gov/directorates/spacetech/strg/ecf2016/AstroNet.html">AstroNet</a> was one such
+            research initiative focused on enabling autonomous coverage and discrete navigation strategies for NASA’s
+            free-flying <a href="https://www.nasa.gov/astrobee">Astrobee</a> robots operating aboard the ISS, with the
+            goal of reducing reliance on human teleoperation.
           </p>
-          <img class="project-card__gallery-img" src="images/portfolio/gallery/g-sense.jpg" alt="Sense">
+
+          <!-- Embed Video here instead of image -->
+          <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/hkFtmTng5Wo?si=HYrI0QJOKNnxbLEI" width="640" height="360"
+              frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+          </div>
 
           <p>
-            Alongside the app, I also made it <a href="www.ros.org/">ROS</a> compatible making it easier to subscribe
-            to sensor topics and integrate the phone’s data into the SLAM algorithms I was playing around with. I also
-            intentionally made it modular so as to include more sensors / custom processing in the future.
+            As can be seen in the embedded video, in this project I primarily focused on building a high-fidelity ISS
+            simulation environment using <a href="http://wiki.ros.org/">ROS</a> and <a
+              href="https://gazebosim.org/home">Gazebo</a> to evaluate coverage strategies under realistic microgravity
+            dynamics and sensing constraints. This included developing an optimized real-time control pipeline capable
+            of executing discrete coverage policies within the ROS ecosystem while maintaining stable closed-loop
+            behavior.
           </p>
 
+          <p>
+            To support end-to-end evaluation, I designed a distributed architecture integrating MATLAB (core control and
+            coverage algorithms), ROS (middleware), Gazebo (physics simulation), and an immersive VR visualization
+            interface via an <a href="https://www.oculus.com/rift/">Oculus Rift</a>. This framework enabled closed-loop
+            validation of guidance, navigation, and control (GNC) strategies prior to hardware deployment, significantly
+            improving experimental throughput and reproducibility.
+          </p>
+
+          <div class="project-card__links">
+            <a href="https://github.com/sahibdhanjal/NASA-Astrobee" target="_blank">Github</a>
+          </div>
         </div>
       </div>
 
@@ -191,33 +215,33 @@
               href="https://store.aionrobotics.com/products/r1-ardupilot">Aion R1 rovers</a> for autonomous
             reconnaissance missions using multiple robots. The goal was to get a swarm of heterogeneous robots to work
             together seamlessly—even in unpredictable environments—while avoiding collisions and keeping track of their
-            positions.</p>
-          <img class="project-card__gallery-img" src="images/portfolio/gallery/g-swarm.jpg" alt="Swarm Mapping">
+            positions.
+          </p>
+
+          <!-- Embed Video here instead of CrazyFly Image -->
+          <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/TLIx-w4eX3c?si=K54d36zy_Adxo5EI" width="640" height="360"
+              frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+          </div>
 
           <p>
             My main focus was on multi-robot localization and collision avoidance, helping the drones and rovers
             navigate in sync without stepping on each other’s toes. I was also solely responsible for the system
             architecture as well, where I developed a pub-sub architecture using ROS for this swarm of robots to
             communicate with each other.The project gave me hands-on experience with distributed algorithms, sensor
-            fusion, and resilient swarm coordination. More than just coding robots, it was about designing a system
-            where multiple autonomous agents could think and adapt together, which made the whole swarm feel
-            surprisingly alive.
+            fusion, and resilient swarm coordination. As you can see from the videos attached, we were trying to make
+            the robots follow generic routines such as following a set path or creating a defined shape while the
+            control algorithms were running in real-time. From the embedded videos, you can see how a set of 4 drones,
+            as well as 3 rovers were able to create basic shapes without colliding or running into each other. For the
+            purposes of the shown experiments, localization was done using simple vicon motion-capture systems in indoor
+            environments but using SLAM outdoors using the sensors (lidar + odometry) the rovers were equipped with.
           </p>
-        </div>
-      </div>
 
-      <!-- 3D Bounding Box -->
-      <div class="project-card" data-aos="fade-up" data-date="Oct '18 - Dec '18">
-        <div class="project-card__img"><img src="images/portfolio/gta.jpg" alt="3D Bounding Box"></div>
-        <div class="project-card__info">
-          <h3 class="project-card__title">3D Bounding Box Regression</h3>
-          <p class="project-card__cat">3D Vehicle Detection</p>
-        </div>
-        <div class="project-card__detail" style="display:none">
-          <p>GTA 10k dataset (41 Kaggle teams). Custom 20-layer SE-ResNet + YOLO 3D bounding box regression from <a
-              href="https://arxiv.org/abs/1612.00496">Mousavian et al.</a> Ranked 5th/7th. Accuracy ~73%, centroid MSE
-            ~9.</p>
-          <img class="project-card__gallery-img" src="images/portfolio/gallery/g-gta.jpg" alt="3D Bounding Box">
+          <!-- Embed Video here instead of Rover Image -->
+          <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/EFuOMRC9ebY?si=9T9KmCBpLbrL5d_J" width="640" height="360"
+              frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+          </div>
 
         </div>
       </div>
@@ -230,11 +254,31 @@
           <p class="project-card__cat">Indoor Positioning System based on WiFi</p>
         </div>
         <div class="project-card__detail" style="display:none">
-          <p>Localization for mobile devices in GPS-denied environments. DNN differentiates LOS/NLOS. Experiments with
-            <a href="https://fetchrobotics.com/">Fetch</a> robot (RMSE ~2m). Under <a
-              href="https://www.maanighaffari.com/">Dr. Maani Ghaffari</a>.
+          <p>
+            This project was more attuned to be a masters theses than anything. From the time I learned about SLAM, I
+            wanted to see if robots/devices can locate inside indoor environments using signals from low cost sensors
+            such as WiFi/BLE Beacons which are already installed in most buildings. Working under <a
+              href="https://scholar.google.com/citations?user=l2jdSb8AAAAJ&hl=en">Dr. Maani Ghaffari</a>, I was working
+            on exploring how radio waves, specifically WiFi can be used to accurately locate the 3DOF position of a
+            device inside a GPS denied environment. After much exploration, I was able to create a deep neural network
+            which was able to differentiate between Line-Of-Sight/Non-Line-Of-Sight packets with an accuracy of ~95%.
+            Without this classifier, the robot often lost track of its position in the environment as seen in the
+            illustration below (FastSLAM without classifier).
           </p>
-          <img class="project-card__gallery-img" src="images/portfolio/gallery/g-wifi.jpg" alt="Radio Localization">
+          <img class="project-card__gallery-img"
+            src="https://github.com/sahibdhanjal/DeepLocNet/raw/matlab/assets/FSwoC.gif" alt="Radio Localization">
+          <p>
+            The algorithm was initially developed and tested using the open-source <a
+              href="https://pylayers.github.io/pylayers/">PyLayers</a> simulator. On confirmation that our core
+            algorithm worked, we proceeded to test it out on the <a href="https://fetchrobotics.com/">Fetch</a> robot,
+            using the Friis Free Space model and our classifier to act as a measurment in Fast SLAM, while using the
+            robot's wheel odometry as its positioning model. A variant using particle filter based SLAM was also
+            implemented to evaluate performance. In our experiments, we were able to achieve a remarkably
+            accurate localization with a ~1.6m RMSE in 35m x 170m indoor environment. We can see how the FastSLAM
+            performs when the classifier is used to inform its state in the animation below.
+          </p>
+          <img class="project-card__gallery-img"
+            src="https://github.com/sahibdhanjal/DeepLocNet/raw/matlab/assets/FSwC.gif" alt="Radio Localization">
           <div class="project-card__links">
             <a href="https://github.com/sahibdhanjal/DeepLocNet" target="_blank">Code</a>
             <a href="https://arxiv.org/abs/2002.00484" target="_blank">Paper</a>
@@ -250,62 +294,89 @@
           <p class="project-card__cat">Unsupervised Learning based on GMM</p>
         </div>
         <div class="project-card__detail" style="display:none">
-          <p>Aerial robot streams assistive camera views by tracking head motions and fitting a GMM visual interest
-            function via online EM. Published at <a href="https://ieeexplore.ieee.org/document/8793587">ICRA'19</a>.</p>
-          <img class="project-card__gallery-img" src="images/portfolio/gallery/g-arcontrol.jpg" alt="AR Control">
+          <p>
+            Another project where I was working with <a
+              href="https://scholar.google.com/citations?user=e4efxWQAAAAJ&hl=en">Will</a> and
+            <a href="https://scholar.google.com/citations?user=ny1yTusAAAAJ&hl=en">Dr. Dimitra Panagou</a> where we were
+            using an AR glass, as well as a camera to provide the robot with assistive camera views. The vicon
+            motion capture system was also used to track ground-truth head motions, which was then used to fit a
+            Gaussian Mixture Model (GMM) to define the visual interest function of the user using online Expectation
+            Maximization (EM). My role on this project was solely enablement - I was responsible for setting up the
+            entire software stack for the project, including the AR glasses, the camera, and the vicon system as well as
+            implementing the algorithm in C++ as well as optimizing the hell out of it using CUDA.
+          </p>
+          <!-- Embed Video here instead of Image -->
+          <div class="video-container">
+            <iframe src="https://player.vimeo.com/video/297490185?h=6a0638e0bf" width="640" height="360" frameborder="0"
+              allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <p>
+            You can see in the embedded video how the drone is autonomously able to navigate to the task which is of
+            highest importance, but not being currently focused on by the operator. The core goal of this project was
+            that lets say an operator has multiple tasks to do - task 1, task 2, task 3 (ordered by priority), if the
+            operator is focusing on task 2 at the moment, the drone automatically navigates to task 1 while providing a
+            visual feed on how that is unfolding. For in-depth details on this project, I'd highly encourage you to
+            refer to the paper we published with are findings in it.
+          </p>
           <div class="project-card__links">
             <a href="https://github.com/sahibdhanjal/AR-unsupervised-learning" target="_blank">Code</a>
-            <a href="https://vimeo.com/297490185" target="_blank">Demo</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- NASA Astronet -->
-      <div class="project-card" data-aos="fade-up" data-date="Apr '18 - May '19">
-        <div class="project-card__img"><img src="images/portfolio/nasa.jpg" alt="NASA Astronet"></div>
-        <div class="project-card__info">
-          <h3 class="project-card__title">NASA Astronet</h3>
-          <p class="project-card__cat">A Human-Centric Network of Co-Robots</p>
-        </div>
-        <div class="project-card__detail" style="display:none">
-          <p>
-            <a href="https://www.nasa.gov/directorates/spacetech/strg/ecf2016/AstroNet.html">AstroNet</a> was a research
-            initiative focused on enabling autonomous coverage and discrete navigation strategies for NASA’s free-flying
-            <a href="https://www.nasa.gov/astrobee">Astrobee</a> robots operating aboard the ISS, with the goal of
-            reducing reliance on human teleoperation. Over the course of 1.5 years, I implemented and scaled
-            optimization-based control and coverage algorithms developed by <a
-              href="https://scholar.google.com/citations?user=e4efxWQAAAAJ&hl=en">Dr. William Bentz</a> and
-            <a href="https://scholar.google.com/citations?user=ny1yTusAAAAJ&hl=en">Dr. Dimitra Panagou</a>,
-            translating theoretical guarantees into a deployable and simulation-validated system.
-          </p>
-          <img class="project-card__gallery-img" src="images/portfolio/gallery/g-nasa.jpg" alt="NASA Astronet">
-          <p>
-            I built a high-fidelity ISS simulation environment using <a href="http://wiki.ros.org/">ROS</a> and <a
-              href="https://gazebosim.org/home">Gazebo</a> to evaluate coverage strategies under realistic microgravity
-            dynamics and sensing constraints. This included developing an optimized real-time control pipeline capable
-            of executing discrete coverage policies within the ROS ecosystem while maintaining stable closed-loop
-            behavior.
-          </p>
-          <p>
-            To support end-to-end evaluation, I designed a distributed publish–subscribe architecture integrating MATLAB
-            (core control and coverage algorithms), ROS (middleware), Gazebo (physics simulation), and an immersive VR
-            visualization interface via an <a href="https://www.oculus.com/rift/">Oculus Rift</a>. This framework
-            enabled closed-loop validation of guidance, navigation, and control (GNC) strategies prior to hardware
-            deployment, significantly improving experimental throughput and reproducibility.</p>
-
-          <p>The resulting platform provided a scalable testbed for autonomous navigation, coverage optimization,
-            and multi-agent coordination research in zero-gravity environments, supporting the development of robotic
-            assistance capabilities for long-duration space missions. A research paper was published with findings as
-            well.
-          </p>
-
-          <div class="project-card__links">
-            <a href="https://github.com/sahibdhanjal/NASA-Astrobee" target="_blank">Github</a>
-            <a href="https://vimeo.com/282063033" target="_blank">Vimeo</a>
             <a href="https://ieeexplore.ieee.org/document/8793587" target="_blank">Paper</a>
           </div>
         </div>
       </div>
+
+      <!-- Balance Bot -->
+      <div class="project-card" data-aos="fade-up" data-date="Sep '17 - Dec '17">
+        <div class="project-card__img"><img src="images/portfolio/balance.jpg" alt="Balance Bot"></div>
+        <div class="project-card__info">
+          <h3 class="project-card__title">Autonomous Balance Bot</h3>
+          <p class="project-card__cat">Self Balancing two-wheeled bot</p>
+        </div>
+
+        <div class="project-card__detail" style="display:none">
+          <p>
+            Another one of those fun projects from the <a href="https://rob550-docs.github.io/">UMich Curriculum</a>,
+            in this project, a team of 2 people was responsible for building a self-balancing two-wheeled bot from
+            scratch. We had to design everything from scratch — all the way from mechanical design, to the cascaded PID
+            controller. The goal of the project was to autonomously navigate obstacle courses while maintaining its
+            balance and positioning.
+          </p>
+          <!-- Embed Video here instead of image -->
+          <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/HnjD2pixu-w?si=T4j4UxFzgoyLtDCH" width="640" height="360"
+              frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <p>
+            We used a combination of wheel odometry and Vicon based motion capture to estimate the bot's current
+            position and orientation. Control algorithms were developed to control the bot's balance, motion and
+            orientation, as well as dictating what it needs to do. The bot was able to navigate obstacle courses while
+            maintaining its balance and positioning, that too within very strict time limits. In a competition of 12
+            teams, ours was the fastest and most stable!
+          </p>
+        </div>
+      </div>
+
+      <!-- 3D Bounding Box -->
+      <div class="project-card" data-aos="fade-up" data-date="Oct '18 - Dec '18">
+        <div class="project-card__img"><img src="images/portfolio/gta.jpg" alt="3D Bounding Box"></div>
+        <div class="project-card__info">
+          <h3 class="project-card__title">3D Bounding Box Regression</h3>
+          <p class="project-card__cat">3D Vehicle Detection</p>
+        </div>
+        <div class="project-card__detail" style="display:none">
+          <p>
+            A more trivial project (compared to the previous ones ofcourse), this one was a part of our curriculum at
+            UMich as well. We were given the GTA 10k dataset and were supposed to develop a custom neural network to
+            regress the 3D bounding box of vehicles in the dataset using a simplistic bounding box detector and
+            geometric constraints. As a solution, I developed a simplistic 20-layer SE-ResNet + YOLO 3D bounding box
+            regression incorporating ideas from <a href="https://arxiv.org/abs/1612.00496">Mousavian et al.</a>. It was
+            a Kaggle competition, where I ranked 5th out of 41 teams, achieving an accuracy of ~73% with the centroid
+            MSE of ~9.</p>
+          <img class="project-card__gallery-img" src="images/portfolio/gallery/g-gta.jpg" alt="3D Bounding Box">
+
+        </div>
+      </div>
+
 
       <!-- PoseNet++ -->
       <div class="project-card" data-aos="fade-up" data-date="Feb '18 - Apr '18">
@@ -453,22 +524,6 @@
         </div>
       </div>
 
-      <!-- Balance Bot -->
-      <div class="project-card" data-aos="fade-up" data-date="Sep '17 - Dec '17">
-        <div class="project-card__img"><img src="images/portfolio/balance.jpg" alt="Balance Bot"></div>
-        <div class="project-card__info">
-          <h3 class="project-card__title">Autonomous Balance Bot</h3>
-          <p class="project-card__cat">Self Balancing two-wheeled bot</p>
-        </div>
-        <div class="project-card__detail" style="display:none">
-          <p>Built from scratch — mechanical design, circuit board, and cascaded PID controller. Navigates obstacle
-            courses with wheel odometry and motion capture.</p>
-          <img class="project-card__gallery-img" src="images/portfolio/gallery/g-balance.jpg" alt="Balance Bot">
-          <div class="project-card__links">
-            <a href="https://vimeo.com/316239288" target="_blank">Demo</a>
-          </div>
-        </div>
-      </div>
 
       <!-- Vision Robotic Arm -->
       <div class="project-card" data-aos="fade-up" data-date="Sep '17 - Dec '17">
@@ -532,7 +587,28 @@
         </div>
       </div>
 
-
+      <!-- Sense -->
+      <div class="project-card" data-aos="fade-up" data-date="May '19 - Jul '19">
+        <div class="project-card__img"><img src="images/portfolio/sense.jpg" alt="Sense"></div>
+        <div class="project-card__info">
+          <h3 class="project-card__title">Sense</h3>
+          <p class="project-card__cat">Android app serving sensor data via web</p>
+        </div>
+        <div class="project-card__detail" style="display:none">
+          <p>
+            This was one of my side projects where I worked on repurposing my old Android phone as a mobile sensor
+            platform, streaming its built-in sensors—GPS, IMU, camera, and more—over a websocket to a web server. It was
+            an attempt to reuse old hardware and start experimenting with robotics, SLAM algorithms, or real-time sensor
+            data without needing expensive equipment which I was generally used to.
+          </p>
+          <img class="project-card__gallery-img" src="images/portfolio/gallery/g-sense.jpg" alt="Sense">
+          <p>
+            Alongside the app, I also created a <a href="www.ros.org/">ROS package</a> making it easier to subscribe
+            to sensor topics and integrate the phone’s data into the SLAM algorithms I was playing around with. I also
+            intentionally made it modular so as to include more sensors / custom processing in the future.
+          </p>
+        </div>
+      </div>
 
       <!-- Gesture Arm -->
       <div class="project-card" data-aos="fade-up" data-date="Oct '14 - Dec '14">
