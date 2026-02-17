@@ -32,6 +32,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
     integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <link rel="stylesheet" href="css/style.min.css">
+  <link rel="stylesheet" href="css/resume-overlay.css">
   <!-- script
       ================================================== -->
   <script src="js/pace.min.js"></script>
@@ -60,10 +61,7 @@
         <li class="current"><a href="#work">Work</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#blog">Blog</a></li>
-        <li><a href="https://docs.google.com/document/d/1M5QVAHXMq0l7ucO6YMMXVjFv8SsKv1MEqzcDgkjQo4A/"
-            target="_blank">Resume<img
-              src="https://cdn.prod.website-files.com/63dcb6e1a80e9454b630f4c4/63e0b50ea0956f4526968ef1_23-icon-external.svg"
-              loading="lazy" alt="" class="icon-external"></a></li>
+        <li><a href="#resume" id="resume-link">Resume</a></li>
         <li><a href="https://www.linkedin.com/in/sahibdhanjal/" target="_blank">LinkedIn<img
               src="https://cdn.prod.website-files.com/63dcb6e1a80e9454b630f4c4/63e0b50ea0956f4526968ef1_23-icon-external.svg"
               loading="lazy" alt="" class="icon-external"></a></li>
@@ -752,6 +750,16 @@
   <!-- Java Script
       ================================================== -->
   <script src="js/scripts.min.js"></script>
+  <script src="js/resume-overlay.js"></script>
+
+  <!-- Resume Overlay -->
+  <div id="resume-overlay">
+    <span class="close-btn">&times;</span>
+    <div class="resume-container">
+      <iframe src="resume/Sahib Dhanjal Resume.pdf#toolbar=1&navpanes=0&view=FitW&frameborder=0"
+        title="Resume"></iframe>
+    </div>
+  </div>
 </body>
 
 </html>
