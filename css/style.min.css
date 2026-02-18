@@ -6122,7 +6122,6 @@ a:hover .icon-external {
 }
 
 /* Header Scroll Logic - Home Link Visibility */
-/* Header Scroll Logic - Home Link Visibility */
 .nav-home {
   display: inline-block;
   overflow: hidden;
@@ -6133,19 +6132,15 @@ a:hover .icon-external {
   white-space: nowrap;
   vertical-align: middle;
   text-align: center;
-  /* Ensure alignment with other items */
 }
 
 body.header-scrolled .nav-home {
   max-width: 150px;
-  /* Adjust as needed */
   opacity: 1;
   transform: translateY(0);
   margin-right: 0;
-  /* Removing extra partial margin that might uncenter it */
 }
 
-/* Responsive adjustments */
 /* Responsive adjustments */
 @media screen and (max-width: 768px) {
   .cover-content {
@@ -6160,7 +6155,7 @@ body.header-scrolled .nav-home {
   }
 
   .cover-description {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     text-align: right;
     margin-top: 2rem;
   }
