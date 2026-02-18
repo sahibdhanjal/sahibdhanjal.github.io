@@ -33,31 +33,53 @@
   pointer-events: none;
   /* Let clicks/hover pass through to canvas container if needed, though we track mouse on window/section */
   text-align: center;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 .cover-title {
   font-family: 'Inter', sans-serif;
-  /* Using Inter as per existing site or Aceternity style */
-  font-size: 4rem;
-  font-weight: 700;
+  font-size: 7rem;
+  font-weight: 600;
   color: #fff;
-  background: linear-gradient(to right, #fff, #71717a);
-  /* Subtle gradient text */
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0;
+  padding: 0;
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
+  text-align: left;
+  width: 100%;
+}
+
+.serif-italic {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 400;
+  background: linear-gradient(to bottom, #dedede, #6b7280);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin: 0;
-  padding: 0;
-  filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
+  padding-right: 5px;
+  /* Adjust for italic overlap */
 }
 
-.cover-subtitle {
+.cover-description {
+  margin-top: 3rem;
   font-family: 'Inter', sans-serif;
   font-size: 1.5rem;
-  font-weight: 400;
+  font-weight: 500;
   color: #a1a1aa;
-  /* Zinc-400 equivalent */
-  margin-top: 1rem;
+  text-align: right;
+  width: 100%;
+  max-width: 100%;
+  /* Use full width of container */
+  line-height: 1.5;
+}
+
+.cover-description p {
+  margin: 0;
 }
 
 /* Scroll Down Arrow */
@@ -97,14 +119,40 @@
   }
 }
 
+/* Header Scroll Logic - Home Link Visibility */
+/* Header Scroll Logic - Home Link Visibility */
+.nav-home {
+  display: inline-block;
+  overflow: hidden;
+  max-width: 0;
+  opacity: 0;
+  transform: translateY(-5px);
+  transition: all 0.4s ease-in-out;
+  white-space: nowrap;
+  vertical-align: middle;
+  text-align: center;
+  /* Ensure alignment with other items */
+}
+
+body.header-scrolled .nav-home {
+  max-width: 150px;
+  /* Adjust as needed */
+  opacity: 1;
+  transform: translateY(0);
+  margin-right: 0;
+  /* Removing extra partial margin that might uncenter it */
+}
+
 /* Responsive adjustments */
 @media screen and (max-width: 768px) {
   .cover-title {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
   }
 
-  .cover-subtitle {
+  .cover-description {
     font-size: 1rem;
+    text-align: center;
+    margin-top: 1.5rem;
   }
 
   .scroll-down-arrow {

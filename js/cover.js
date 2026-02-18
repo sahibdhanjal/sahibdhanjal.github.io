@@ -144,4 +144,16 @@ document.addEventListener('DOMContentLoaded', () => {
   if (document.getElementById('cover-canvas')) {
     new CoverEffect('cover-canvas', 'home');
   }
+
+  // Header Scroll Logic
+  const toggleHeaderScrolled = () => {
+    if (window.scrollY > 100) {
+      document.body.classList.add('header-scrolled');
+    } else {
+      document.body.classList.remove('header-scrolled');
+    }
+  };
+
+  window.addEventListener('scroll', toggleHeaderScrolled);
+  toggleHeaderScrolled(); // Initial check
 });
