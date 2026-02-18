@@ -2243,7 +2243,7 @@ a {
 a:hover,
 a:focus,
 a:active {
-  color: #FDB731;
+  color: #fff;
 }
 
 a:hover,
@@ -4881,6 +4881,42 @@ a:hover .icon-external {
 }
 
 
+
+/* --- overlay navigation --- */
+.project-overlay__nav {
+  display: flex;
+  justify-content: flex-start;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.project-overlay__nav-btn {
+  font-family: "Inter", "Inter Fallback", sans-serif;
+  font-weight: 600;
+  font-size: 1.3rem;
+  color: rgba(255, 255, 255, 0.6);
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 0.6rem 1.6rem;
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.2s, border-color 0.2s;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.project-overlay__nav-btn:hover {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.project-overlay__nav-btn.disabled {
+  opacity: 0.25;
+  pointer-events: none;
+  cursor: default;
+}
+
 /* --- pagination --- */
 .projects-pagination {
   display: flex;
@@ -5957,5 +5993,180 @@ a:hover .icon-external {
     max-width: 350px;
     height: auto;
     aspect-ratio: 1/1;
+  }
+}
+
+/* Cover CSS */
+/* CSS for Aceternity Cover Effect (Warp Speed) */
+#home {
+  position: relative;
+  overflow: hidden;
+  /* Ensure the background defaults to something dark if canvas fails or loads late */
+  background-color: #000;
+  height: 100vh;
+  min-height: 100vh;
+  width: 100%;
+}
+
+#cover-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  /* Behind text but above background */
+  pointer-events: auto;
+  /* Allow hover detection on canvas/section */
+}
+
+.cover-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  pointer-events: none;
+  /* Let clicks/hover pass through to canvas container if needed, though we track mouse on window/section */
+  text-align: center;
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.cover-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 8rem;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0;
+  padding: 0;
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
+  text-align: left;
+  width: 100%;
+}
+
+.serif-italic {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 400;
+  background: linear-gradient(to bottom, #dedede, #6b7280);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding-right: 5px;
+  /* Adjust for italic overlap */
+}
+
+.cover-description {
+  margin-top: 3rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 2rem;
+  font-weight: 500;
+  color: #a1a1aa;
+  text-align: right;
+  width: 100%;
+  max-width: 100%;
+  line-height: 1.5;
+}
+
+.cover-description p {
+  margin: 0;
+}
+
+.cover-description p:first-child {
+  font-weight: 800;
+  color: #fff;
+}
+
+/* Scroll Down Arrow */
+.scroll-down-arrow {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 2rem;
+  cursor: pointer;
+  animation: bounce 2s infinite;
+  transition: color 0.3s ease;
+}
+
+.scroll-down-arrow:hover {
+  color: #fff;
+}
+
+@keyframes bounce {
+
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  40% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+
+  60% {
+    transform: translateX(-50%) translateY(-5px);
+  }
+}
+
+/* Header Scroll Logic - Home Link Visibility */
+/* Header Scroll Logic - Home Link Visibility */
+.nav-home {
+  display: inline-block;
+  overflow: hidden;
+  max-width: 0;
+  opacity: 0;
+  transform: translateY(-5px);
+  transition: all 0.4s ease-in-out;
+  white-space: nowrap;
+  vertical-align: middle;
+  text-align: center;
+  /* Ensure alignment with other items */
+}
+
+body.header-scrolled .nav-home {
+  max-width: 150px;
+  /* Adjust as needed */
+  opacity: 1;
+  transform: translateY(0);
+  margin-right: 0;
+  /* Removing extra partial margin that might uncenter it */
+}
+
+/* Responsive adjustments */
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .cover-content {
+    align-items: flex-start;
+    padding: 0 30px;
+    max-width: 500px;
+  }
+
+  .cover-title {
+    font-size: 4rem;
+    line-height: 1.2;
+  }
+
+  .cover-description {
+    font-size: 1.8rem;
+    text-align: right;
+    margin-top: 2rem;
+  }
+
+  .scroll-down-arrow {
+    bottom: 30px;
+    font-size: 1.5rem;
   }
 }
