@@ -5813,15 +5813,12 @@ a:hover .icon-external {
   transform: rotate(90deg);
 }
 
-/* Container for the resume iframe */
 .resume-container {
   width: 80%;
   height: 90%;
-  /* Transparent or minimal container to let the PDF stand out */
   background: transparent;
   position: relative;
   border-radius: 12px;
-  /* Soft shadow for depth */
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
   overflow: hidden;
 }
@@ -5832,10 +5829,8 @@ a:hover .icon-external {
   border: none;
   border-radius: 12px;
   background-color: white;
-  /* Ensure PDF has a white background if transparent */
 }
 
-/* Responsive adjustments */
 @media screen and (max-width: 800px) {
   .resume-container {
     width: 90%;
@@ -5858,10 +5853,8 @@ a:hover .icon-external {
   }
 }
 
-/* About Me Section Styles */
 #about {
   background-color: #000;
-  /* Deep black background as requested */
   color: #fff;
   padding: 8rem 0;
   position: relative;
@@ -5872,7 +5865,6 @@ a:hover .icon-external {
   justify-content: space-between;
   align-items: center;
   max-width: 1200px;
-  /* Limit width for large screens */
   margin: 0 auto;
   padding: 0 2rem;
   gap: 4rem;
@@ -5889,15 +5881,12 @@ a:hover .icon-external {
   margin-bottom: 2rem;
   color: #fff;
   font-family: "Inter", sans-serif;
-  /* Clean sans-serif font */
 }
 
 .about-desc {
   font-size: 1.8rem;
-  /* Readable font size */
   line-height: 1.6;
   color: #ccc;
-  /* Slightly dimmed text for contrast */
   margin-bottom: 3rem;
   font-family: "Inter", sans-serif;
 }
@@ -5913,14 +5902,12 @@ a:hover .icon-external {
   align-items: center;
   padding: 1.2rem 2.5rem;
   border-radius: 50px;
-  /* Pill shape */
   text-decoration: none;
   font-weight: 500;
   font-size: 1.6rem;
   transition: all 0.3s ease;
   font-family: "Inter", sans-serif;
   line-height: 1.2;
-  /* Explicit line height */
 }
 
 .btn-primary {
@@ -6141,7 +6128,6 @@ body.header-scrolled .nav-home {
   margin-right: 0;
 }
 
-/* Responsive adjustments */
 @media screen and (max-width: 768px) {
   .cover-content {
     align-items: flex-start;
