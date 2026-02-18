@@ -84,16 +84,11 @@ class CoverEffect {
     // Smooth speed transition
     this.speed += (this.targetSpeed - this.speed) * 0.1;
 
-    // Clear canvas with fade effect for trails? 
-    // Actually for pure "beams" usually we clear completely and draw lines from prevZ to currZ
+    // Clear canvas
     this.ctx.fillStyle = "rgba(0, 0, 0, 1)";
     this.ctx.fillRect(0, 0, this.width, this.height);
 
     this.stars.forEach(star => {
-      // Keep old position for trail start
-      // We need to project the OLD z to get the trail start point
-      // But since z changes, we can calculate the old z based on speed
-
       // Move star
       star.z -= this.speed;
 
@@ -110,16 +105,13 @@ class CoverEffect {
       const x2d = this.centerX + star.x * scale;
       const y2d = this.centerY + star.y * scale;
 
-      // Project old position (position before this frame's move)
-      // Ideally we draw a "streak" based on speed.
-      // A simple way is to use a slightly larger Z for the tail
+      // Project old position
       const tailZ = star.z + this.speed * 2; // Trail length factor
       const scaleTail = this.focalLength / tailZ;
       const x2dTail = this.centerX + star.x * scaleTail;
       const y2dTail = this.centerY + star.y * scaleTail;
 
       // Draw beam
-      // Only draw if within bounds (optional, but good for performance/glitches)
       if (x2d >= 0 && x2d <= this.width && y2d >= 0 && y2d <= this.height) {
         const alpha = (1 - star.z / this.width); // Fade out at distance
 
@@ -138,22 +130,121 @@ class CoverEffect {
   }
 }
 
-// Initialize when DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
-  // Check if element exists before init
-  if (document.getElementById('cover-canvas')) {
-    new CoverEffect('cover-canvas', 'home');
+/**
+ * Typewriter Effect
+ * Types out words, waits, then backspaces them.
+ */
+class TypewriterEffect {
+  constructor(elementId, texts, options = {}) {
+    this.element = document.getElementById(elementId);
+    this.texts = texts;
+    this.typeSpeed = options.typeSpeed || 100;
+    this.deleteSpeed = options.deleteSpeed || 50;
+    this.waitBeforeDelete = options.waitBeforeDelete || 2000;
+    this.waitBeforeType = options.waitBeforeType || 500;
+
+    this.txt = '';
+    this.wordIndex = 0;
+    this.isDeleting = false;
+    this.timerId = null;
+
+    if (!this.element) {
+      console.error('TypewriterEffect: Element not found', elementId);
+      return;
+    }
+
+    this.type();
   }
 
-  // Header Scroll Logic
-  const toggleHeaderScrolled = () => {
-    if (window.scrollY > 100) {
-      document.body.classList.add('header-scrolled');
-    } else {
-      document.body.classList.remove('header-scrolled');
-    }
-  };
+  type() {
+    const current = this.wordIndex % this.texts.length;
+    const fullTxt = this.texts[current];
 
-  window.addEventListener('scroll', toggleHeaderScrolled);
-  toggleHeaderScrolled(); // Initial check
+    if (this.isDeleting) {
+      this.txt = fullTxt.substring(0, this.txt.length - 1);
+    } else {
+      this.txt = fullTxt.substring(0, this.txt.length + 1);
+    }
+
+    this.element.innerHTML = `<span class="wrap">${this.txt}</span><span class="cursor">_</span>`;
+
+    let typeSpeed = this.typeSpeed;
+
+    if (this.isDeleting) {
+      typeSpeed = this.deleteSpeed;
+    }
+
+    if (!this.isDeleting && this.txt === fullTxt) {
+      typeSpeed = this.waitBeforeDelete;
+      this.isDeleting = true;
+    } else if (this.isDeleting && this.txt === '') {
+      this.isDeleting = false;
+      this.wordIndex++;
+      typeSpeed = this.waitBeforeType;
+    }
+
+    this.timerId = setTimeout(() => this.type(), typeSpeed);
+  }
+}
+
+// Initialize when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+  // Header Scroll Logic
+  try {
+    const toggleHeaderScrolled = () => {
+      if (window.scrollY > 100) {
+        document.body.classList.add('header-scrolled');
+      } else {
+        document.body.classList.remove('header-scrolled');
+      }
+    };
+
+    window.addEventListener('scroll', toggleHeaderScrolled);
+    toggleHeaderScrolled(); // Initial check
+  } catch (e) {
+    console.error('Error in Header Scroll Logic:', e);
+  }
+
+  // Initialize Typewriter Effect for 'robots'
+  try {
+    const textElement = document.getElementById('changing-text');
+    if (textElement) {
+      // Add cursor style if not present
+      if (!document.getElementById('typewriter-cursor-style')) {
+        const style = document.createElement('style');
+        style.id = 'typewriter-cursor-style';
+        style.innerHTML = `
+                    .cursor {
+                        animation: blink 1s infinite;
+                        font-weight: 100;
+                        margin-left: 2px;
+                    }
+                    @keyframes blink {
+                        0%, 100% { opacity: 1; }
+                        50% { opacity: 0; }
+                    }
+                `;
+        document.head.appendChild(style);
+      }
+
+      new TypewriterEffect('changing-text', ['robots', 'cars', 'devices'], {
+        typeSpeed: 150,
+        deleteSpeed: 100,
+        waitBeforeDelete: 5000
+      });
+    } else {
+      console.warn('TypewriterEffect: #changing-text not found');
+    }
+  } catch (e) {
+    console.error('Error initializing TypewriterEffect:', e);
+  }
+
+  // Initialize Cover Effect with error handling
+  try {
+    if (document.getElementById('cover-canvas')) {
+      new CoverEffect('cover-canvas', 'home');
+    }
+  } catch (e) {
+    console.error('Error initializing CoverEffect:', e);
+  }
 });
