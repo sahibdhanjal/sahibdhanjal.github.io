@@ -82,6 +82,7 @@
 }
 
 .cover-description p:first-child {
+  font-weight: 800;
   color: #fff;
 }
 
@@ -147,19 +148,27 @@ body.header-scrolled .nav-home {
 }
 
 /* Responsive adjustments */
+/* Responsive adjustments */
 @media screen and (max-width: 768px) {
+  .cover-content {
+    align-items: flex-start;
+    padding: 0 30px;
+    max-width: 500px;
+  }
+
   .cover-title {
-    font-size: 2.8rem;
+    font-size: 4rem;
+    line-height: 1.2;
   }
 
   .cover-description {
-    font-size: 1rem;
-    text-align: center;
-    margin-top: 1.5rem;
+    font-size: 1.8rem;
+    text-align: right;
+    margin-top: 2rem;
   }
 
   .scroll-down-arrow {
-    bottom: 20px;
+    bottom: 30px;
     font-size: 1.5rem;
   }
 }
