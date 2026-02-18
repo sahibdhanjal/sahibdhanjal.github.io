@@ -4881,6 +4881,42 @@ a:hover .icon-external {
 }
 
 
+
+/* --- overlay navigation --- */
+.project-overlay__nav {
+  display: flex;
+  justify-content: flex-start;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.project-overlay__nav-btn {
+  font-family: "Inter", "Inter Fallback", sans-serif;
+  font-weight: 600;
+  font-size: 1.3rem;
+  color: rgba(255, 255, 255, 0.6);
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 0.6rem 1.6rem;
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.2s, border-color 0.2s;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.project-overlay__nav-btn:hover {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.project-overlay__nav-btn.disabled {
+  opacity: 0.25;
+  pointer-events: none;
+  cursor: default;
+}
+
 /* --- pagination --- */
 .projects-pagination {
   display: flex;
@@ -5959,6 +5995,7 @@ a:hover .icon-external {
     aspect-ratio: 1/1;
   }
 }
+
 /* Cover CSS */
 /* CSS for Aceternity Cover Effect (Warp Speed) */
 #home {
