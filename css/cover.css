@@ -34,14 +34,14 @@
   /* Let clicks/hover pass through to canvas container if needed, though we track mouse on window/section */
   text-align: center;
   width: 100%;
-  max-width: 900px;
+  max-width: 700px;
   margin: 0 auto;
   padding: 0 20px;
 }
 
 .cover-title {
   font-family: 'Inter', sans-serif;
-  font-size: 7rem;
+  font-size: 8rem;
   font-weight: 600;
   color: #fff;
   line-height: 1.1;
@@ -68,18 +68,21 @@
 .cover-description {
   margin-top: 3rem;
   font-family: 'Inter', sans-serif;
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 500;
   color: #a1a1aa;
   text-align: right;
   width: 100%;
   max-width: 100%;
-  /* Use full width of container */
   line-height: 1.5;
 }
 
 .cover-description p {
   margin: 0;
+}
+
+.cover-description p:first-child {
+  color: #fff;
 }
 
 /* Scroll Down Arrow */
